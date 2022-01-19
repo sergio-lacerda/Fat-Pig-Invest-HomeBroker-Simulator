@@ -10,5 +10,6 @@ _**[Português]**_ Este é um aplicativo de autoestudo simulando um home broker 
 - API REST
 - MVC
 - Linq
+- Lambda Expressions
 - HTML 5
 - CSS 3

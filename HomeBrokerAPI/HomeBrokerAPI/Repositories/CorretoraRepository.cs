@@ -18,7 +18,7 @@ namespace HomeBrokerAPI.Repositories
             { 6, new Corretora(6, "Corretora 006", "Cnpj 006") }
         };
 
-        void IDisposable.Dispose()
+        public void Dispose()
         {
             
         }

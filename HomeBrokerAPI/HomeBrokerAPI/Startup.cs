@@ -34,6 +34,9 @@ namespace HomeBrokerAPI
             services.AddScoped<ICorretoraService, CorretoraService>();
             services.AddScoped<ICorretoraRepository, CorretoraRepository>();
 
+            services.AddScoped<IAcaoService, AcaoService>();
+            services.AddScoped<IAcaoRepository, AcaoRepository>();
+
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
