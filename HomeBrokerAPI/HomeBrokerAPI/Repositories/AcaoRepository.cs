@@ -3,46 +3,62 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using HomeBrokerAPI.Entities;
+using Microsoft.Extensions.Configuration;
+using MySqlConnector;
 
 namespace HomeBrokerAPI.Repositories
 {
     public class AcaoRepository : IAcaoRepository
     {
-        public static Dictionary<string, Acao> acoes = new Dictionary<string, Acao>()
-        {
-            {"ITSA4", new Acao("ITSA4", null, 9.60) },
-            {"VIVT3", new Acao("VIVT3", null, 42.81) },
-            {"PETR4", new Acao("PETR4", null, 16.54) },
-            {"ITUB4", new Acao("ITUB4", null, 26.69) },
-            {"ABVE3", new Acao("ABVE3", null, 23.98) }
-        };
+        private readonly MySqlConnection _connection;
 
-        public Task<bool> acaoValida(string ticker)
+        public AcaoRepository(IConfiguration configuration)
         {
-            return Task.FromResult(acoes.ContainsKey(ticker));
+            _connection = new MySqlConnection(configuration.GetConnectionString("DatabaseConnStr"));
         }
 
-        public Task<Acao> obterPorTicker(string ticker)
+        public async Task<Acao> obterPorTicker(string ticker)
         {
-            if (!acoes.ContainsKey(ticker))
-                return Task.FromResult<Acao>(null);
+            Acao acao = null;
+            var comando = $"Select	A.Id, A.Ticker, A.IdEmpresa, E.Nome As Empresa From Acoes A Inner Join Empresas E on E.Id = A.IdEmpresa Where A.Ticker = '{ticker}';";
 
-            return Task.FromResult<Acao>(acoes[ticker]);
+            await _connection.OpenAsync();
+
+            MySqlCommand mySqlCommand = new MySqlCommand(comando, _connection);
+            MySqlDataReader mySqlDataReader = await mySqlCommand.ExecuteReaderAsync();
+
+            while (mySqlDataReader.Read())
+            {
+                Empresa empresa = new Empresa
+                {
+                    Id = Int32.Parse(mySqlDataReader["IdEmpresa"].ToString()),
+                    Nome = (string)mySqlDataReader["Empresa"]
+                };
+
+                acao = new Acao
+                {
+                    Id = Int32.Parse(mySqlDataReader["Id"].ToString()),
+                    Ticker = (string)mySqlDataReader["Ticker"],
+                    Empresa = empresa
+                };
+            }
+
+            await _connection.CloseAsync();
+
+            return acao;
         }
 
         public Task<double> precoMedio(string ticker)
         {
-            if (!acoes.ContainsKey(ticker))
-                return Task.FromResult<double>(0.00);
-
-            var media = acoes[ticker].Ofertas.Average(valor => valor.PrecoUnitario);
+            var media = 0.00;
 
             return Task.FromResult<double>(media);
         }
 
         public void Dispose()
         {
-            
+            _connection?.Close();
+            _connection?.Dispose();
         }
     }
 }

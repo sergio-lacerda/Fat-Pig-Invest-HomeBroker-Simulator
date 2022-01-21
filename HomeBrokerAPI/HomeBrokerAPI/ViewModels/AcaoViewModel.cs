@@ -8,8 +8,8 @@ namespace HomeBrokerAPI.ViewModels
 {
     public class AcaoViewModel
     {
+        public int Id { get; set; }
         public string Ticker { get; set; }
-        public EmpresaViewModel Empresa { get; set; }
-        public List<Oferta> Ofertas { get; set; }
+        public EmpresaViewModel Empresa { get; set; }        
     }
 }

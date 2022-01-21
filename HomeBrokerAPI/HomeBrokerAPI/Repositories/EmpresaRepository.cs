@@ -14,18 +14,8 @@ namespace HomeBrokerAPI.Repositories
 
         public EmpresaRepository(IConfiguration configuration)
         {
-            _connection = new MySqlConnection(configuration.GetConnectionString("Default"));
+            _connection = new MySqlConnection(configuration.GetConnectionString("DatabaseConnStr"));
         }
-        
-        /*public static Dictionary<int, Empresa> empresas = new Dictionary<int, Empresa>()
-        {
-            { 1, new Empresa(1, "Empresa 001") },
-            { 2, new Empresa(2, "Empresa 002") },
-            { 3, new Empresa(3, "Empresa 003") },
-            { 4, new Empresa(4, "Empresa 004") },
-            { 5, new Empresa(5, "Empresa 005") },
-            { 6, new Empresa(6, "Empresa 006") }
-        };*/
 
         public async Task<List<Empresa>> listar()
         {
@@ -51,7 +41,6 @@ namespace HomeBrokerAPI.Repositories
             await _connection.CloseAsync();
 
             return empresas;
-            //return Task.FromResult(empresas.Values.ToList());
         }
 
         public async Task<Empresa> obterPorId(int idEmpresa)
@@ -68,10 +57,9 @@ namespace HomeBrokerAPI.Repositories
             {
                 empresa = new Empresa
                 {
-                    Id = (int)mySqlDataReader["Id"],
+                    Id = Int32.Parse( mySqlDataReader["Id"].ToString() ),
                     Nome = (string)mySqlDataReader["Nome"]
-                };
-                
+                };                
             }
 
             await _connection.CloseAsync();

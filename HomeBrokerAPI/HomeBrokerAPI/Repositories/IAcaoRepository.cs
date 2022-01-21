@@ -9,7 +9,6 @@ namespace HomeBrokerAPI.Repositories
     public interface IAcaoRepository : IDisposable
     {
         public Task<Acao> obterPorTicker(string ticker);
-        public Task<double> precoMedio(string ticker);
-        public Task<bool> acaoValida(string ticker);
+        public Task<double> precoMedio(string ticker);        
     }
 }

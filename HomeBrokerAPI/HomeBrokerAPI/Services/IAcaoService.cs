@@ -9,7 +9,6 @@ namespace HomeBrokerAPI.Services
     public interface IAcaoService : IDisposable
     {
         Task<AcaoViewModel> obterPorTicker(string ticker);
-        Task<double> precoMedio(string ticker);
-        Task<bool> acaoValida(string ticker);
+        Task<double> precoMedio(string ticker);        
     }
 }

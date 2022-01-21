@@ -29,8 +29,7 @@ namespace HomeBrokerAPI.Services
                     corretora => new CorretoraViewModel
                     {
                         Id = corretora.Id,
-                        Nome = corretora.Nome,
-                        Cnpj = corretora.Cnpj
+                        Nome = corretora.Nome
                     }
                 ).ToList();
         }
@@ -45,8 +44,7 @@ namespace HomeBrokerAPI.Services
             return new CorretoraViewModel
             {
                 Id = corretora.Id,
-                Nome = corretora.Nome,
-                Cnpj = corretora.Cnpj
+                Nome = corretora.Nome
             };
         }
     }

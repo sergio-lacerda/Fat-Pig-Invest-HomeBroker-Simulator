@@ -15,11 +15,6 @@ namespace HomeBrokerAPI.Services
         {
             this._acaoRepository = acaoRepository;
         }
-
-        public async Task<bool> acaoValida(string ticker)
-        {
-            return await _acaoRepository.acaoValida(ticker);
-        }
         
         public async Task<AcaoViewModel> obterPorTicker(string ticker)
         {
@@ -28,11 +23,17 @@ namespace HomeBrokerAPI.Services
             if (acao == null)
                 return null;
 
+            EmpresaViewModel empresa = new EmpresaViewModel
+            {
+                Id = acao.Empresa.Id,
+                Nome = acao.Empresa.Nome
+            };
+
             return new AcaoViewModel
             {
-                //Ticker = acao.Ticker,
-                //Empresa = acao.Empresa,
-                //Ofertas = acao.Ofertas
+                Id = acao.Id,
+                Ticker = acao.Ticker,
+                Empresa = empresa               
             };
         }
 
