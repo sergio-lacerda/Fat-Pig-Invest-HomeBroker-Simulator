@@ -41,10 +41,6 @@ namespace HomeBrokerAPI.Controllers.v1
         public async Task<ActionResult<double>> precoMedio([FromRoute] string ticker)
         {
             var preco = await _acaoService.precoMedio(ticker);
-
-            if (preco == null)
-                return NoContent();
-
             return Ok(preco);
         }
     }
