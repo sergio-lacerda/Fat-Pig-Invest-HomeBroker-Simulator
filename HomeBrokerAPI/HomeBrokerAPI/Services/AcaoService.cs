@@ -30,9 +30,9 @@ namespace HomeBrokerAPI.Services
 
             return new AcaoViewModel
             {
-                Ticker = acao.Ticker,
-                Empresa = acao.Empresa,
-                Ofertas = acao.Ofertas
+                //Ticker = acao.Ticker,
+                //Empresa = acao.Empresa,
+                //Ofertas = acao.Ofertas
             };
         }
 

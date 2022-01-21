@@ -28,8 +28,7 @@ namespace HomeBrokerAPI.Services
                     empresa => new EmpresaViewModel
                     {
                         Id = empresa.Id,
-                        Nome = empresa.Nome,
-                        Cnpj = empresa.Cnpj
+                        Nome = empresa.Nome                        
                     }
                 ).ToList();              
         }
@@ -46,8 +45,7 @@ namespace HomeBrokerAPI.Services
             return new EmpresaViewModel
             {
                 Id = empresa.Id,
-                Nome = empresa.Nome,
-                Cnpj = empresa.Cnpj
+                Nome = empresa.Nome
             };
         }
     }

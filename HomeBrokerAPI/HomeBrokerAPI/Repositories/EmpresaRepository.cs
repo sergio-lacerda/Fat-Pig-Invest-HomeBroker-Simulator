@@ -3,35 +3,86 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using HomeBrokerAPI.Entities;
+using Microsoft.Extensions.Configuration;
+using MySqlConnector;
 
 namespace HomeBrokerAPI.Repositories
 {
     public class EmpresaRepository : IEmpresaRepository
     {
-        public static Dictionary<int, Empresa> empresas = new Dictionary<int, Empresa>()
+        private readonly MySqlConnection _connection;
+
+        public EmpresaRepository(IConfiguration configuration)
         {
-            { 1, new Empresa(1, "Empresa 001", "Cnpj 001") },
-            { 2, new Empresa(2, "Empresa 002", "Cnpj 002") },
-            { 3, new Empresa(3, "Empresa 003", "Cnpj 003") },
-            { 4, new Empresa(4, "Empresa 004", "Cnpj 004") },
-            { 5, new Empresa(5, "Empresa 005", "Cnpj 005") },
-            { 6, new Empresa(6, "Empresa 006", "Cnpj 006") }
-        };
-        public Task<List<Empresa>> listar()
+            _connection = new MySqlConnection(configuration.GetConnectionString("Default"));
+        }
+        
+        /*public static Dictionary<int, Empresa> empresas = new Dictionary<int, Empresa>()
         {
-            return Task.FromResult(empresas.Values.ToList());
+            { 1, new Empresa(1, "Empresa 001") },
+            { 2, new Empresa(2, "Empresa 002") },
+            { 3, new Empresa(3, "Empresa 003") },
+            { 4, new Empresa(4, "Empresa 004") },
+            { 5, new Empresa(5, "Empresa 005") },
+            { 6, new Empresa(6, "Empresa 006") }
+        };*/
+
+        public async Task<List<Empresa>> listar()
+        {
+            List<Empresa> empresas = new List<Empresa>();
+            var comando = $"Select Id, Nome From Empresas;";
+
+            await _connection.OpenAsync();
+
+            MySqlCommand mySqlCommand = new MySqlCommand(comando, _connection);
+            MySqlDataReader mySqlDataReader = await mySqlCommand.ExecuteReaderAsync();
+
+            while (mySqlDataReader.Read())
+            {
+                empresas.Add(
+                            new Empresa
+                            {
+                                Id = Int32.Parse( mySqlDataReader["Id"].ToString() ),
+                                Nome = (string)mySqlDataReader["Nome"]
+                            }
+                         );
+            }
+
+            await _connection.CloseAsync();
+
+            return empresas;
+            //return Task.FromResult(empresas.Values.ToList());
         }
 
-        public Task<Empresa> obterPorId(int idEmpresa)
+        public async Task<Empresa> obterPorId(int idEmpresa)
         {
-            if (!empresas.ContainsKey(idEmpresa))
-                return Task.FromResult<Empresa>(null);
-            return Task.FromResult<Empresa>(empresas[idEmpresa]);
+            Empresa empresa = null;
+            var comando = $"Select Id, Nome From Empresas Where Id = {idEmpresa};";
+
+            await _connection.OpenAsync();
+
+            MySqlCommand mySqlCommand = new MySqlCommand(comando, _connection);
+            MySqlDataReader mySqlDataReader = await mySqlCommand.ExecuteReaderAsync();
+
+            while (mySqlDataReader.Read())
+            {
+                empresa = new Empresa
+                {
+                    Id = (int)mySqlDataReader["Id"],
+                    Nome = (string)mySqlDataReader["Nome"]
+                };
+                
+            }
+
+            await _connection.CloseAsync();
+
+            return empresa;
         }
 
         public void Dispose()
         {
-
+            _connection?.Close();
+            _connection?.Dispose();
         }
     }
 }
