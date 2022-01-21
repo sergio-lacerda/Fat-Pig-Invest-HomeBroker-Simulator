@@ -37,6 +37,9 @@ namespace HomeBrokerAPI
             services.AddScoped<IAcaoService, AcaoService>();
             services.AddScoped<IAcaoRepository, AcaoRepository>();
 
+            services.AddScoped<IOfertaService, OfertaService>();
+            services.AddScoped<IOfertaRepository, OfertaRepository>();
+
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

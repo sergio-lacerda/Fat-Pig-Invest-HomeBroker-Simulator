@@ -29,12 +29,5 @@ namespace HomeBrokerAPI.Controllers.v1
 
             return Ok(acao);
         }
-
-        [HttpGet("PrecoMedio/{ticker}")]
-        public async Task<ActionResult<double>> precoMedio([FromRoute] string ticker)
-        {
-            var preco = await _acaoService.precoMedio(ticker);
-            return Ok(preco);
-        }
     }
 }

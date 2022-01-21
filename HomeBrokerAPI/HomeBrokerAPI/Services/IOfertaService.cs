@@ -6,8 +6,8 @@ using HomeBrokerAPI.ViewModels;
 
 namespace HomeBrokerAPI.Services
 {
-    public interface IAcaoService : IDisposable
+    public interface IOfertaService : IDisposable
     {
-        Task<AcaoViewModel> obterPorTicker(string ticker);      
+        Task<List<OfertaViewModel>> listar(string ticker);
     }
 }

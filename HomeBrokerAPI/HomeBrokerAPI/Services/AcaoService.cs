@@ -37,11 +37,6 @@ namespace HomeBrokerAPI.Services
             };
         }
 
-        public async Task<double> precoMedio(string ticker)
-        {
-            return await _acaoRepository.precoMedio(ticker);
-        }
-
         public void Dispose()
         {
             _acaoRepository?.Dispose();

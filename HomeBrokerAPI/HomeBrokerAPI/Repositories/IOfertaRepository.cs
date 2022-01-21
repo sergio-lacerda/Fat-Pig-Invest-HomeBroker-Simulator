@@ -6,8 +6,8 @@ using HomeBrokerAPI.Entities;
 
 namespace HomeBrokerAPI.Repositories
 {
-    public interface IAcaoRepository : IDisposable
+    public interface IOfertaRepository : IDisposable
     {
-        public Task<Acao> obterPorTicker(string ticker);       
+        public Task<List<Oferta>> listar(string ticker);
     }
 }

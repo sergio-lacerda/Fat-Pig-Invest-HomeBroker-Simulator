@@ -48,13 +48,6 @@ namespace HomeBrokerAPI.Repositories
             return acao;
         }
 
-        public Task<double> precoMedio(string ticker)
-        {
-            var media = 0.00;
-
-            return Task.FromResult<double>(media);
-        }
-
         public void Dispose()
         {
             _connection?.Close();
