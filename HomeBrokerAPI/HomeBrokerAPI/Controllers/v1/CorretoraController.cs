@@ -19,6 +19,11 @@ namespace HomeBrokerAPI.Controllers.v1
             this._corretoraService = corretoraService;
         }
 
+        /// <summary>
+        /// Obtém e retorna uma lista com os dados das corretoras cadastradas.
+        /// </summary>        
+        /// <response code="200">Retorna uma lista das corretoras com sucesso</response>
+        /// <response code="204">Não há dados de corretoras para retornar</response> 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CorretoraViewModel>>> listar()
         {
@@ -30,6 +35,12 @@ namespace HomeBrokerAPI.Controllers.v1
             return Ok(corretoras);
         }
 
+        /// <summary>
+        /// Obtém e retorna os dados de uma corretora através do seu Id (código)
+        /// </summary>
+        /// /// <param name="idCorretora">Id da corretora a ser obtida</param>        
+        /// <response code="200">Retorna os dados da corretora com sucesso</response>
+        /// <response code="204">Não há dados da corretora para esse idCorretora</response> 
         [HttpGet("{idCorretora:int}")]
         public async Task<ActionResult<CorretoraViewModel>> obterPorId([FromRoute] int idCorretora)
         {

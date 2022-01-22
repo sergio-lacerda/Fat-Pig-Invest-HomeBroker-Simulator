@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HomeBrokerAPI</name>
+    </assembly>
+    <members>
+        <member name="M:HomeBrokerAPI.Controllers.v1.AcaoController.obterPorTicker(System.String)">
+            <summary>
+            Obtém e retorna os dados de uma ação, com base em seu ticker
+            </summary>
+            /// <param name="ticker">Código (Ticker) da ação cujos dados se deseja obter</param>        
+            <response code="200">Retorna os dados de uma ação com sucesso</response>
+            <response code="204">Não há dados de ação para esse ticker</response> 
+        </member>
+        <member name="M:HomeBrokerAPI.Controllers.v1.CorretoraController.listar">
+            <summary>
+            Obtém e retorna uma lista com os dados das corretoras cadastradas.
+            </summary>        
+            <response code="200">Retorna uma lista das corretoras com sucesso</response>
+            <response code="204">Não há dados de corretoras para retornar</response> 
+        </member>
+        <member name="M:HomeBrokerAPI.Controllers.v1.CorretoraController.obterPorId(System.Int32)">
+            <summary>
+            Obtém e retorna os dados de uma corretora através do seu Id (código)
+            </summary>
+            /// <param name="idCorretora">Id da corretora a ser obtida</param>        
+            <response code="200">Retorna os dados da corretora com sucesso</response>
+            <response code="204">Não há dados da corretora para esse idCorretora</response> 
+        </member>
+        <member name="M:HomeBrokerAPI.Controllers.v1.EmpresaController.listar">
+            <summary>
+            Obtém e retorna uma lista com os dados das empresas cadastradas.
+            </summary>        
+            <response code="200">Retorna uma lista das empresas com sucesso</response>
+            <response code="204">Não há dados de empresas para retornar</response> 
+        </member>
+        <member name="M:HomeBrokerAPI.Controllers.v1.EmpresaController.obterPorId(System.Int32)">
+            <summary>
+            Obtém e retorna os dados de uma empresa através do seu Id (código)
+            </summary>
+            /// <param name="idEmpresa">Id da empresa a ser obtida</param>        
+            <response code="200">Retorna os dados da empresa com sucesso</response>
+            <response code="204">Não há dados da empresa para esse idEmpresa</response> 
+        </member>
+        <member name="M:HomeBrokerAPI.Controllers.OfertaController.listar(System.String)">
+            <summary>
+            Obtém e retorna o book de ofertas (ordens de compras e vendas) para uma ação, com base em seu ticker
+            </summary>
+            /// <param name="ticker">Código (Ticker) da ação cujas ofertas se deseja obter</param>        
+            <response code="200">Retorna uma lista de ofertas (book) com sucesso</response>
+            <response code="204">Não há dados da ofertas para esse ticker</response> 
+        </member>
+    </members>
+</doc>

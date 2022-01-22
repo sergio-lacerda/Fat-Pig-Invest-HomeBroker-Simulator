@@ -19,6 +19,12 @@ namespace HomeBrokerAPI.Controllers.v1
             this._acaoService = acaoService;
         }
 
+        /// <summary>
+        /// Obtém e retorna os dados de uma ação, com base em seu ticker
+        /// </summary>
+        /// /// <param name="ticker">Código (Ticker) da ação cujos dados se deseja obter</param>        
+        /// <response code="200">Retorna os dados de uma ação com sucesso</response>
+        /// <response code="204">Não há dados de ação para esse ticker</response> 
         [HttpGet("{ticker}")]
         public async Task<ActionResult<AcaoViewModel>> obterPorTicker([FromRoute] string ticker)
         {
