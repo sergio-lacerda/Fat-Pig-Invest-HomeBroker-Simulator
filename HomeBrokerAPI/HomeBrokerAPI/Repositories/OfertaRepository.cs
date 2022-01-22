@@ -20,6 +20,7 @@ namespace HomeBrokerAPI.Repositories
         public async Task<List<Oferta>> listar(string ticker)
         {
             List<Oferta> ofertas = new List<Oferta>();
+
             var comando = "Select O.Id, O.Tipo, O.IdAcao, " + 
                                   "A.Ticker, O.IdCorretora, C.Nome as Corretora, " +
                                   "O.Quantidade, O.PrecoUnitario, O.DataHora " +
@@ -29,7 +30,12 @@ namespace HomeBrokerAPI.Repositories
                           $"Where A.Ticker = '{ticker}' " +
                           "Order By O.Tipo, O.DataHora Desc;";
 
+            var comando_sp_simulador = $"Call Simular_Ofertas('{ticker}')";
+
             await _connection.OpenAsync();
+
+            MySqlCommand mySqlCommandSimulador = new MySqlCommand(comando_sp_simulador, _connection);
+            await mySqlCommandSimulador.ExecuteNonQueryAsync();
 
             MySqlCommand mySqlCommand = new MySqlCommand(comando, _connection);
             MySqlDataReader mySqlDataReader = await mySqlCommand.ExecuteReaderAsync();
