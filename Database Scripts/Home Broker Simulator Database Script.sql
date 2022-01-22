@@ -21,7 +21,8 @@ Create Table Corretoras (
 Create Table Acoes (
 	Id Int Unsigned Not Null Auto_Increment Primary Key,
     Ticker Varchar(10) Not Null,
-    IdEmpresa Int Unsigned Not Null
+    IdEmpresa Int Unsigned Not Null,
+    PrecoBaseSimulacao Decimal(5,2) Not Null Default 12.53
 );
 
 Alter Table Acoes
@@ -406,396 +407,526 @@ Insert Into Corretoras (Id, Nome) Values (44, 'UBS BRASIL CCTVM S/A');
 Insert Into Corretoras (Id, Nome) Values (45, 'VOTORANTIM CTVM LTDA');
 Insert Into Corretoras (Id, Nome) Values (46, 'XP INVESTIMENTOS CCTVM S/A');
 
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (1, 'AALR3', 11);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (2, 'AAPL34', 25);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (3, 'ABTT34', 3);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (4, 'ACNB34', 4);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (5, 'ADBE34', 5);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (6, 'ADPR34', 32);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (7, 'AERI3', 6);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (8, 'AESB3', 7);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (9, 'AFLT3', 8);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (10, 'AGRO3', 63);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (11, 'AIGB34', 23);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (12, 'AIRB34', 9);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (13, 'ALLD3', 12);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (14, 'ALPA3', 14);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (15, 'ALPA4', 14);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (16, 'ALPK3', 13);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (17, 'ALSO3', 10);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (18, 'ALUP11', 19);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (19, 'ALUP3', 19);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (20, 'ALUP4', 19);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (21, 'AMAR3', 199);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (22, 'AMBP3', 21);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (23, 'AMZO34', 20);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (24, 'ANIM3', 24);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (25, 'APER3', 15);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (26, 'ARMT34', 26);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (27, 'ARZZ3', 27);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (28, 'ASAI3', 28);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (29, 'ATEA3', 30);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (30, 'ATMP3', 31);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (31, 'ATTB34', 29);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (32, 'ATTB34 ', 29);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (33, 'AVLL3', 17);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (34, 'AVON34', 33);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (35, 'AXPB34', 22);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (36, 'B2YN34', 48);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (37, 'BALM3', 44);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (38, 'BALM4', 44);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (39, 'BBAS11', 34);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (40, 'BBAS12', 34);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (41, 'BBAS3', 34);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (42, 'BBDC3', 60);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (43, 'BBDC4', 60);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (44, 'BBRK3', 62);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (45, 'BBSE3', 45);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (46, 'BDLL3', 42);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (47, 'BDLL4', 42);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (48, 'BEEF11', 212);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (49, 'BEEF3', 212);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (50, 'BIDI11', 35);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (51, 'BIDI3', 35);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (52, 'BIDI4', 35);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (53, 'BIOM3', 49);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (54, 'BLAU3', 52);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (55, 'BMGB4', 54);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (56, 'BMIN3', 36);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (57, 'BMLC11', 53);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (58, 'BMOB3', 46);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (59, 'BMYB34', 67);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (60, 'BOAC34', 39);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (61, 'BOAS3', 56);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (62, 'BOEI34', 57);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (63, 'BONY34', 290);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (64, 'BPAN4', 38);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (65, 'BPAR3', 40);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (66, 'BRAP3', 61);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (67, 'BRAP4', 61);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (68, 'BRBI11', 58);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (69, 'BRDT3', 244);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (70, 'BRFS3', 66);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (71, 'BRK.B', 47);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (72, 'BRKM3', 64);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (73, 'BRKM5', 64);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (74, 'BRKM6', 64);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (75, 'BRML3', 68);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (76, 'BRPR3', 59);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (77, 'BRSR3', 41);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (78, 'BRSR5', 41);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (79, 'BRSR6', 41);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (80, 'BSEV3', 50);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (81, 'BSLI3', 65);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (82, 'BSLI4', 65);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (83, 'BTTL3', 43);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (84, 'C2HD34', 87);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (85, 'C2ON34', 111);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (86, 'C2ZR34', 70);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (87, 'CAML3', 72);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (88, 'CARD3', 107);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (89, 'CASH3', 205);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (90, 'CASN3', 74);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (91, 'CASN4', 74);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (92, 'CATP34', 75);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (93, 'CEAB3', 69);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (94, 'CEBR3', 76);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (95, 'CEBR5', 76);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (96, 'CEBR6', 76);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (97, 'CEDO3', 77);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (98, 'CEDO4', 77);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (99, 'CEED3', 78);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (100, 'CEED4', 78);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (101, 'CEGR3', 80);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (102, 'CEPE3', 82);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (103, 'CEPE5', 82);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (104, 'CEPE6', 82);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (105, 'CESP3', 85);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (106, 'CESP5', 85);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (107, 'CESP6', 85);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (108, 'CGAS3', 97);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (109, 'CGAS5', 97);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (110, 'CGRA3', 147);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (111, 'CGRA4', 147);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (112, 'CHVX34', 86);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (113, 'CJCT11', 155);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (114, 'CLSC3', 81);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (115, 'CLSC4', 81);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (116, 'CMCS34', 96);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (117, 'CMIG3', 84);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (118, 'CMIG4', 84);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (119, 'CMIN3', 106);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (120, 'COCA34', 92);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (121, 'COCE3', 93);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (122, 'COCE5', 93);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (123, 'COCE6', 93);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (124, 'COGN3', 94);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (125, 'COLG34', 95);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (126, 'CONX3', 296);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (127, 'COPH34', 100);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (128, 'CPFE3', 102);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (129, 'CPLE3', 99);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (130, 'CPLE5', 99);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (131, 'CPLE6', 99);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (132, 'CPRE3', 103);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (133, 'CRFB3', 73);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (134, 'CSCO34', 89);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (135, 'CSED3', 104);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (136, 'CSNA3', 105);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (137, 'CTGP34', 90);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (138, 'CTKA3', 181);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (139, 'CTKA4', 181);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (140, 'CTNM3', 101);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (141, 'CTNM4', 101);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (142, 'CURY3', 108);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (143, 'CVCB3', 109);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (144, 'CXSE3', 71);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (145, 'CYRE3', 110);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (146, 'D2KN34', 119);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (147, 'DEVA11', 113);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (148, 'DEXP3', 114);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (149, 'DEXP4', 114);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (150, 'DIRR3', 116);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (151, 'DMMO11', 117);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (152, 'DMMO3', 117);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (153, 'DMVF3', 112);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (154, 'DOTZ3', 118);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (155, 'EBAY34', 120);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (156, 'EEEL3', 79);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (157, 'EEEL4', 79);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (158, 'EGIE3', 124);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (159, 'ELMD3', 121);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (160, 'ENAT3', 122);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (161, 'ENJU3', 125);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (162, 'ENMT3', 123);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (163, 'ENMT4', 123);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (164, 'ESPA3', 126);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (165, 'ESTR3', 127);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (166, 'ESTR4', 127);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (167, 'EUCA3', 128);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (168, 'EUCA4', 128);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (169, 'EVEN3', 129);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (170, 'EXXO34', 130);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (171, 'EZTC3', 131);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (172, 'FBOK34', 132);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (173, 'FCXO34', 138);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (174, 'FDMO34', 137);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (175, 'FDXB34', 133);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (176, 'FESA3', 134);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (177, 'FESA4', 134);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (178, 'FLRY3', 135);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (179, 'GBIO33', 51);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (180, 'GEOO34', 140);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (181, 'GEPA3', 142);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (182, 'GEPA4', 142);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (183, 'GFSA3', 139);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (184, 'GGPS3', 152);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (185, 'GMAT3', 150);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (186, 'GOAU4', 143);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (187, 'GOGL35', 16);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (188, 'GRND3', 148);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (189, 'GSGI34', 145);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (190, 'GSHP3', 141);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (191, 'HALI34', 153);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (192, 'HBOR3', 156);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (193, 'HBRE3', 154);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (194, 'HBSA3', 157);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (195, 'HCAR3', 160);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (196, 'HGTX3', 88);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (197, 'HOME34', 158);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (198, 'HONB34', 159);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (199, 'HOOT4', 161);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (200, 'HPQB34', 162);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (201, 'HYPE3', 163);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (202, 'IBMB34', 164);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (203, 'IFCM3', 167);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (204, 'IGBR3', 146);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (205, 'IGTA3', 165);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (206, 'INEP4', 166);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (207, 'INTB3', 170);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (208, 'IRBR3', 172);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (209, 'ITLC34', 169);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (210, 'ITSA3', 175);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (211, 'ITSA4', 175);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (212, 'ITUB3', 174);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (213, 'ITUB4', 174);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (214, 'JALL3', 176);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (215, 'JBSS3', 177);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (216, 'JHSF3', 178);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (217, 'JNJB34', 179);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (218, 'JPMC34', 180);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (219, 'JSLG3', 149);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (220, 'K2CG34', 182);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (221, 'KLBN11', 183);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (222, 'KLBN3', 183);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (223, 'KLBN4', 183);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (224, 'KRSA3', 184);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (225, 'LAME3', 193);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (226, 'LAME4', 193);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (227, 'LAVV3', 185);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (228, 'LCAM3', 189);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (229, 'LEVE3', 210);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (230, 'LINX3', 187);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (231, 'LJQQ3', 255);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (232, 'LLIS3', 186);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (233, 'LMTB34', 191);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (234, 'LOGG3', 192);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (235, 'LPSB3', 195);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (236, 'LREN3', 194);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (237, 'LUPA3', 196);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (238, 'LWSA3', 190);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (239, 'M2PW34', 204);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (240, 'MATD3', 201);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (241, 'MBLY3', 215);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (242, 'MCDC34', 202);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (243, 'MDIA3', 203);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (244, 'MDNE3', 218);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (245, 'MELK3', 206);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (246, 'MERC4', 207);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (247, 'MFAI11', 209);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (248, 'MGLU3', 197);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (249, 'MMMC34', 1);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (250, 'MMXM11', 214);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (251, 'MMXM3', 214);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (252, 'MNDL3', 222);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (253, 'MODL11', 37);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (254, 'MODL3', 37);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (255, 'MODL4', 37);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (256, 'MOOO34', 18);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (257, 'MOSI3', 217);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (258, 'MOVI3', 219);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (259, 'MRCK34', 208);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (260, 'MRFG3', 198);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (261, 'MRVE3', 220);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (262, 'MSBR34', 216);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (263, 'MSCD34', 200);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (264, 'MSFT34', 211);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (265, 'MTRE3', 213);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (266, 'MULT3', 221);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (267, 'MYPK3', 171);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (268, 'NEMO3', 283);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (269, 'NEMO5', 283);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (270, 'NEMO6', 283);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (271, 'NEOE3', 224);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (272, 'NFLX34', 226);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (273, 'NGRD3', 225);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (274, 'NIKE34', 227);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (275, 'NINJ3', 144);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (276, 'NTCO3', 223);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (277, 'ODPV3', 229);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (278, 'OFSA3', 234);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (279, 'OIBR3', 230);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (280, 'OIBR4', 230);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (281, 'OPCT3', 228);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (282, 'ORCL34', 231);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (283, 'ORVR3', 232);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (284, 'OSXB3', 233);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (285, 'P2EN34', 240);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (286, 'PAGS34', 235);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (287, 'PARD3', 168);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (288, 'PASS3', 98);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (289, 'PCAR3', 237);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (290, 'PDGR3', 239);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (291, 'PEPB34', 241);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (292, 'PETR3', 243);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (293, 'PETR4', 243);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (294, 'PETZ3', 247);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (295, 'PFIZ34', 248);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (296, 'PGCO34', 252);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (297, 'PGMN3', 236);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (298, 'PLPL3', 249);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (299, 'PMAM3', 238);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (300, 'PNVL3', 115);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (301, 'PNVL4', 115);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (302, 'POSI3', 251);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (303, 'POWE3', 136);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (304, 'PRIO3', 246);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (305, 'PSSA3', 250);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (306, 'QCOM34', 253);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (307, 'QUAL3', 254);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (308, 'RADL3', 257);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (309, 'RANI3', 83);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (310, 'RANI4', 83);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (311, 'RAPT3', 256);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (312, 'RDNI3', 263);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (313, 'RECR11', 258);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (314, 'RECV3', 245);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (315, 'RENT3', 188);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (316, 'RIOS3', 261);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (317, 'RIVA3', 262);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (318, 'RNEW11', 259);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (319, 'RNEW3', 260);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (320, 'RNEW4', 260);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (321, 'RPMG3', 242);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (322, 'RRRP3', 2);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (323, 'RSID3', 264);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (324, 'S2EA34', 273);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (325, 'S2HO34', 276);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (326, 'S2NW34', 279);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (327, 'S2QU34', 280);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (328, 'S2UI34', 282);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (329, 'SANB11', 267);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (330, 'SANB3', 267);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (331, 'SANB4', 267);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (332, 'SAPR11', 266);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (333, 'SAPR3', 266);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (334, 'SAPR4', 266);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (335, 'SBSP3', 265);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (336, 'SBUB34', 281);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (337, 'SCAR3', 269);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (338, 'SEER3', 275);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (339, 'SEQL3', 274);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (340, 'SIMH3', 277);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (341, 'SLBG34', 272);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (342, 'SLED3', 271);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (343, 'SLED4', 271);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (344, 'SMLS3', 278);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (345, 'SMTO3', 270);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (346, 'SOJA3', 55);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (347, 'SOMA3', 151);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (348, 'STBP3', 268);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (349, 'SUZB3', 284);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (350, 'T2DH34', 287);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (351, 'T2TD34', 294);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (352, 'TAEE11', 285);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (353, 'TAEE3', 285);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (354, 'TAEE4', 285);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (355, 'TCSA3', 286);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (356, 'TELB3', 288);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (357, 'TELB4', 288);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (358, 'TFCO4', 293);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (359, 'TIMS3', 291);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (360, 'TOTS3', 292);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (361, 'TRPL3', 173);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (362, 'TRPL4', 173);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (363, 'U2ST34', 299);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (364, 'UGPA3', 297);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (365, 'UNIP3', 298);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (366, 'UNIP5', 298);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (367, 'UNIP6', 298);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (368, 'UPSS34', 300);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (369, 'URPR11', 301);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (370, 'VALE5', 302);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (371, 'VAMO3', 303);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (372, 'VERZ34', 304);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (373, 'VISA34', 306);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (374, 'VITT3', 307);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (375, 'VIVA3', 308);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (376, 'VIVT3', 289);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (377, 'VIVT4', 289);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (378, 'VVAR3', 305);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (379, 'VVEO3', 91);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (380, 'WALM34', 309);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (381, 'WEST3', 311);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (382, 'WFCO34', 310);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (383, 'WHRL3', 313);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (384, 'WHRL4', 312);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (385, 'XINA11', 295);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (386, 'XRXB34', 314);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (387, 'YDUQ3', 315);
-Insert Into Acoes (Id, Ticker, IdEmpresa) Values (388, 'Z2NG34', 316);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (1, 'AALR3', 11, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (2, 'AAPL34', 25, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (3, 'ABTT34', 3, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (4, 'ACNB34', 4, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (5, 'ADBE34', 5, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (6, 'ADPR34', 32, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (7, 'AERI3', 6, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (8, 'AESB3', 7, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (9, 'AFLT3', 8, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (10, 'AGRO3', 63, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (11, 'AIGB34', 23, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (12, 'AIRB34', 9, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (13, 'ALLD3', 12, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (14, 'ALPA3', 14, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (15, 'ALPA4', 14, 30.11);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (16, 'ALPK3', 13, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (17, 'ALSO3', 10, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (18, 'ALUP11', 19, 24.76);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (19, 'ALUP3', 19, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (20, 'ALUP4', 19, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (21, 'AMAR3', 199, 3.28);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (22, 'AMBP3', 21, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (23, 'AMZO34', 20, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (24, 'ANIM3', 24, 7.58);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (25, 'APER3', 15, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (26, 'ARMT34', 26, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (27, 'ARZZ3', 27, 75.11);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (28, 'ASAI3', 28, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (29, 'ATEA3', 30, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (30, 'ATMP3', 31, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (31, 'ATTB34', 29, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (32, 'ATTB34 ', 29, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (33, 'AVLL3', 17, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (34, 'AVON34', 33, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (35, 'AXPB34', 22, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (36, 'B2YN34', 48, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (37, 'BALM3', 44, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (38, 'BALM4', 44, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (39, 'BBAS11', 34, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (40, 'BBAS12', 34, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (41, 'BBAS3', 34, 31.1);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (42, 'BBDC3', 60, 17.54);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (43, 'BBDC4', 60, 20.83);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (44, 'BBRK3', 62, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (45, 'BBSE3', 45, 20.57);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (46, 'BDLL3', 42, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (47, 'BDLL4', 42, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (48, 'BEEF11', 212, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (49, 'BEEF3', 212, 9.83);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (50, 'BIDI11', 35, 25.35);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (51, 'BIDI3', 35, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (52, 'BIDI4', 35, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (53, 'BIOM3', 49, 13.99);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (54, 'BLAU3', 52, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (55, 'BMGB4', 54, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (56, 'BMIN3', 36, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (57, 'BMLC11', 53, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (58, 'BMOB3', 46, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (59, 'BMYB34', 67, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (60, 'BOAC34', 39, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (61, 'BOAS3', 56, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (62, 'BOEI34', 57, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (63, 'BONY34', 290, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (64, 'BPAN4', 38, 10.24);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (65, 'BPAR3', 40, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (66, 'BRAP3', 61, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (67, 'BRAP4', 61, 27.7);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (68, 'BRBI11', 58, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (69, 'BRDT3', 244, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (70, 'BRFS3', 66, 22.66);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (71, 'BRK.B', 47, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (72, 'BRKM3', 64, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (73, 'BRKM5', 64, 48.28);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (74, 'BRKM6', 64, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (75, 'BRML3', 68, 9.24);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (76, 'BRPR3', 59, 6.98);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (77, 'BRSR3', 41, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (78, 'BRSR5', 41, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (79, 'BRSR6', 41, 10.36);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (80, 'BSEV3', 50, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (81, 'BSLI3', 65, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (82, 'BSLI4', 65, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (83, 'BTTL3', 43, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (84, 'C2HD34', 87, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (85, 'C2ON34', 111, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (86, 'C2ZR34', 70, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (87, 'CAML3', 72, 9.15);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (88, 'CARD3', 107, 13.59);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (89, 'CASH3', 205, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (90, 'CASN3', 74, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (91, 'CASN4', 74, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (92, 'CATP34', 75, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (93, 'CEAB3', 69, 5.6);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (94, 'CEBR3', 76, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (95, 'CEBR5', 76, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (96, 'CEBR6', 76, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (97, 'CEDO3', 77, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (98, 'CEDO4', 77, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (99, 'CEED3', 78, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (100, 'CEED4', 78, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (101, 'CEGR3', 80, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (102, 'CEPE3', 82, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (103, 'CEPE5', 82, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (104, 'CEPE6', 82, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (105, 'CESP3', 85, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (106, 'CESP5', 85, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (107, 'CESP6', 85, 22.69);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (108, 'CGAS3', 97, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (109, 'CGAS5', 97, 134.05);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (110, 'CGRA3', 147, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (111, 'CGRA4', 147, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (112, 'CHVX34', 86, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (113, 'CJCT11', 155, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (114, 'CLSC3', 81, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (115, 'CLSC4', 81, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (116, 'CMCS34', 96, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (117, 'CMIG3', 84, 17.67);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (118, 'CMIG4', 84, 12.96);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (119, 'CMIN3', 106, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (120, 'COCA34', 92, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (121, 'COCE3', 93, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (122, 'COCE5', 93, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (123, 'COCE6', 93, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (124, 'COGN3', 94, 2.37);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (125, 'COLG34', 95, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (126, 'CONX3', 296, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (127, 'COPH34', 100, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (128, 'CPFE3', 102, 27.07);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (129, 'CPLE3', 99, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (130, 'CPLE5', 99, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (131, 'CPLE6', 99, 6.71);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (132, 'CPRE3', 103, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (133, 'CRFB3', 73, 14.87);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (134, 'CSCO34', 89, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (135, 'CSED3', 104, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (136, 'CSNA3', 105, 25.85);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (137, 'CTGP34', 90, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (138, 'CTKA3', 181, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (139, 'CTKA4', 181, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (140, 'CTNM3', 101, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (141, 'CTNM4', 101, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (142, 'CURY3', 108, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (143, 'CVCB3', 109, 12.71);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (144, 'CXSE3', 71, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (145, 'CYRE3', 110, 15.75);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (146, 'D2KN34', 119, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (147, 'DEVA11', 113, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (148, 'DEXP3', 114, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (149, 'DEXP4', 114, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (150, 'DIRR3', 116, 12.08);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (151, 'DMMO11', 117, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (152, 'DMMO3', 117, 0.69);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (153, 'DMVF3', 112, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (154, 'DOTZ3', 118, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (155, 'EBAY34', 120, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (156, 'EEEL3', 79, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (157, 'EEEL4', 79, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (158, 'EGIE3', 124, 39.3);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (159, 'ELMD3', 121, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (160, 'ENAT3', 122, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (161, 'ENJU3', 125, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (162, 'ENMT3', 123, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (163, 'ENMT4', 123, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (164, 'ESPA3', 126, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (165, 'ESTR3', 127, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (166, 'ESTR4', 127, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (167, 'EUCA3', 128, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (168, 'EUCA4', 128, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (169, 'EVEN3', 129, 6.61);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (170, 'EXXO34', 130, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (171, 'EZTC3', 131, 20.51);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (172, 'FBOK34', 132, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (173, 'FCXO34', 138, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (174, 'FDMO34', 137, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (175, 'FDXB34', 133, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (176, 'FESA3', 134, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (177, 'FESA4', 134, 45.14);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (178, 'FLRY3', 135, 19.12);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (179, 'GBIO33', 51, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (180, 'GEOO34', 140, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (181, 'GEPA3', 142, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (182, 'GEPA4', 142, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (183, 'GFSA3', 139, 1.82);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (184, 'GGPS3', 152, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (185, 'GMAT3', 150, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (186, 'GOAU4', 143, 11.45);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (187, 'GOGL35', 16, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (188, 'GRND3', 148, 8.69);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (189, 'GSGI34', 145, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (190, 'GSHP3', 141, 30.4);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (191, 'HALI34', 153, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (192, 'HBOR3', 156, 4.05);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (193, 'HBRE3', 154, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (194, 'HBSA3', 157, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (195, 'HCAR3', 160, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (196, 'HGTX3', 88, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (197, 'HOME34', 158, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (198, 'HONB34', 159, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (199, 'HOOT4', 161, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (200, 'HPQB34', 162, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (201, 'HYPE3', 163, 29.46);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (202, 'IBMB34', 164, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (203, 'IFCM3', 167, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (204, 'IGBR3', 146, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (205, 'IGTA3', 165, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (206, 'INEP4', 166, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (207, 'INTB3', 170, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (208, 'IRBR3', 172, 3.35);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (209, 'ITLC34', 169, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (210, 'ITSA3', 175, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (211, 'ITSA4', 175, 9.56);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (212, 'ITUB3', 174, 20.49);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (213, 'ITUB4', 174, 23.25);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (214, 'JALL3', 176, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (215, 'JBSS3', 177, 36.25);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (216, 'JHSF3', 178, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (217, 'JNJB34', 179, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (218, 'JPMC34', 180, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (219, 'JSLG3', 149, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (220, 'K2CG34', 182, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (221, 'KLBN11', 183, 24.79);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (222, 'KLBN3', 183, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (223, 'KLBN4', 183, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (224, 'KRSA3', 184, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (225, 'LAME3', 193, 6.6);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (226, 'LAME4', 193, 6.57);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (227, 'LAVV3', 185, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (228, 'LCAM3', 189, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (229, 'LEVE3', 210, 30.63);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (230, 'LINX3', 187, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (231, 'LJQQ3', 255, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (232, 'LLIS3', 186, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (233, 'LMTB34', 191, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (234, 'LOGG3', 192, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (235, 'LPSB3', 195, 2.5);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (236, 'LREN3', 194, 26.4);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (237, 'LUPA3', 196, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (238, 'LWSA3', 190, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (239, 'M2PW34', 204, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (240, 'MATD3', 201, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (241, 'MBLY3', 215, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (242, 'MCDC34', 202, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (243, 'MDIA3', 203, 22.96);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (244, 'MDNE3', 218, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (245, 'MELK3', 206, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (246, 'MERC4', 207, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (247, 'MFAI11', 209, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (248, 'MGLU3', 197, 6.93);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (249, 'MMMC34', 1, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (250, 'MMXM11', 214, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (251, 'MMXM3', 214, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (252, 'MNDL3', 222, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (253, 'MODL11', 37, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (254, 'MODL3', 37, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (255, 'MODL4', 37, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (256, 'MOOO34', 18, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (257, 'MOSI3', 217, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (258, 'MOVI3', 219, 15.37);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (259, 'MRCK34', 208, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (260, 'MRFG3', 198, 22.42);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (261, 'MRVE3', 220, 12.02);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (262, 'MSBR34', 216, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (263, 'MSCD34', 200, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (264, 'MSFT34', 211, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (265, 'MTRE3', 213, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (266, 'MULT3', 221, 20.08);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (267, 'MYPK3', 171, 14.32);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (268, 'NEMO3', 283, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (269, 'NEMO5', 283, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (270, 'NEMO6', 283, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (271, 'NEOE3', 224, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (272, 'NFLX34', 226, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (273, 'NGRD3', 225, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (274, 'NIKE34', 227, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (275, 'NINJ3', 144, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (276, 'NTCO3', 223, 23.17);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (277, 'ODPV3', 229, 12.48);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (278, 'OFSA3', 234, 23.14);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (279, 'OIBR3', 230, 0.87);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (280, 'OIBR4', 230, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (281, 'OPCT3', 228, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (282, 'ORCL34', 231, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (283, 'ORVR3', 232, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (284, 'OSXB3', 233, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (285, 'P2EN34', 240, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (286, 'PAGS34', 235, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (287, 'PARD3', 168, 19.83);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (288, 'PASS3', 98, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (289, 'PCAR3', 237, 19.47);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (290, 'PDGR3', 239, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (291, 'PEPB34', 241, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (292, 'PETR3', 243, 34.5);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (293, 'PETR4', 243, 31.9);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (294, 'PETZ3', 247, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (295, 'PFIZ34', 248, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (296, 'PGCO34', 252, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (297, 'PGMN3', 236, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (298, 'PLPL3', 249, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (299, 'PMAM3', 238, 7.73);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (300, 'PNVL3', 115, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (301, 'PNVL4', 115, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (302, 'POSI3', 251, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (303, 'POWE3', 136, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (304, 'PRIO3', 246, 23.6);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (305, 'PSSA3', 250, 19.25);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (306, 'QCOM34', 253, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (307, 'QUAL3', 254, 17.1);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (308, 'RADL3', 257, 20.89);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (309, 'RANI3', 83, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (310, 'RANI4', 83, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (311, 'RAPT3', 256, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (312, 'RDNI3', 263, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (313, 'RECR11', 258, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (314, 'RECV3', 245, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (315, 'RENT3', 188, 54.8);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (316, 'RIOS3', 261, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (317, 'RIVA3', 262, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (318, 'RNEW11', 259, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (319, 'RNEW3', 260, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (320, 'RNEW4', 260, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (321, 'RPMG3', 242, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (322, 'RRRP3', 2, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (323, 'RSID3', 264, 8.65);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (324, 'S2EA34', 273, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (325, 'S2HO34', 276, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (326, 'S2NW34', 279, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (327, 'S2QU34', 280, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (328, 'S2UI34', 282, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (329, 'SANB11', 267, 31.63);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (330, 'SANB3', 267, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (331, 'SANB4', 267, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (332, 'SAPR11', 266, 18.66);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (333, 'SAPR3', 266, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (334, 'SAPR4', 266, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (335, 'SBSP3', 265, 35.9);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (336, 'SBUB34', 281, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (337, 'SCAR3', 269, 39);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (338, 'SEER3', 275, 10.82);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (339, 'SEQL3', 274, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (340, 'SIMH3', 277, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (341, 'SLBG34', 272, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (342, 'SLED3', 271, 9.42);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (343, 'SLED4', 271, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (344, 'SMLS3', 278, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (345, 'SMTO3', 270, 36.76);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (346, 'SOJA3', 55, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (347, 'SOMA3', 151, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (348, 'STBP3', 268, 6.08);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (349, 'SUZB3', 284, 59.74);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (350, 'T2DH34', 287, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (351, 'T2TD34', 294, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (352, 'TAEE11', 285, 37.99);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (353, 'TAEE3', 285, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (354, 'TAEE4', 285, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (355, 'TCSA3', 286, 3.12);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (356, 'TELB3', 288, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (357, 'TELB4', 288, 15.4);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (358, 'TFCO4', 293, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (359, 'TIMS3', 291, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (360, 'TOTS3', 292, 26.8);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (361, 'TRPL3', 173, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (362, 'TRPL4', 173, 24.24);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (363, 'U2ST34', 299, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (364, 'UGPA3', 297, 13.85);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (365, 'UNIP3', 298, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (366, 'UNIP5', 298, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (367, 'UNIP6', 298, 89.95);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (368, 'UPSS34', 300, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (369, 'URPR11', 301, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (370, 'VALE5', 302, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (371, 'VAMO3', 303, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (372, 'VERZ34', 304, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (373, 'VISA34', 306, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (374, 'VITT3', 307, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (375, 'VIVA3', 308, 23.27);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (376, 'VIVT3', 289, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (377, 'VIVT4', 289, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (378, 'VVAR3', 305, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (379, 'VVEO3', 91, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (380, 'WALM34', 309, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (381, 'WEST3', 311, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (382, 'WFCO34', 310, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (383, 'WHRL3', 313, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (384, 'WHRL4', 312, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (385, 'XINA11', 295, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (386, 'XRXB34', 314, 12.53);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (387, 'YDUQ3', 315, 20.36);
+Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (388, 'Z2NG34', 316, 12.53);
 
+/* --- Getting random Id for Corretora --- */
+DELIMITER $$
+Create Function IdAleatorio_Corretora()
+Returns Int Unsigned
+Begin  
+    Set @Corretora = (
+		Select  Id    
+		From	Corretoras
+		Order By Rand()
+		Limit 1
+    );    
+    return @Corretora;
+End $$
+DELIMITER ;
 
+/* --- Getting random anount of stocks for order simulation --- */
+DELIMITER $$
+Create Function QuantidadeAcoes_Simulacao()
+Returns Int Unsigned
+Begin  
+    Set @Quantidade = Floor(Rand()*(2000-100+1))+100;   
+    Set @Resto = Mod(@Quantidade, 100);
+    Set @Quantidade = @Quantidade - @Resto;
+    return @Quantidade;    
+End $$
+DELIMITER ;
 
+/* --- Getting random Id for Corretora --- */
+DELIMITER $$
+Create Function PrecoSimulacao_Acao(pTicker Varchar(10), pTipo Char(1))
+Returns Decimal(5,2)
+Begin  
+	Set @IdAcao = (
+		Select	Id    
+		From	Acoes
+		Where	Ticker = pTicker
+		Limit	1
+    );
+    
+    Set @PrecoBase = (
+		Select  PrecoBaseSimulacao    
+		From	Acoes
+		Where	Ticker = pTicker
+		Limit 1
+    );    
+    
+    Set @UltimoPreco = (
+		Select  PrecoUnitario
+		From	Ofertas
+		Where	IdAcao = @IdAcao And
+				Tipo = pTipo
+		Limit 1
+    );  
+    
+    If (IsNull(@UltimoPreco)) Then
+		Set @UltimoPreco = @PrecoBase;
+	End If;    
+    
+    Set @Aleatorio = Rand();    
+    
+    If (@Aleatorio > 0.5) Then
+		Set @Aleatorio = Rand();
+        If (@Aleatorio > 0.5) Then
+			Set @UltimoPreco = @UltimoPreco + Rand()/100;
+		Else 
+			Set @UltimoPreco = @UltimoPreco - Rand()/100;
+		End If;
+	End If;
+    
+    If (IsNull(@UltimoPreco)) Then
+		Set @UltimoPreco = 0.0;
+	End If;
+   
+    Return @UltimoPreco;
+End $$
+DELIMITER ;
+
+/* --- Simulating stock offers (buy & sell) --- */
+DELIMITER $$
+Create Procedure Simular_Ofertas(IN pTicker Varchar(10))
+Begin
+	Set @Qtd_Ofertas = 0;
+    Set @IdAcao = -1;
+    
+    Select	Id
+    Into 	@IdAcao
+    From	Acoes
+    Where	Ticker = pTicker
+    Limit	1;
+    
+    If (IsNull(@IdAcao)) Then
+		Set @IdAcao = -1;
+	End If;
+        
+    If (@IdAcao <> -1) Then
+    
+		Select 	Count(Id)
+		Into 	@Qtd_Ofertas
+		From 	Ofertas			
+		Where	date_format(DataHora, "%Y%m%d") <> date_format(Now(), "%Y%m%d");
+        
+        If (@Qtd_Ofertas <> 0) Then
+			Delete From Ofertas Where Id >= 0;             
+		End If;
+        
+        Select 	Count(Id)
+		Into 	@Qtd_Ofertas
+		From 	Ofertas			
+		Where	IdAcao = @IdAcao And
+				date_format(DataHora, "%Y%m%d") = date_format(Now(), "%Y%m%d");
+		
+		If (IsNull(@Qtd_Ofertas)) Then
+			Set @Qtd_Ofertas = 0;
+		End If;
+        
+        If (@Qtd_Ofertas < 5) Then        
+			While (@Qtd_Ofertas < 5) Do
+				Insert 	Into Ofertas (Tipo, IdAcao, IdCorretora, Quantidade, PrecoUnitario)
+				Values  ('C', @IdAcao, IdAleatorio_Corretora(), QuantidadeAcoes_Simulacao(), PrecoSimulacao_Acao(pTicker, 'C')),
+						('V', @IdAcao, IdAleatorio_Corretora(), QuantidadeAcoes_Simulacao(), PrecoSimulacao_Acao(pTicker, 'V'));  
+						
+				Set @Qtd_Ofertas = @Qtd_Ofertas + 1;
+			End While;
+		Else
+			Insert 	Into Ofertas (Tipo, IdAcao, IdCorretora, Quantidade, PrecoUnitario)
+			Values  ('C', @IdAcao, IdAleatorio_Corretora(), QuantidadeAcoes_Simulacao(), PrecoSimulacao_Acao(pTicker, 'C')),
+					('V', @IdAcao, IdAleatorio_Corretora(), QuantidadeAcoes_Simulacao(), PrecoSimulacao_Acao(pTicker, 'V'));  
+        End If;    	
+		
+	End If;    
+End $$
+DELIMITER ;
 
 

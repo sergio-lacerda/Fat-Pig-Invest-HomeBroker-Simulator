@@ -20,14 +20,14 @@ namespace HomeBrokerAPI.Repositories
         public async Task<List<Oferta>> listar(string ticker)
         {
             List<Oferta> ofertas = new List<Oferta>();
-            var comando = $"Select O.Id, O.Tipo, O.IdAcao, " + 
+            var comando = "Select O.Id, O.Tipo, O.IdAcao, " + 
                                   "A.Ticker, O.IdCorretora, C.Nome as Corretora, " +
                                   "O.Quantidade, O.PrecoUnitario, O.DataHora " +
                           "From Ofertas O " +
                                 "Inner Join Acoes A On A.Id = O.IdAcao " +
                                 "Inner Join Corretoras C on C.Id = O.IdCorretora " +
                           $"Where A.Ticker = '{ticker}' " +
-                          "Order By O.DataHora Desc;";
+                          "Order By O.Tipo, O.DataHora Desc;";
 
             await _connection.OpenAsync();
 
