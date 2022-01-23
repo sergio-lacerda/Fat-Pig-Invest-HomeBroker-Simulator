@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using HomeBrokerAPI.Services;
 using HomeBrokerAPI.ViewModels;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HomeBrokerAPI.Controllers.v1
@@ -25,15 +26,26 @@ namespace HomeBrokerAPI.Controllers.v1
         /// /// <param name="ticker">Código (Ticker) da ação cujos dados se deseja obter</param>        
         /// <response code="200">Retorna os dados de uma ação com sucesso</response>
         /// <response code="204">Não há dados de ação para esse ticker</response> 
+        /// <response code="500">Erro Interno do Servidor. Contate o desenvolvedor.</response> 
         [HttpGet("{ticker}")]
         public async Task<ActionResult<AcaoViewModel>> obterPorTicker([FromRoute] string ticker)
         {
-            var acao = await _acaoService.obterPorTicker(ticker);
+            try
+            {
+                var acao = await _acaoService.obterPorTicker(ticker);
 
-            if (acao == null)
-                return NoContent();
+                if (acao == null)
+                    return NoContent();
 
-            return Ok(acao);
+                return Ok(acao);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(
+                    StatusCodes.Status500InternalServerError, 
+                    "[Erro Interno do Servidor : 500] Impossível processar a requisição. Tente novamente mais tarde!"
+                );
+            }
         }
     }
 }

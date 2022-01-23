@@ -11,6 +11,7 @@
             /// <param name="ticker">Código (Ticker) da ação cujos dados se deseja obter</param>        
             <response code="200">Retorna os dados de uma ação com sucesso</response>
             <response code="204">Não há dados de ação para esse ticker</response> 
+            <response code="500">Erro Interno do Servidor. Contate o desenvolvedor.</response> 
         </member>
         <member name="M:HomeBrokerAPI.Controllers.v1.CorretoraController.listar">
             <summary>
@@ -18,6 +19,7 @@
             </summary>        
             <response code="200">Retorna uma lista das corretoras com sucesso</response>
             <response code="204">Não há dados de corretoras para retornar</response> 
+            <response code="500">Erro Interno do Servidor. Contate o desenvolvedor.</response>
         </member>
         <member name="M:HomeBrokerAPI.Controllers.v1.CorretoraController.obterPorId(System.Int32)">
             <summary>
@@ -25,7 +27,8 @@
             </summary>
             /// <param name="idCorretora">Id da corretora a ser obtida</param>        
             <response code="200">Retorna os dados da corretora com sucesso</response>
-            <response code="204">Não há dados da corretora para esse idCorretora</response> 
+            <response code="204">Não há dados da corretora para esse idCorretora</response>
+            <response code="500">Erro Interno do Servidor. Contate o desenvolvedor.</response>
         </member>
         <member name="M:HomeBrokerAPI.Controllers.v1.EmpresaController.listar">
             <summary>
@@ -33,6 +36,7 @@
             </summary>        
             <response code="200">Retorna uma lista das empresas com sucesso</response>
             <response code="204">Não há dados de empresas para retornar</response> 
+            <response code="500">Erro Interno do Servidor. Contate o desenvolvedor.</response>
         </member>
         <member name="M:HomeBrokerAPI.Controllers.v1.EmpresaController.obterPorId(System.Int32)">
             <summary>
@@ -41,6 +45,7 @@
             /// <param name="idEmpresa">Id da empresa a ser obtida</param>        
             <response code="200">Retorna os dados da empresa com sucesso</response>
             <response code="204">Não há dados da empresa para esse idEmpresa</response> 
+            <response code="500">Erro Interno do Servidor. Contate o desenvolvedor.</response>
         </member>
         <member name="M:HomeBrokerAPI.Controllers.OfertaController.listar(System.String)">
             <summary>
@@ -49,6 +54,7 @@
             /// <param name="ticker">Código (Ticker) da ação cujas ofertas se deseja obter</param>        
             <response code="200">Retorna uma lista de ofertas (book) com sucesso</response>
             <response code="204">Não há dados da ofertas para esse ticker</response> 
+            <response code="500">Erro Interno do Servidor. Contate o desenvolvedor.</response>
         </member>
     </members>
 </doc>

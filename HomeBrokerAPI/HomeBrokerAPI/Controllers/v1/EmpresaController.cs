@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using HomeBrokerAPI.Services;
 using HomeBrokerAPI.ViewModels;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HomeBrokerAPI.Controllers.v1
@@ -24,15 +25,26 @@ namespace HomeBrokerAPI.Controllers.v1
         /// </summary>        
         /// <response code="200">Retorna uma lista das empresas com sucesso</response>
         /// <response code="204">Não há dados de empresas para retornar</response> 
+        /// <response code="500">Erro Interno do Servidor. Contate o desenvolvedor.</response>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<EmpresaViewModel>>> listar()
         {
-            var empresas = await _empresaService.listar();
+            try
+            {
+                var empresas = await _empresaService.listar();
 
-            if (empresas.Count == 0)
-                return NoContent();
+                if (empresas.Count == 0)
+                    return NoContent();
 
-            return Ok(empresas);            
+                return Ok(empresas); 
+            }
+            catch (Exception)
+            {
+                return StatusCode(
+                    StatusCodes.Status500InternalServerError,
+                    "[Erro Interno do Servidor : 500] Impossível processar a requisição. Tente novamente mais tarde!"
+                );
+            }                       
         }
 
         /// <summary>
@@ -41,15 +53,26 @@ namespace HomeBrokerAPI.Controllers.v1
         /// /// <param name="idEmpresa">Id da empresa a ser obtida</param>        
         /// <response code="200">Retorna os dados da empresa com sucesso</response>
         /// <response code="204">Não há dados da empresa para esse idEmpresa</response> 
+        /// <response code="500">Erro Interno do Servidor. Contate o desenvolvedor.</response>
         [HttpGet("{idEmpresa:int}")]
         public async Task<ActionResult<EmpresaViewModel>> obterPorId([FromRoute] int idEmpresa)
         {
-            var empresa = await _empresaService.obterPorId(idEmpresa);
+            try
+            {
+                var empresa = await _empresaService.obterPorId(idEmpresa);
 
-            if (empresa == null)
-                return NoContent();
+                if (empresa == null)
+                    return NoContent();
 
-            return Ok(empresa);
+                return Ok(empresa);
+            }
+            catch (Exception)
+            {
+                return StatusCode(
+                    StatusCodes.Status500InternalServerError,
+                    "[Erro Interno do Servidor : 500] Impossível processar a requisição. Tente novamente mais tarde!"
+                );
+            }            
         }
 
     }
