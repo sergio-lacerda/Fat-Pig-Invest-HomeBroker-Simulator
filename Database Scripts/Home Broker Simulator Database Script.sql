@@ -22,7 +22,7 @@ Create Table Acoes (
 	Id Int Unsigned Not Null Auto_Increment Primary Key,
     Ticker Varchar(10) Not Null,
     IdEmpresa Int Unsigned Not Null,
-    PrecoBaseSimulacao Decimal(5,2) Not Null Default 12.53
+    PrecoBaseSimulacao Decimal(7,2) Not Null Default 12.53
 );
 
 Alter Table Acoes
@@ -34,7 +34,7 @@ Create Table Ofertas (
     IdAcao Int Unsigned Not Null,
     IdCorretora Int Unsigned Not Null,
     Quantidade Int Unsigned Not Null,
-    PrecoUnitario Decimal(5,2) Not Null,
+    PrecoUnitario Decimal(7,2) Not Null,
     DataHora DateTime Not Null Default Now()
 );
 
@@ -52,11 +52,12 @@ Create table Contas (
     Agencia Int Unsigned Not Null Default 1,
     Conta Int Unsigned Not Null,
     IdCliente Int Unsigned Not Null,
+    Saldo Decimal(12, 2) Not Null,
     AssinaturaEletronica Varchar(15) Not Null
 );
 
 Alter Table Contas
-Add Constraint fk_Conta_Cliente Foreign Key (IdCliente) References Cliente (Id);
+Add Constraint fk_Conta_Cliente Foreign Key (IdCliente) References Clientes (Id);
 
 Create Table Tarifas (
 	Id Int Unsigned Not Null Auto_Increment Primary Key,
@@ -65,8 +66,32 @@ Create Table Tarifas (
     Corretagem Decimal(5,2) Not Null,
     TaxaLiquidacao Decimal(8,6) Not Null,
     Emolumentos Decimal(8,6) Not Null,
-    Iss Decimal(5,2) Not Null   
+    Iss Decimal(7,2) Not Null   
 );
+
+Create Table StatusOrdem (
+	Id Int Unsigned Not Null Auto_Increment Primary Key,
+    Nome Varchar(50) Not Null
+);
+
+Create Table Ordens (
+	Id Int Unsigned Not Null Auto_Increment Primary Key,
+    DataHora DateTime Not Null Default Now(),
+    IdCorretora Int Unsigned Not Null,
+    IdConta Int Unsigned Not Null,    
+    Tipo Char(1) Not Null,
+    IdAcao Int Unsigned Not Null,    
+    Quantidade Int Unsigned Not Null,
+    PrecoUnitario Decimal(7,2) Not Null,
+    IdStatus Int Unsigned Not Null
+);
+
+Alter Table Ordens
+Add Constraint fk_Ordem_Corretora Foreign Key (IdCorretora) References Corretoras (Id),
+Add Constraint fk_Ordem_Conta Foreign Key (IdConta) References Contas (Id),
+Add Constraint fk_Ordem_Acao Foreign Key (IdAcao) References Acoes (Id),
+Add Constraint fk_Ordem_Status Foreign Key (IdStatus) References StatusOrdem (Id);
+
 
 /* --- Adding Data Into Tables --- */
 Insert Into Empresas (Id, Nome) Values (1, '3M Company');
@@ -830,6 +855,12 @@ Values (1, 1, 50001, 1, '@paf123');
 Insert Into Tarifas (Id, InicioVigencia, FinalVigencia, Corretagem, TaxaLiquidacao, Emolumentos, Iss)
 Values (1, '2020-01-01', '2030-01-01', 0.5, 0.0275, 0.003020, 5.0);
 
+Insert Into StatusOrdem (Id, Nome) Values (1, 'ABERTA');
+Insert Into StatusOrdem (Id, Nome) Values (2, 'PENDENTE');
+Insert Into StatusOrdem (Id, Nome) Values (3, 'PARCIAL');
+Insert Into StatusOrdem (Id, Nome) Values (4, 'EXECUTADA');
+Insert Into StatusOrdem (Id, Nome) Values (5, 'REJEITADA');
+
 
 /*============== Procedures & Functions ==============*/
 
@@ -863,7 +894,7 @@ DELIMITER ;
 /* --- Getting random Id for Corretora --- */
 DELIMITER $$
 Create Function PrecoSimulacao_Acao(pTicker Varchar(10), pTipo Char(1))
-Returns Decimal(5,2)
+Returns Decimal(7,2)
 Begin  
 	Set @IdAcao = (
 		Select	Id    

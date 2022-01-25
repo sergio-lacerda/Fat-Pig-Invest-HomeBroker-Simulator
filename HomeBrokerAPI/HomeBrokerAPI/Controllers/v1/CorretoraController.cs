@@ -67,7 +67,7 @@ namespace HomeBrokerAPI.Controllers.v1
 
                 return Ok(corretora);
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return StatusCode(
                     StatusCodes.Status500InternalServerError,

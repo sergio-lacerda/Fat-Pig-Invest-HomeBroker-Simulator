@@ -38,7 +38,7 @@ namespace HomeBrokerAPI.Controllers.v1
 
                 return Ok(empresas); 
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return StatusCode(
                     StatusCodes.Status500InternalServerError,
@@ -66,7 +66,7 @@ namespace HomeBrokerAPI.Controllers.v1
 
                 return Ok(empresa);
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return StatusCode(
                     StatusCodes.Status500InternalServerError,

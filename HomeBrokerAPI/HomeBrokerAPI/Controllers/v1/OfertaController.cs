@@ -39,7 +39,7 @@ namespace HomeBrokerAPI.Controllers
 
                 return Ok(ofertas);
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return StatusCode(
                     StatusCodes.Status500InternalServerError,
