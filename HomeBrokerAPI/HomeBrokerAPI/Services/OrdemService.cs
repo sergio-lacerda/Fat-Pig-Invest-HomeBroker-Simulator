@@ -16,22 +16,22 @@ namespace HomeBrokerAPI.Services
             this._ordemRepository = ordemRepository;
         }
 
-        public async Task<List<OrdemViewModel>> listar(int IdConta)
+        public async Task<List<OrdemViewModel>> listar(string conta)
         {
-            var ordens = await _ordemRepository.listar(IdConta);
+            var ordens = await _ordemRepository.listar(conta);
 
             return ordens.Select(
                         ordem => new OrdemViewModel
                         {
                             Id = ordem.Id,
                             DataHora = ordem.DataHora,
-                            Corretora = "",
-                            Conta = "",
+                            Corretora = ordem.Corretora,
+                            Conta = ordem.Conta,
                             Tipo = ordem.Tipo,
-                            Ticker = "",
+                            Ticker = ordem.Ticker,
                             Quantidade = ordem.Quantidade,
                             PrecoUnitario = ordem.PrecoUnitario,
-                            Status = ""
+                            Status = ordem.Status
                         }
                     ).ToList();
         }

@@ -20,12 +20,12 @@ namespace HomeBrokerAPI.Controllers
             this._ordemService = ordemService;
         }
 
-        [HttpGet("{idConta:int}")]
-        public async Task<ActionResult<IEnumerable<OrdemViewModel>>> listar([FromRoute] int IdConta)
+        [HttpGet("{conta}")]
+        public async Task<ActionResult<IEnumerable<OrdemViewModel>>> listar([FromRoute] string conta)
         {
             try
             {
-                var ordens = await _ordemService.listar(IdConta);
+                var ordens = await _ordemService.listar(conta);
 
                 if (ordens.Count == 0)
                     return NoContent();

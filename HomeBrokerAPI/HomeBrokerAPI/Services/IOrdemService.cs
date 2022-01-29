@@ -8,6 +8,6 @@ namespace HomeBrokerAPI.Services
 {
     public interface IOrdemService : IDisposable
     {
-        Task<List<OrdemViewModel>> listar(int IdConta);
+        Task<List<OrdemViewModel>> listar(string conta);
     }
 }

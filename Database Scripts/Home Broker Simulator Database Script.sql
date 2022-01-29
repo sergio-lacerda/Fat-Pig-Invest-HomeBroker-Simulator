@@ -49,6 +49,7 @@ Create table Clientes (
 
 Create table Contas (
 	Id Int Unsigned Not Null Auto_Increment Primary Key,
+    IdCorretora Int Unsigned Not Null,
     Agencia Int Unsigned Not Null Default 1,
     Conta Int Unsigned Not Null,
     IdCliente Int Unsigned Not Null,
@@ -57,6 +58,7 @@ Create table Contas (
 );
 
 Alter Table Contas
+Add Constraint fk_Conta_Corretora Foreign Key (IdCorretora) References Corretoras (Id),
 Add Constraint fk_Conta_Cliente Foreign Key (IdCliente) References Clientes (Id);
 
 Create Table Tarifas (
@@ -457,6 +459,7 @@ Insert Into Corretoras (Id, Nome) Values (43, 'TULLETT PREBON BRASIL CVC LTDA');
 Insert Into Corretoras (Id, Nome) Values (44, 'UBS BRASIL CCTVM S/A');
 Insert Into Corretoras (Id, Nome) Values (45, 'VOTORANTIM CTVM LTDA');
 Insert Into Corretoras (Id, Nome) Values (46, 'XP INVESTIMENTOS CCTVM S/A');
+Insert Into Corretoras (Id, Nome) Values (47, 'FATPIG INVEST DVTM LTDA');
 
 Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (1, 'AALR3', 11, 12.53);
 Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (2, 'AAPL34', 25, 12.53);
@@ -849,8 +852,8 @@ Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (388, 'Z2NG
 
 Insert Into Clientes (Id, Nome) Values (1, 'Pafúncio da Silva');
 
-Insert Into Contas (Id, Agencia, Conta, IdCliente, AssinaturaEletronica)
-Values (1, 1, 50001, 1, '@paf123');
+Insert Into Contas (Id, IdCorretora, Agencia, Conta, IdCliente, Saldo, AssinaturaEletronica)
+Values (1, 47, 1, 50001, 1, 0.00, '@paf123');
 
 Insert Into Tarifas (Id, InicioVigencia, FinalVigencia, Corretagem, TaxaLiquidacao, Emolumentos, Iss)
 Values (1, '2020-01-01', '2030-01-01', 0.5, 0.0275, 0.003020, 5.0);
@@ -891,7 +894,7 @@ Begin
 End $$
 DELIMITER ;
 
-/* --- Getting random Id for Corretora --- */
+/* --- Getting stock price for simulation --- */
 DELIMITER $$
 Create Function PrecoSimulacao_Acao(pTicker Varchar(10), pTipo Char(1))
 Returns Decimal(7,2)
