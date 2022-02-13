@@ -9,5 +9,6 @@ namespace HomeBrokerAPI.Repositories
     public interface IOrdemRepository : IDisposable
     {
         public Task<List<Ordem>> listar(string conta);
+        public Task<Ordem> inserir(Ordem ordem);
     }
 }

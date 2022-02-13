@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HomeBrokerAPI.InputModel;
 using HomeBrokerAPI.Services;
 using HomeBrokerAPI.ViewModels;
 using Microsoft.AspNetCore.Http;
@@ -11,6 +12,7 @@ namespace HomeBrokerAPI.Controllers
 {
     [Route("api/v1/[controller]")]
     [ApiController]
+
     public class OrdemController : Controller
     {
         private readonly IOrdemService _ordemService;
@@ -20,6 +22,13 @@ namespace HomeBrokerAPI.Controllers
             this._ordemService = ordemService;
         }
 
+        /// <summary>
+        /// Obtém e retorna os dados das ordens emitidas pelo usuário, com base em sua conta
+        /// </summary>
+        /// /// <param name="conta">Conta cujas ordens se deseja obter</param>        
+        /// <response code="200">Retorna uma lista das ordens com sucesso</response>
+        /// <response code="204">Não há dados de ordens para essa conta</response> 
+        /// <response code="500">Erro Interno do Servidor. Contate o desenvolvedor.</response>
         [HttpGet("{conta}")]
         public async Task<ActionResult<IEnumerable<OrdemViewModel>>> listar([FromRoute] string conta)
         {
@@ -40,5 +49,20 @@ namespace HomeBrokerAPI.Controllers
                 );
             }
         }
+
+        [HttpPost]
+        public async Task<ActionResult<OrdemViewModel>> inserir([FromBody] OrdemInputModel ordem)
+        {
+            try
+            {
+                var auxOrdem = await _ordemService.inserir(ordem);
+                return Ok(ordem);
+            }
+            catch (Exception)
+            {
+                return UnprocessableEntity("Não foi possível registar essa ordem!");
+            }            
+        }
+
     }
 }
