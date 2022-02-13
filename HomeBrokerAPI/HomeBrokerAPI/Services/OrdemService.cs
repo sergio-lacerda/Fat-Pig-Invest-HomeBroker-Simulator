@@ -27,13 +27,11 @@ namespace HomeBrokerAPI.Services
                         {
                             Id = ordem.Id,
                             DataHora = ordem.DataHora,
-                            Corretora = ordem.Corretora,
-                            Conta = ordem.Conta,
                             Tipo = ordem.Tipo,
-                            Ticker = ordem.Ticker,
+                            Ticker = ordem.Acao.Ticker,                            
                             Quantidade = ordem.Quantidade,
                             PrecoUnitario = ordem.PrecoUnitario,
-                            Status = ordem.Status
+                            Status = ordem.Status.Nome
                         }
                     ).ToList();
         }
@@ -43,7 +41,7 @@ namespace HomeBrokerAPI.Services
         {
             var auxOrdem = new Ordem
             {
-                Id = -1,
+                /*Id = -1,
                 DataHora = DateTime.Now,
                 IdCorretora = ordem.IdCorretora,
                 Corretora = "",
@@ -55,7 +53,7 @@ namespace HomeBrokerAPI.Services
                 Quantidade = ordem.Quantidade,
                 PrecoUnitario = ordem.PrecoUnitario,
                 IdStatus = -1,
-                Status = ""
+                Status = ""*/
             };
 
             var ordemRetorno = await _ordemRepository.inserir(auxOrdem);
@@ -65,7 +63,7 @@ namespace HomeBrokerAPI.Services
 
             return new OrdemViewModel
             {
-                Id = ordemRetorno.Id,
+                /*Id = ordemRetorno.Id,
                 DataHora = ordemRetorno.DataHora,
                 Corretora = ordemRetorno.Corretora,
                 Conta = ordemRetorno.Conta,
@@ -73,7 +71,7 @@ namespace HomeBrokerAPI.Services
                 Ticker = ordemRetorno.Ticker,
                 Quantidade = ordemRetorno.Quantidade,
                 PrecoUnitario = ordemRetorno.PrecoUnitario,
-                Status = ordemRetorno.Status
+                Status = ordemRetorno.Status*/
             };
         }
 

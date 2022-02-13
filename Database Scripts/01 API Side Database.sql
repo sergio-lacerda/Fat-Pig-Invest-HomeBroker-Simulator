@@ -44,32 +44,52 @@ Add Constraint fk_Oferta_Acao Foreign Key (IdAcao) References Acoes (Id),
 Add Constraint fk_Oferta_Corretora Foreign Key (IdCorretora) References Corretoras (Id);
 
 Create table Investidores (
-	Cpf Int Unsigned Not Null Primary Key,
+	Id Int Unsigned Not Null Primary Key,
+	Cpf Varchar(15) Not Null Unique,
     Nome Varchar(50) Not Null
 );
 
-Create table Contas (
-	Id Int Unsigned Not Null Auto_Increment Primary Key,
+Create table Contas (	
+	Id Int Unsigned Not Null Primary Key,
     IdCorretora Int Unsigned Not Null,
+    IdInvestidor Int Unsigned Not Null,
     Agencia Int Unsigned Not Null Default 1,
-    Conta Int Unsigned Not Null,
-    IdCliente Int Unsigned Not Null,
-    
-    
-    Saldo Decimal(12, 2) Not Null,
-    AssinaturaEletronica Varchar(15) Not Null
+    Conta Int Unsigned Not Null
 );
 
 Alter Table Contas
 Add Constraint fk_Conta_Corretora Foreign Key (IdCorretora) References Corretoras (Id),
-Add Constraint fk_Conta_Cliente Foreign Key (IdCliente) References Clientes (Id);
+Add Constraint fk_Conta_Investidor Foreign Key (IdInvestidor) References Investidores (Id);
 
+Create Table StatusOrdem (
+	Id Int Unsigned Not Null Auto_Increment Primary Key,
+    Nome Varchar(50) Not Null
+);
 
+Create Table Ordens (
+	Id Int Unsigned Not Null Auto_Increment Primary Key,
+    DataHora DateTime Not Null Default Now(),    
+    IdConta Int Unsigned Not Null,    
+    Tipo Char(1) Not Null,
+    IdAcao Int Unsigned Not Null,    
+    Quantidade Int Unsigned Not Null,
+    PrecoUnitario Decimal(7,2) Not Null,
+    IdStatus Int Unsigned Not Null Default 1
+);
 
+Alter Table Ordens
+Add Constraint fk_Ordem_Conta Foreign Key (IdConta) References Contas (Id),
+Add Constraint fk_Ordem_Acao Foreign Key (IdAcao) References Acoes (Id),
+Add Constraint fk_Ordem_Status Foreign Key (IdStatus) References StatusOrdem (Id);
 
 
 
 /* --- Adding Data Into Tables --- */
+Insert Into StatusOrdem (Id, Nome) Values (1, 'ABERTA');
+Insert Into StatusOrdem (Id, Nome) Values (2, 'PARCIAL');
+Insert Into StatusOrdem (Id, Nome) Values (3, 'EXECUTADA');
+Insert Into StatusOrdem (Id, Nome) Values (4, 'REJEITADA');
+
 Insert Into Empresas (Id, Nome) Values (1, '3M Company');
 Insert Into Empresas (Id, Nome) Values (2, '3R Petroleum');
 Insert Into Empresas (Id, Nome) Values (3, 'Abbott Laboratories');
@@ -824,6 +844,11 @@ Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (386, 'XRXB
 Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (387, 'YDUQ3', 315, 20.36);
 Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (388, 'Z2NG34', 316, 12.53);
 
+Insert Into Investidores (Id, Cpf, Nome) Values (1, '11111111111', 'Pafúncio da Silva');
+
+Insert Into Contas (Id, IdCorretora, IdInvestidor, Agencia, Conta)
+Values (1, 47, 1, 1, 50001);
+
 
 /*============== Procedures & Functions ==============*/
 
@@ -959,3 +984,10 @@ Begin
 	End If;    
 End $$
 DELIMITER ;
+
+
+
+
+
+
+

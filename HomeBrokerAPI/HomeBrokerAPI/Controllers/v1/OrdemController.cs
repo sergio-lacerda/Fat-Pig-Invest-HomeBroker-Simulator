@@ -32,6 +32,13 @@ namespace HomeBrokerAPI.Controllers
         [HttpGet("{conta}")]
         public async Task<ActionResult<IEnumerable<OrdemViewModel>>> listar([FromRoute] string conta)
         {
+            var strConta = conta.Split("-");
+            if (strConta.Length != 2)
+                return StatusCode(
+                    StatusCodes.Status400BadRequest,
+                    "[Erro de Cliente: 400] Formato incorreto de Conta!"
+                );
+
             try
             {
                 var ordens = await _ordemService.listar(conta);
