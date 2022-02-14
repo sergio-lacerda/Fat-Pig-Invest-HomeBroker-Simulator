@@ -25,10 +25,10 @@ namespace HomeBrokerAPI.Services
                     {
                         Id = oferta.Id,
                         Tipo = oferta.Tipo,
-                        IdAcao = oferta.IdAcao,
-                        Ticker = oferta.Ticker,
-                        IdCorretora = oferta.IdCorretora,
-                        Corretora = oferta.Corretora,
+                        IdAcao = oferta.Acao.Id,
+                        Ticker = oferta.Acao.Ticker,
+                        IdCorretora = oferta.Conta.Corretora.Id,
+                        Corretora = oferta.Conta.Corretora.Nome,
                         Quantidade = oferta.Quantidade,
                         PrecoUnitario = oferta.PrecoUnitario,
                         DataHora = oferta.DataHora

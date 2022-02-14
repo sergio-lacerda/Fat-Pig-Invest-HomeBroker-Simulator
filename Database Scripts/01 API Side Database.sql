@@ -29,20 +29,6 @@ Create Table Acoes (
 Alter Table Acoes
 Add Constraint fk_Acao_Empresa Foreign Key (IdEmpresa) References Empresas (Id);
 
-Create Table Ofertas (
-	Id Int Unsigned Not Null Auto_Increment Primary Key,
-    Tipo Char(1) Not Null,
-    IdAcao Int Unsigned Not Null,
-    IdCorretora Int Unsigned Not Null,
-    Quantidade Int Unsigned Not Null,
-    PrecoUnitario Decimal(7,2) Not Null,
-    DataHora DateTime Not Null Default Now()
-);
-
-Alter Table Ofertas
-Add Constraint fk_Oferta_Acao Foreign Key (IdAcao) References Acoes (Id),
-Add Constraint fk_Oferta_Corretora Foreign Key (IdCorretora) References Corretoras (Id);
-
 Create table Investidores (
 	Id Int Unsigned Not Null Primary Key,
 	Cpf Varchar(15) Not Null Unique,
@@ -845,25 +831,63 @@ Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (387, 'YDUQ
 Insert Into Acoes (Id, Ticker, IdEmpresa, PrecoBaseSimulacao) Values (388, 'Z2NG34', 316, 12.53);
 
 Insert Into Investidores (Id, Cpf, Nome) Values (1, '11111111111', 'Pafúncio da Silva');
+Insert Into Investidores (Id, Cpf, Nome) Values (2, '22222222222', 'Investidor #2');
+Insert Into Investidores (Id, Cpf, Nome) Values (3, '33333333333', 'Investidor #3');
+Insert Into Investidores (Id, Cpf, Nome) Values (4, '44444444444', 'Investidor #4');
+Insert Into Investidores (Id, Cpf, Nome) Values (5, '55555555555', 'Investidor #5');
+Insert Into Investidores (Id, Cpf, Nome) Values (6, '66666666666', 'Investidor #6');
+Insert Into Investidores (Id, Cpf, Nome) Values (7, '77777777777', 'Investidor #7');
+Insert Into Investidores (Id, Cpf, Nome) Values (8, '88888888888', 'Investidor #8');
+Insert Into Investidores (Id, Cpf, Nome) Values (9, '99999999999', 'Investidor #9');
+Insert Into Investidores (Id, Cpf, Nome) Values (10, '10101010101', 'Investidor #10');
+
 
 Insert Into Contas (Id, IdCorretora, IdInvestidor, Agencia, Conta)
-Values (1, 47, 1, 1, 50001);
+Values (1, 47, 1, 1, 51001);
+
+Insert Into Contas (Id, IdCorretora, IdInvestidor, Agencia, Conta)
+Values (2, 11, 2, 1, 20001);
+
+Insert Into Contas (Id, IdCorretora, IdInvestidor, Agencia, Conta)
+Values (3, 29, 3, 1, 30001);
+
+Insert Into Contas (Id, IdCorretora, IdInvestidor, Agencia, Conta)
+Values (4, 33, 4, 1, 40001);
+
+Insert Into Contas (Id, IdCorretora, IdInvestidor, Agencia, Conta)
+Values (5, 34, 5, 1, 50001);
+
+Insert Into Contas (Id, IdCorretora, IdInvestidor, Agencia, Conta)
+Values (6, 42, 6, 1, 60001);
+
+Insert Into Contas (Id, IdCorretora, IdInvestidor, Agencia, Conta)
+Values (7, 46, 7, 1, 70001);
+
+Insert Into Contas (Id, IdCorretora, IdInvestidor, Agencia, Conta)
+Values (8, 11, 8, 1, 80001);
+
+Insert Into Contas (Id, IdCorretora, IdInvestidor, Agencia, Conta)
+Values (9, 33, 9, 1, 90001);
+
+Insert Into Contas (Id, IdCorretora, IdInvestidor, Agencia, Conta)
+Values (10, 46, 10, 1, 11001);
 
 
 /*============== Procedures & Functions ==============*/
 
-/* --- Getting random Id for Corretora --- */
+/* --- Getting random Id for Conta --- */
 DELIMITER $$
-Create Function IdAleatorio_Corretora()
+Create Function IdAleatorio_Conta()
 Returns Int Unsigned
 Begin  
-    Set @Corretora = (
+    Set @Conta = (
 		Select  Id    
-		From	Corretoras
+		From	Contas
+        Where	Id <> 1
 		Order By Rand()
 		Limit 1
     );    
-    return @Corretora;
+    return @Conta;
 End $$
 DELIMITER ;
 
@@ -900,7 +924,7 @@ Begin
     
     Set @UltimoPreco = (
 		Select  PrecoUnitario
-		From	Ofertas
+		From	Ordens
 		Where	IdAcao = @IdAcao And
 				Tipo = pTipo
 		Limit 1
@@ -929,37 +953,32 @@ Begin
 End $$
 DELIMITER ;
 
-/* --- Simulating stock offers (buy & sell) --- */
+/* --- Simulating stock offers (buy & sell orders) --- */
 DELIMITER $$
 Create Procedure Simular_Ofertas(IN pTicker Varchar(10))
 Begin
 	Set @Qtd_Ofertas = 0;
     Set @IdAcao = -1;
     
+    /* getting stock id */
     Select	Id
     Into 	@IdAcao
     From	Acoes
     Where	Ticker = pTicker
     Limit	1;
     
+    /* setting stock (id = -1) if stock not found */
     If (IsNull(@IdAcao)) Then
 		Set @IdAcao = -1;
 	End If;
-        
+    
+    /* Only if stock exists, it starts simulation orders */
     If (@IdAcao <> -1) Then
     
+		/* checking the amount of orders for the stock in current date */
 		Select 	Count(Id)
-		Into 	@Qtd_Ofertas
-		From 	Ofertas			
-		Where	date_format(DataHora, "%Y%m%d") <> date_format(Now(), "%Y%m%d");
-        
-        If (@Qtd_Ofertas <> 0) Then
-			Delete From Ofertas Where Id >= 0;             
-		End If;
-        
-        Select 	Count(Id)
-		Into 	@Qtd_Ofertas
-		From 	Ofertas			
+		Into 	@Qtd_Ofertas		
+		From 	Ordens
 		Where	IdAcao = @IdAcao And
 				date_format(DataHora, "%Y%m%d") = date_format(Now(), "%Y%m%d");
 		
@@ -967,27 +986,25 @@ Begin
 			Set @Qtd_Ofertas = 0;
 		End If;
         
+        /* 	In order to provide a minimum amount of orders to simulate a real market,
+			this procedure creates at least 5 orders (if less in the current date) for both,
+            buy orders and sell orders. After that, it creates 2 extra orders (1 buy & 1 sell)
+            each time the stored procedure is called. */		
         If (@Qtd_Ofertas < 5) Then        
-			While (@Qtd_Ofertas < 5) Do
-				Insert 	Into Ofertas (Tipo, IdAcao, IdCorretora, Quantidade, PrecoUnitario)
-				Values  ('C', @IdAcao, IdAleatorio_Corretora(), QuantidadeAcoes_Simulacao(), PrecoSimulacao_Acao(pTicker, 'C')),
-						('V', @IdAcao, IdAleatorio_Corretora(), QuantidadeAcoes_Simulacao(), PrecoSimulacao_Acao(pTicker, 'V'));  
+			While (@Qtd_Ofertas < 5) Do	                        
+				Insert Into Ordens (IdConta, Tipo, IdAcao, Quantidade, PrecoUnitario)
+                Values (IdAleatorio_Conta(), 'C', @IdAcao, QuantidadeAcoes_Simulacao(), PrecoSimulacao_Acao(pTicker, 'C')),
+					   (IdAleatorio_Conta(), 'V', @IdAcao, QuantidadeAcoes_Simulacao(), PrecoSimulacao_Acao(pTicker, 'V'));
 						
 				Set @Qtd_Ofertas = @Qtd_Ofertas + 1;
 			End While;
 		Else
-			Insert 	Into Ofertas (Tipo, IdAcao, IdCorretora, Quantidade, PrecoUnitario)
-			Values  ('C', @IdAcao, IdAleatorio_Corretora(), QuantidadeAcoes_Simulacao(), PrecoSimulacao_Acao(pTicker, 'C')),
-					('V', @IdAcao, IdAleatorio_Corretora(), QuantidadeAcoes_Simulacao(), PrecoSimulacao_Acao(pTicker, 'V'));  
+			Insert Into Ordens (IdConta, Tipo, IdAcao, Quantidade, PrecoUnitario)
+                Values (IdAleatorio_Conta(), 'C', @IdAcao, QuantidadeAcoes_Simulacao(), PrecoSimulacao_Acao(pTicker, 'C')),
+					   (IdAleatorio_Conta(), 'V', @IdAcao, QuantidadeAcoes_Simulacao(), PrecoSimulacao_Acao(pTicker, 'V'));
         End If;    	
 		
 	End If;    
 End $$
 DELIMITER ;
-
-
-
-
-
-
 
