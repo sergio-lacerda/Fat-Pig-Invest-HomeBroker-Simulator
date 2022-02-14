@@ -57,6 +57,14 @@ namespace HomeBrokerAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Obtém e retorna os dados das ordens emitidas pelo usuário, com base em sua conta
+        /// </summary>
+        /// /// <param name="ordem">Dados da ordem a ser inserida</param>        
+        /// <response code="200">Retorna os dados da ordem inserida com sucesso</response>
+        /// <response code="204">Não foi possível retornar os dados da ordem inserida</response> 
+        /// <response code="422">Não foi possível inserir a ordem</response> 
+        /// <response code="500">Erro Interno do Servidor. Contate o desenvolvedor.</response>
         [HttpPost]
         public async Task<ActionResult<OrdemViewModel>> inserir([FromBody] OrdemInputModel ordem)
         {

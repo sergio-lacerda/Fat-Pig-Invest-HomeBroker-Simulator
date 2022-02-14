@@ -1008,3 +1008,38 @@ Begin
 End $$
 DELIMITER ;
 
+/* --- Getting random anount of stocks for order simulation --- */
+DELIMITER $$
+Create Procedure Inserir_Ordem(
+	IN pIdCorretora Int,
+    IN pConta Int,
+    IN pTipo Char(1),
+    IN pTicker Varchar(10),
+    IN pQuantidade Int,
+    IN pPrecoUnitario Decimal(7,2)
+)
+Begin  
+	Set @IdAcao = -1;
+    Set @IdConta = -1;
+    
+	/* getting stock id */
+    Select	Id
+    Into 	@IdAcao
+    From	Acoes
+    Where	Ticker = pTicker
+    Limit	1;
+    
+    /* getting account id */
+    Select	Id
+    Into 	@IdConta
+    From	Contas
+    Where	IdCorretora = pIdCorretora And
+			Conta = pConta
+    Limit	1;
+    
+    /* inserting order */
+    Insert Into Ordens (IdConta, Tipo, IdAcao, Quantidade, PrecoUnitario)
+    Values (@IdConta, pTipo, @IdAcao, pQuantidade, pPrecoUnitario);       
+End $$
+DELIMITER ;
+

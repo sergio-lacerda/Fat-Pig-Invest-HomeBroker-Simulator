@@ -41,19 +41,43 @@ namespace HomeBrokerAPI.Services
         {
             var auxOrdem = new Ordem
             {
-                /*Id = -1,
+                Id = -1,
                 DataHora = DateTime.Now,
-                IdCorretora = ordem.IdCorretora,
-                Corretora = "",
-                IdConta = ordem.IdConta,
-                Conta = "",
+                Conta = new Conta
+                {
+                    Id = -1,
+                    Corretora = new Corretora
+                    {
+                        Id = ordem.IdCorretora,
+                        Nome = ""
+                    },
+                    Investidor = new Investidor
+                    {
+                        Id = -1,
+                        Cpf = "",
+                        Nome = ""
+                    },
+                    Agencia = -1,
+                    NumeroConta = ordem.Conta
+                },
                 Tipo = ordem.Tipo,
-                IdAcao = ordem.IdAcao,
-                Ticker = "",
+                Acao = new Acao
+                {
+                    Id = -1,
+                    Ticker = ordem.Ticker,
+                    Empresa = new Empresa
+                    {
+                        Id = -1,
+                        Nome = ""
+                    }
+                },
                 Quantidade = ordem.Quantidade,
                 PrecoUnitario = ordem.PrecoUnitario,
-                IdStatus = -1,
-                Status = ""*/
+                Status = new StatusOrdem
+                {
+                    Id = -1,
+                    Nome = ""
+                }
             };
 
             var ordemRetorno = await _ordemRepository.inserir(auxOrdem);

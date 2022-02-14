@@ -11,11 +11,11 @@ namespace HomeBrokerAPI.InputModel
         [Required]        
         public int IdCorretora { get; set; }
         [Required]
-        public int IdConta { get; set; }
+        public int Conta { get; set; }
         [Required]
         public char Tipo { get; set; }
         [Required]
-        public int IdAcao { get; set; }
+        public String Ticker { get; set; }
         [Required]
         public int Quantidade { get; set; }
         [Required]
