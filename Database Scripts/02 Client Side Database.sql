@@ -39,6 +39,25 @@ Alter Table Contas
 Add Constraint fk_Conta_Investidor Foreign Key (IdInvestidor) References Investidores (Id);
 
 
+/* ???????????????????????? */
+Create Table Acoes (
+	Id Int Unsigned Not Null Auto_Increment Primary Key,
+    Ticker Varchar(10) Not Null Unique,
+    Empresa Varchar(50) Null    
+);	
+
+Create Table Ordens (
+	Id Int Unsigned Not Null Auto_Increment Primary Key,
+    DataHora DateTime Not Null Default Now(),    
+    IdConta Int Unsigned Not Null,    
+    Tipo Char(1) Not Null,
+    IdAcao Int Unsigned Not Null,    
+    Quantidade Int Unsigned Not Null,
+    PrecoUnitario Decimal(7,2) Not Null,
+    IdStatus Int Unsigned Not Null Default 1
+);
+
+
 
 
 

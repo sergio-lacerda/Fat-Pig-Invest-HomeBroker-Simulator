@@ -1,7 +1,13 @@
+using HomeBrokerClient.Models.Repositories;
+using HomeBrokerClient.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<IOrdemService, OrdemService>();
+builder.Services.AddScoped<IOrdemRepository, OrdemRepository>();
 
 var app = builder.Build();
 
