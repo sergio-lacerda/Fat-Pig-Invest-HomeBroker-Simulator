@@ -16,12 +16,14 @@ namespace HomeBrokerClient.Services
         {
             var ordens = await _ordemRepository.listar();
 
-            return ordens.Select(
+            if (ordens != null)
+            {
+                return ordens.Select(
                     ordem => new OrdemViewModel
                     {
                         Id = ordem.Id,
                         Tipo = ordem.Tipo,
-                        Ticker = ordem.Acao.Ticker,
+                        Ticker = ordem.Ticker,
                         Quantidade = ordem.Quantidade,
                         PrecoUnitario = ordem.PrecoUnitario,
                         Total = (double)ordem.Quantidade * ordem.PrecoUnitario,
@@ -30,6 +32,11 @@ namespace HomeBrokerClient.Services
                         Status = ordem.Status
                     }
                 ).ToList();
+            }
+
+            List<OrdemViewModel> listaVazia = new List<OrdemViewModel>();
+
+            return listaVazia;            
         }
 
         public void Dispose()

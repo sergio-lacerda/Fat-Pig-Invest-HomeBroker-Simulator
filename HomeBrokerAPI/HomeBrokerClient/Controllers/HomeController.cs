@@ -29,7 +29,7 @@ namespace HomeBrokerClient.Controllers
         public async Task<ActionResult> Index()
         {
             var ordens = await listarOrdens();
-
+            
             ViewData["Ordens"] = ordens;
             
             return View();

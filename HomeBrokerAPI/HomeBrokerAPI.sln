@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.32126.317
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HomeBrokerAPI", "HomeBrokerAPI\HomeBrokerAPI.csproj", "{BFB1548E-DBA1-4BE4-9FD9-8B8FB2837E58}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeBrokerClient", "HomeBrokerClient\HomeBrokerClient.csproj", "{24252F89-29FF-41B4-8976-69FDEE9F632B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HomeBrokerClient", "HomeBrokerClient\HomeBrokerClient.csproj", "{24252F89-29FF-41B4-8976-69FDEE9F632B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

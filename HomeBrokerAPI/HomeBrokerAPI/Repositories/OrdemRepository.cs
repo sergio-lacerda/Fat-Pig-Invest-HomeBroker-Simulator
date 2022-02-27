@@ -42,7 +42,8 @@ namespace HomeBrokerAPI.Repositories
                                         "Inner Join Investidores I On I.Id = Ct.IdInvestidor " +
                                         "Inner Join StatusOrdem S On S.Id = O.IdStatus " +
                            $"Where Ct.IdCorretora = {auxCorretora} And " +
-                                 $"Ct.Conta = {auxConta} " +                                  
+                                 $"Ct.Conta = {auxConta} And " +
+                                 "date_format(O.DataHora, '%Y%m%d') = date_format(Now(), '%Y%m%d') " +
                             "Order By O.DataHora Desc; ";
 
             await _connection.OpenAsync();
