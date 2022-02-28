@@ -8,6 +8,8 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<IOrdemService, OrdemService>();
 builder.Services.AddScoped<IOrdemRepository, OrdemRepository>();
+builder.Services.AddScoped<IOfertaService, OfertaService>();
+builder.Services.AddScoped<IOfertaRepository, OfertaRepository>();
 
 var app = builder.Build();
 

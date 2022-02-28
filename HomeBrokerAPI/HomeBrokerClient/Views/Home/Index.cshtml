@@ -28,38 +28,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="table-warning">Easynvest</td>
-                                <td class="table-warning">1600</td>
-                                <td class="table-warning">12,65</td>
-                                <td class="table-info">12,68</td>
-                                <td class="table-info">200</td>
-                                <td class="table-info">XP Invest</td>
-                            </tr>
-                            <tr>
-                                <td class="table-warning">Rico</td>
-                                <td class="table-warning">300</td>
-                                <td class="table-warning">12,66</td>
-                                <td class="table-info">12,69</td>
-                                <td class="table-info">800</td>
-                                <td class="table-info">Modal</td>
-                            </tr>
-                            <tr>
-                                <td class="table-warning">Modal</td>
-                                <td class="table-warning">400</td>
-                                <td class="table-warning">12,65</td>
-                                <td class="table-info">12,68</td>
-                                <td class="table-info">1800</td>
-                                <td class="table-info">XP Invest</td>
-                            </tr>
-                            <tr>
-                                <td class="table-warning">Clear</td>
-                                <td class="table-warning">200</td>
-                                <td class="table-warning">12,63</td>
-                                <td class="table-info">12,65</td>
-                                <td class="table-info">200</td>
-                                <td class="table-info">Easynvest</td>
-                            </tr>
+                            @foreach(var oferta in ViewBag.Ofertas)
+                            {
+                                <tr>
+                                <td class="table-warning">@oferta.Corretora_Compra</td>
+                                <td class="table-warning">@oferta.Quantidade_Compra</td>
+                                <td class="table-warning">@String.Format("{0:C2}", @oferta.Valor_Compra)</td>
+                                <td class="table-info">@String.Format("{0:C2}", @oferta.Valor_Venda)</td>
+                                <td class="table-info">@oferta.Quantidade_Venda</td>
+                                <td class="table-info">@oferta.Corretora_Venda</td>
+                                </tr>
+                            }                            
                         </tbody>
                     </table>
                 </div>
