@@ -1,0 +1,32 @@
+﻿@{  
+    
+}
+
+<div class="card border border-secondary" style="min-height: 200px;">
+    <h5 class="card-header bg-secondary text-white" style="text-align: center;">Minhas Ações</h5>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Papel</th>
+                    <th scope="col">Empresa</th>
+                    <th scope="col" style="text-align:right;">Quantidade</th>
+                    <th scope="col" style="text-align:right;">Preço</th>
+                    <th scope="col" style="text-align:right;">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var acao in ViewBag.Carteira)
+                {
+                    <tr class="table-light">
+                    <td>@acao.Ticker</td>
+                    <td>@acao.Empresa</td>
+                    <td style="text-align:right;">@acao.Quantidade</td>
+                    <td style="text-align:right;">@String.Format("{0:C2}", @acao.PrecoUnitario)</td>
+                    <td style="text-align:right;">@String.Format("{0:C2}", @acao.Total)</td>
+                    </tr>    
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

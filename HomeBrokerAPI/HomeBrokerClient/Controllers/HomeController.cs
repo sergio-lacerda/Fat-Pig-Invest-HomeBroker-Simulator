@@ -65,6 +65,38 @@ namespace HomeBrokerClient.Controllers
             return tabela;
         }
 
+        private IEnumerable<CarteiraViewModel> listarCarteira()
+        {
+            var carteira = new List<CarteiraViewModel>();
+
+            Random rnd = new Random();
+            var qtd = rnd.Next(1, 10)*100;
+
+            carteira.Add(
+                    new CarteiraViewModel
+                    {
+                        Ticker = "ITSA4",
+                        Empresa = "ITAU S.A.",
+                        Quantidade = qtd,
+                        PrecoUnitario = 12.5,
+                        Total = (qtd * 12.5)
+                    }
+                );
+
+            carteira.Add(
+                    new CarteiraViewModel
+                    {
+                        Ticker = "PETR4",
+                        Empresa = "PETROBRAS",
+                        Quantidade = (qtd + 100),
+                        PrecoUnitario = 32.45,
+                        Total = (qtd * 32.45)
+                    }
+                );
+
+            return carteira;
+        }
+
         public async Task<ActionResult> Index()
         {
             //Getting my orders
@@ -72,12 +104,16 @@ namespace HomeBrokerClient.Controllers
             ViewData["Ordens"] = ordens;
 
             //Getting general offers
-            var ofertas = await listarOfertas("ITSA4");
+            var ofertas = await listarOfertas("");
             ViewData["Ofertas"] = ofertas;
+
+            //Getting my stocks
+            var carteira = listarCarteira();
+            ViewData["Carteira"] = carteira;
 
             return View();
         }
-
+                
         public IActionResult Sobre()
         {
             return View();
@@ -87,6 +123,16 @@ namespace HomeBrokerClient.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        /*-------------- Partial Views -----------------*/
+                
+        public async Task<PartialViewResult> pvMinhasAcoes()
+        {
+            //Getting my stocks
+            var carteira = listarCarteira();
+            ViewData["Carteira"] = carteira;
+            return PartialView("_MinhasAcoesPartialView");
         }
     }
 }
