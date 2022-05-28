@@ -134,5 +134,21 @@ namespace HomeBrokerClient.Controllers
             ViewData["Carteira"] = carteira;
             return PartialView("_MinhasAcoesPartialView");
         }
+
+        public async Task<PartialViewResult> pvOfertas()
+        {
+            //Getting general offers
+            var ofertas = await listarOfertas("PETR4");
+            ViewData["Ofertas"] = ofertas;
+            return PartialView("_OfertasPartialView");
+        }
+
+        public async Task<PartialViewResult> pvOrdens()
+        {
+            //Getting my orders
+            var ordens = await listarOrdens();
+            ViewData["Ordens"] = ordens;
+            return PartialView("_OrdensPartialView");
+        }
     }
 }

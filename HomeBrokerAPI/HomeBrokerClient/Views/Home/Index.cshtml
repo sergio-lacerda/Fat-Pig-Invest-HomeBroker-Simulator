@@ -6,43 +6,10 @@
     <br />
     
     <div class="row">
-        <div class="col">
-            <div class="card border border-secondary" style="min-height: 350px;">
-                <h5 class="card-header bg-secondary text-white" style="text-align: center;">Livro de Ofertas</h5>
-                <div class="card-body">
-                    <div id="book-search">
-                        <form class="d-flex">
-                            <input class="form-control me-2" type="search" placeholder="Código da ação" aria-label="Papel">
-                            <button class="btn btn-warning" type="submit">Buscar</button>
-                        </form>
-                    </div>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Corretora</th>
-                                <th scope="col">Qtd</th>
-                                <th scope="col">OFC</th>
-                                <th scope="col">OFV</th>
-                                <th scope="col">Qtd</th>
-                                <th scope="col">Corretora</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach(var oferta in ViewBag.Ofertas)
-                            {
-                                <tr>
-                                <td class="table-warning">@oferta.Corretora_Compra</td>
-                                <td class="table-warning">@oferta.Quantidade_Compra</td>
-                                <td class="table-warning">@String.Format("{0:C2}", @oferta.Valor_Compra)</td>
-                                <td class="table-info">@String.Format("{0:C2}", @oferta.Valor_Venda)</td>
-                                <td class="table-info">@oferta.Quantidade_Venda</td>
-                                <td class="table-info">@oferta.Corretora_Venda</td>
-                                </tr>
-                            }                            
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+        <div id="divPvOfertas" class="col">
+            @{
+                await Html.RenderPartialAsync("_OfertasPartialView"); 
+            }    
         </div>
         <div class="col">
             <div class="card border border-secondary">
@@ -89,41 +56,10 @@
 
     <br />
 
-    <div class="card border border-secondary" style="min-height: 200px;">
-        <h5 class="card-header bg-secondary text-white" style="text-align: center;">Minhas Ordens</h5>
-        <div class="card-body">
-            <table class="table">
-                <thead>
-                    <tr style="text-align: center;">
-                        <th scope="col">C/V</th>
-                        <th scope="col">Papel</th>
-                        <th scope="col">Qtd</th>
-                        <th scope="col">Preço</th>
-                        <th scope="col">Total</th>
-                        <th scope="col">Preço médio</th>
-                        <th scope="col">Data</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Cancelar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach(var ordem in ViewBag.Ordens)
-                    {
-                        <tr class="table-light" style="text-align: center;">
-                            <td>@ordem.Tipo</td>
-                            <td>@ordem.Ticker</td>
-                            <td>@ordem.Quantidade</td>
-                            <td>@String.Format("{0:C2}", @ordem.PrecoUnitario)</td>
-                            <td>@String.Format("{0:C2}", @ordem.Total)</td>
-                            <td>@String.Format("{0:C2}", @ordem.PrecoMedio)</td>
-                            <td>@String.Format("{0:dd/MM/yyyy HH:mm}", @ordem.DataHora)</td>
-                            <td>@ordem.Status</td>
-                            <td><i class="fa fa-trash" style="color: tomato;"></i></td>
-                        </tr>
-                    }                    
-                </tbody>
-            </table>
-        </div>
+    <div id="divPvOrdens" class="card border border-secondary" style="min-height: 200px;">
+        @{
+            await Html.RenderPartialAsync("_OrdensPartialView"); 
+        } 
     </div>
 
     <br />
