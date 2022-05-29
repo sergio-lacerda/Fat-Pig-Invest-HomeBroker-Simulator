@@ -68,6 +68,12 @@ Add Constraint fk_Ordem_Conta Foreign Key (IdConta) References Contas (Id),
 Add Constraint fk_Ordem_Acao Foreign Key (IdAcao) References Acoes (Id),
 Add Constraint fk_Ordem_Status Foreign Key (IdStatus) References StatusOrdem (Id);
 
+Create Table Carteira (
+	Id Int Unsigned Not Null Auto_Increment Primary Key,
+    IdConta Int Unsigned Not Null,     
+    IdAcao Int Unsigned Not Null,
+    Quantidade Int Unsigned Not Null
+);
 
 
 /* --- Adding Data Into Tables --- */
@@ -1008,7 +1014,46 @@ Begin
 End $$
 DELIMITER ;
 
-/* --- Getting random anount of stocks for order simulation --- */
+/* --- Updating stock wallet --- */
+DELIMITER $$
+Create Procedure Atualizar_Carteira(
+	IN pConta Int,
+    IN pTipo Char(1),
+    IN pAcao Int,
+    IN pQuantidade Int    
+)
+Begin
+	Set @Id = -1;
+	Set @Qtd = 0;  
+    Set @QtdAtual = 0;
+    
+	/* getting stock amount */
+    Select	Id, Quantidade
+    Into 	@Id, @Qtd
+    From	Carteira
+    Where	IdConta = pConta And
+			IdAcao = pAcao;
+    
+    If (pTipo='C') Then
+		Set @QtdAtual = @Qtd + pQuantidade;
+	Else
+		Set @QtdAtual = @Qtd - pQuantidade;
+    End If;
+    
+	If (@Qtd=0) Then
+		Insert Into Carteira (IdConta, IdAcao, Quantidade)
+        Values (pConta, pAcao, @QtdAtual);
+	Else
+		Update Carteira
+        Set Quantidade = @QtdAtual
+        Where Id = @Id;
+	End If;
+    
+    Delete From Carteira Where Quantidade = 0;
+End $$
+DELIMITER ;
+
+/* --- Inserting order --- */
 DELIMITER $$
 Create Procedure Inserir_Ordem(
 	IN pIdCorretora Int,
@@ -1038,8 +1083,10 @@ Begin
     Limit	1;
     
     /* inserting order */
-    Insert Into Ordens (IdConta, Tipo, IdAcao, Quantidade, PrecoUnitario)
-    Values (@IdConta, pTipo, @IdAcao, pQuantidade, pPrecoUnitario);       
+    Insert Into Ordens (IdConta, Tipo, IdAcao, Quantidade, PrecoUnitario, IdStatus)
+    Values (@IdConta, pTipo, @IdAcao, pQuantidade, pPrecoUnitario, 3);   
+    
+    /* updating wallet */
+    Call Atualizar_Carteira(@IdConta, pTipo, @IdAcao, pQuantidade);    
 End $$
 DELIMITER ;
-

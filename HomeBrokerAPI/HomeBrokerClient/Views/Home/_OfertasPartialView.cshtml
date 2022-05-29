@@ -1,39 +1,29 @@
 ﻿@{
 }
 
-<div class="card border border-secondary" style="min-height: 350px;">
-    <h5 class="card-header bg-secondary text-white" style="text-align: center;">Livro de Ofertas</h5>
-    <div class="card-body">
-        <div id="book-search">
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Código da ação" aria-label="Papel">
-                <button class="btn btn-warning" type="submit">Buscar</button>
-            </form>
-        </div>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Corretora</th>
-                    <th scope="col">Qtd</th>
-                    <th scope="col">OFC</th>
-                    <th scope="col">OFV</th>
-                    <th scope="col">Qtd</th>
-                    <th scope="col">Corretora</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var oferta in ViewBag.Ofertas)
-                {
-                    <tr>
-                        <td class="table-warning">@oferta.Corretora_Compra</td>
-                        <td class="table-warning">@oferta.Quantidade_Compra</td>
-                        <td class="table-warning">@String.Format("{0:C2}", @oferta.Valor_Compra)</td>
-                        <td class="table-info">@String.Format("{0:C2}", @oferta.Valor_Venda)</td>
-                        <td class="table-info">@oferta.Quantidade_Venda</td>
-                        <td class="table-info">@oferta.Corretora_Venda</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
-</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Corretora</th>
+            <th scope="col">Qtd</th>
+            <th scope="col">OFC</th>
+            <th scope="col">OFV</th>
+            <th scope="col">Qtd</th>
+            <th scope="col">Corretora</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var oferta in ViewBag.Ofertas)
+        {
+            <tr>
+                <td class="table-warning">@oferta.Corretora_Compra</td>
+                <td class="table-warning">@oferta.Quantidade_Compra</td>
+                <td class="table-warning">@String.Format("{0:C2}", @oferta.Valor_Compra)</td>
+                <td class="table-info">@String.Format("{0:C2}", @oferta.Valor_Venda)</td>
+                <td class="table-info">@oferta.Quantidade_Venda</td>
+                <td class="table-info">@oferta.Corretora_Venda</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

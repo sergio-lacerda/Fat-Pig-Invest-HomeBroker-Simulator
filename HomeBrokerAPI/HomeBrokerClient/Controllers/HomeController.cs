@@ -138,8 +138,8 @@ namespace HomeBrokerClient.Controllers
         public async Task<PartialViewResult> pvOfertas()
         {
             //Getting general offers
-            var ofertas = await listarOfertas("PETR4");
-            ViewData["Ofertas"] = ofertas;
+            var ofertas = await listarOfertas("");
+            ViewData["Ofertas"] = ofertas;            
             return PartialView("_OfertasPartialView");
         }
 
