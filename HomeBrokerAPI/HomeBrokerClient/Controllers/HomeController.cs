@@ -11,16 +11,19 @@ namespace HomeBrokerClient.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly IOrdemService _ordemService;
         private readonly IOfertaService _ofertaService;
+        private readonly ICarteiraService _carteiraService;
 
         public HomeController(
                     ILogger<HomeController> logger,
                     IOrdemService ordemService,
-                    IOfertaService ofertaService
+                    IOfertaService ofertaService,
+                    ICarteiraService carteiraService
                )
         {
             _logger = logger;
             _ordemService = ordemService;
             _ofertaService = ofertaService;
+            _carteiraService = carteiraService;
         }
 
         private async Task<IEnumerable<OrdemViewModel>> listarOrdens()
@@ -65,35 +68,9 @@ namespace HomeBrokerClient.Controllers
             return tabela;
         }
 
-        private IEnumerable<CarteiraViewModel> listarCarteira()
+        private async Task<IEnumerable<CarteiraViewModel>> listarCarteira()
         {
-            var carteira = new List<CarteiraViewModel>();
-
-            Random rnd = new Random();
-            var qtd = rnd.Next(1, 10)*100;
-
-            carteira.Add(
-                    new CarteiraViewModel
-                    {
-                        Ticker = "ITSA4",
-                        Empresa = "ITAU S.A.",
-                        Quantidade = qtd,
-                        PrecoUnitario = 12.5,
-                        Total = (qtd * 12.5)
-                    }
-                );
-
-            carteira.Add(
-                    new CarteiraViewModel
-                    {
-                        Ticker = "PETR4",
-                        Empresa = "PETROBRAS",
-                        Quantidade = (qtd + 100),
-                        PrecoUnitario = 32.45,
-                        Total = (qtd * 32.45)
-                    }
-                );
-
+            var carteira = await _carteiraService.listar();
             return carteira;
         }
 
