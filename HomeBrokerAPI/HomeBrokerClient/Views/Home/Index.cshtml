@@ -13,8 +13,8 @@
                 <div class="card-body">
                     <div id="book-search">
                         <form class="d-flex">
-                            <input name="inTicker" class="form-control me-2" type="search" placeholder="Código da ação" aria-label="Papel">
-                            <button class="btn btn-warning" type="submit" style="width:120px;">
+                            <input id="inTicker" name="inTicker" class="form-control me-2" type="text" placeholder="Código da ação" aria-label="Papel" style="text-transform:uppercase;">
+                            <button id="btnEnviar" class="btn btn-warning" type="button" style="width:120px;" onclick="atualiza_param()">
                                 Buscar
                             </button>
                         </form>
@@ -42,7 +42,7 @@
                         <form>
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="lblTicker">Papel</span>
-                                <input type="text" id="inTicker" class="form-control" placeholder="PETR4">
+                                <input type="text" id="inTickerOrder" class="form-control" placeholder="PETR4">
 
                                 <span class="input-group-text" id="lblAmount">Quantidade</span>
                                 <input type="number" id="inAmount" class="form-control" placeholder="100">

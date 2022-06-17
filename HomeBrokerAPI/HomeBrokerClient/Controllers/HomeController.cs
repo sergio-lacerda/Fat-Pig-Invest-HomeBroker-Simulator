@@ -137,8 +137,15 @@ namespace HomeBrokerClient.Controllers
 
         public async Task<PartialViewResult> pvOfertas()
         {
+            //Checking for ticker parameter at Route 
+            var valoresRota = HttpContext.Request.RouteValues.Values;
+            string ticker = "";
+
+            if (valoresRota.Count >= 3 && valoresRota.ElementAt(1).ToString() == "pvOfertas")
+                ticker = valoresRota.ElementAt(2).ToString();
+
             //Getting general offers
-            var ofertas = await listarOfertas("");
+            var ofertas = await listarOfertas(ticker);
             ViewData["Ofertas"] = ofertas;            
             return PartialView("_OfertasPartialView");
         }
