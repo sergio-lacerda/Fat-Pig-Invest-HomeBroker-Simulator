@@ -13,8 +13,7 @@
                 <th scope="col">Total</th>
                 <th scope="col">Preço médio</th>
                 <th scope="col">Data</th>
-                <th scope="col">Status</th>
-                <th scope="col">Cancelar</th>
+                <th scope="col">Status</th>                
             </tr>
         </thead>
         <tbody>
@@ -28,8 +27,7 @@
                     <td>@String.Format("{0:C2}", @ordem.Total)</td>
                     <td>@String.Format("{0:C2}", @ordem.PrecoMedio)</td>
                     <td>@String.Format("{0:dd/MM/yyyy HH:mm}", @ordem.DataHora)</td>
-                    <td>@ordem.Status</td>
-                    <td><i class="fa fa-trash" style="color: tomato;"></i></td>
+                    <td>@ordem.Status</td>                    
                 </tr>
             }
         </tbody>
