@@ -45,30 +45,35 @@ function validaDados(pTipo) {
     if (pTicker === "") {
         $('#errorMessage').html("Informe o código da ação (Ticker)!");
         $('#errorMessage').show();
+        $('#inTickerOrder').focus();
         return false;
     }
 
     if (!$.isNumeric(pQtd) || (pQtd <= 0)) {
         $('#errorMessage').html("A quantidade deve ser um valor numérico positivo!");
         $('#errorMessage').show();
+        $('#inAmount').focus();
         return false;
     }
 
     if ((pQtd % 100) != 0) {
         $('#errorMessage').html("Mercado fracionário não permitido. Informe quantidades de lote padrão!");
         $('#errorMessage').show();
+        $('#inAmount').focus();
         return false;
     }
 
     if (!$.isNumeric(pPreco) || (pPreco <= 0)) {
         $('#errorMessage').html("O preço deve ser um valor numérico positivo!");
         $('#errorMessage').show();
+        $('#inPrice').focus();
         return false;
     }
 
     if (pAssinatura === "") {
         $('#errorMessage').html("Informe a assinatura eletrônica!");
         $('#errorMessage').show();
+        $('#inSign').focus();
         return false;
     }
     
