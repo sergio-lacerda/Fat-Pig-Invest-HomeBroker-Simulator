@@ -85,7 +85,7 @@ namespace HomeBrokerClient.Controllers
             ViewData["Ofertas"] = ofertas;
 
             //Getting my stocks
-            var carteira = listarCarteira();
+            var carteira = await listarCarteira();
             ViewData["Carteira"] = carteira;
 
             return View();
@@ -107,7 +107,7 @@ namespace HomeBrokerClient.Controllers
         public async Task<PartialViewResult> pvMinhasAcoes()
         {
             //Getting my stocks
-            var carteira = listarCarteira();
+            var carteira = await listarCarteira();
             ViewData["Carteira"] = carteira;
             return PartialView("_MinhasAcoesPartialView");
         }

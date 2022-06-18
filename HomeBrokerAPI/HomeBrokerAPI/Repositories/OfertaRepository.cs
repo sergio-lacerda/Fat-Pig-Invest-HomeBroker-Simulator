@@ -33,8 +33,8 @@ namespace HomeBrokerAPI.Repositories
                                 "Inner Join Corretoras C On C.Id = Ct.IdCorretora " + 
                                 "Inner Join Investidores I On I.Id = Ct.IdInvestidor " +
                          $"Where A.Ticker = '{ticker}' And " +
-                                "date_format(O.DataHora, '%Y%m%d') = date_format(Now(), '%Y%m%d') And " +
-                                "O.IdStatus In (1, 2) " + 
+                                "date_format(O.DataHora, '%Y%m%d') = date_format(Now(), '%Y%m%d') " +
+                                //"O.IdStatus In (1, 2) " + 
                           "Order By O.Tipo, O.DataHora Desc; ";
 
             var comando_sp_simulador = $"Call Simular_Ofertas('{ticker}')";
