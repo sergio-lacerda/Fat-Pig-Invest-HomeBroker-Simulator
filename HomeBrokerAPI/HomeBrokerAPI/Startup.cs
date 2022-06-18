@@ -45,6 +45,8 @@ namespace HomeBrokerAPI
             services.AddScoped<IOrdemService, OrdemService>();
             services.AddScoped<IOrdemRepository, OrdemRepository>();
 
+            services.AddScoped<ICarteiraService, CarteiraService>();
+            services.AddScoped<ICarteiraRepository, CarteiraRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

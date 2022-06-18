@@ -10,6 +10,8 @@ builder.Services.AddScoped<IOrdemService, OrdemService>();
 builder.Services.AddScoped<IOrdemRepository, OrdemRepository>();
 builder.Services.AddScoped<IOfertaService, OfertaService>();
 builder.Services.AddScoped<IOfertaRepository, OfertaRepository>();
+builder.Services.AddScoped<ICarteiraService, CarteiraService>();
+builder.Services.AddScoped<ICarteiraRepository, CarteiraRepository>();
 
 var app = builder.Build();
 

@@ -27,7 +27,7 @@ namespace HomeBrokerClient.Services
                             PrecoUnitario = acao.PrecoUnitario,
                             Total = acao.Total
                         }
-                    ).toList();
+                    ).ToList();
             }
 
             List<CarteiraViewModel> listaVazia = new List<CarteiraViewModel>();
