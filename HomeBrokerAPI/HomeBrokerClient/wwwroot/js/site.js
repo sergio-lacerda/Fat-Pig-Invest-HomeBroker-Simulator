@@ -76,5 +76,37 @@ function validaDados(pTipo) {
         $('#inSign').focus();
         return false;
     }
+
+    var inputOrder = {
+        inputOrder:
+            [
+                IdCorretora = 47,
+                Conta = 51001,
+                Tipo = pTipo,
+                Ticker = pTicker.toUpperCase(),
+                Quantidade = pQtd,
+                PrecoUnitario = parseFloat(pPreco)
+            ]
+    };
+
+    console.log(inputOrder);
+
+
+    /*
+    var actionUrl = window.location.origin + '/' + pController + '/' + pAction;
+
+    // Only for pvOfertas action method
+    if (pAction == "pvOfertas" && ticker != '' && ticker != null && ticker != undefined)
+        actionUrl = actionUrl + '/' + ticker;
+
+    $.ajax({
+        url: actionUrl,
+        type: 'POST',
+        dataType: 'html',
+        cache: false,
+        success: function (html) {
+            $(pDiv).html(html);
+        }
+    });*/
     
 }
