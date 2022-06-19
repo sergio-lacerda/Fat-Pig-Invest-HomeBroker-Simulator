@@ -926,36 +926,47 @@ Begin
 		From	Acoes
 		Where	Ticker = pTicker
 		Limit 1
-    );    
+    );   
     
-    Set @UltimoPreco = (
+    Set @UltimoPrecoVenda = (
 		Select  PrecoUnitario
 		From	Ordens
 		Where	IdAcao = @IdAcao And
-				Tipo = pTipo
+				Tipo = 'V'
 		Limit 1
     );  
     
-    If (IsNull(@UltimoPreco)) Then
-		Set @UltimoPreco = @PrecoBase;
+    Set @UltimoPrecoVendaCompra = (
+		Select  PrecoUnitario
+		From	Ordens
+		Where	IdAcao = @IdAcao And
+				Tipo = 'C'
+		Limit 1
+    );  
+    
+    If (IsNull(@UltimoPrecoCompra) Or IsNull(@UltimoPrecoVenda)) Then
+		Set @UltimoPrecoCompra = @PrecoBase;
+        Set @UltimoPrecoVenda = @PrecoBase + 0.02;
 	End If;    
-    
+
     Set @Aleatorio = Rand();    
-    
-    If (@Aleatorio > 0.5) Then
-		Set @Aleatorio = Rand();
-        If (@Aleatorio > 0.5) Then
-			Set @UltimoPreco = @UltimoPreco + Rand()/100;
+       
+    If (@Aleatorio > 0.5) Then		/* if > 0.5, change price, else keep the same */
+		Set @Aleatorio = Rand();	
+        If (@Aleatorio > 0.5) Then	/* if >0.5 increase price else decrease price */
+			Set @UltimoPrecoCompra = @UltimoPrecoCompra + Rand()/100;
 		Else 
-			Set @UltimoPreco = @UltimoPreco - Rand()/100;
+			Set @UltimoPrecoCompra = @UltimoPrecoCompra - Rand()/100;
 		End If;
 	End If;
     
-    If (IsNull(@UltimoPreco)) Then
-		Set @UltimoPreco = 0.0;
+	Set @UltimoPrecoVenda = @UltimoPrecoCompra + 0.01;
+    
+    If (pTipo = 'C') Then
+       Return @UltimoPrecoCompra;
+	Else 
+		Return @UltimoPrecoVenda;
 	End If;
-   
-    Return @UltimoPreco;
 End $$
 DELIMITER ;
 
