@@ -16,3 +16,48 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+/* View Créditos */
+
+#about-image {
+    background-color: #223f7f;
+    border-radius: 10px;
+    text-align: center;
+    padding: 15px 0px;
+    margin-bottom: 30px;
+}
+
+#about-card {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.about-content-card {
+    max-width: 33%;
+    padding: 0px 15px;
+    text-align: center;
+}
+
+.about-content-card img {
+    height: 100px;
+}
+
+#social-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+#about-social {
+    text-align: center;
+    border: 1px solid #223f7f;
+    padding: 10px 15px;
+    margin-top: 25px;
+    border-radius: 10px;
+    max-width: 500px;
+}
+
+#about-social img {
+    padding-right: 20px;
+}
