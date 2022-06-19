@@ -8,7 +8,10 @@
     <div id="errorMessage" class="alert alert-danger" role="alert" style="display:none;">
         Mensagem de erro!
     </div>
-    
+    <div id="okMessage" class="alert alert-success" role="alert" style="display:none;">
+        Mensagem de êxito!
+    </div>
+
     <div class="row">
         <div class="col">            
             <div class="card border border-secondary" style="min-height: 350px;">
@@ -64,7 +67,7 @@
                             <div style="display: flex; flex-direction: row; justify-content: space-evenly; padding: 5px 5px;">
                                 <button class="btn btn-warning" type="button" style="width:120px;" onclick="validaDados('C')">Comprar</button>
                                 <button class="btn btn-info" type="button" style="width:120px;" onclick="validaDados('V')" >Vender</button>
-                                <button class="btn btn-secondary" type="reset" style="width:120px;" onclick="limpaMsgErro()">Limpar</button>
+                                <button class="btn btn-secondary" type="reset" style="width:120px;" onclick="limpaMensagens()">Limpar</button>
                             </div>
                         </form>
                     </div>

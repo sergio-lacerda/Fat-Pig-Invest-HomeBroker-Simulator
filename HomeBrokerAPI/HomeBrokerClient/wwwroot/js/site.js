@@ -14,10 +14,11 @@ function atualizaTotal() {
 }
 
 /*
-  This function cleans Error Messages.
+  This function cleans Messages.
  */
-function limpaMsgErro() {
+function limpaMensagens() {
     $('#errorMessage').hide();
+    $('#okMessage').hide();
 }
 
 /*
@@ -25,6 +26,7 @@ function limpaMsgErro() {
  */
 function validaDados(pTipo) {
     $('#errorMessage').hide();
+    $('#okMessage').hide();
     
     var pData = $('#inDate').val();
     var pTicker = $('#inTickerOrder').val().trim();
@@ -94,8 +96,22 @@ function validaDados(pTipo) {
         dataType: "json",
         contentType: "application/json; charset=utf-8",
         data: JSON.stringify(inputOrder),        
-        success: function (data) { console.log(data); },
-        error: function (data) { console.log(data); }
+        success: function (data) {
+            //Status 200 : Ok - Request processed fine
+            if (data == 200) {
+                $('#okMessage').html("Sua ordem foi executada com sucesso!");
+                $('#okMessage').show();
+            }
+            //Else some error ocurred 
+            else {
+                $('#errorMessage').html("Não foi possível executar sua ordem!");
+                $('#errorMessage').show();
+            }
+        },
+        error: function (data) {
+            $('#errorMessage').html("Não foi possível executar sua ordem!");
+            $('#errorMessage').show();
+        }
     });
         
     $('#frm-ordemCV').trigger("reset");

@@ -4,6 +4,8 @@ using HomeBrokerClient.Models.ViewModels;
 using HomeBrokerClient.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Net;
+using System.Text.Json;
 
 namespace HomeBrokerClient.Controllers
 {
@@ -146,10 +148,12 @@ namespace HomeBrokerClient.Controllers
 
             var insOrdem = await _ordemService.adicionarOrdem(ordem);
 
+            int status = (int)HttpStatusCode.OK;
+                        
             if (insOrdem == null)
-                return "Não foi possível inserir a ordem!";
-            
-            return "Ordem inserida com sucesso!";
+                status = (int)HttpStatusCode.NoContent;
+
+            return JsonSerializer.Serialize(status);
         }
     }
 }
