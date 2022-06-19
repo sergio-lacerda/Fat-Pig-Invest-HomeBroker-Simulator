@@ -1,4 +1,5 @@
-﻿using HomeBrokerClient.Models.Repositories;
+﻿using HomeBrokerClient.Models.InputModels;
+using HomeBrokerClient.Models.Repositories;
 using HomeBrokerClient.Models.ViewModels;
 
 namespace HomeBrokerClient.Services
@@ -37,6 +38,16 @@ namespace HomeBrokerClient.Services
             List<OrdemViewModel> listaVazia = new List<OrdemViewModel>();
 
             return listaVazia;            
+        }
+
+        public async Task<OrdemViewModel> adicionarOrdem(OrdemInputModel ordem)
+        {
+            var insOrdem = await _ordemRepository.adicionarOrdem(ordem);
+
+            if (insOrdem != null)
+                return null;
+
+            return null;
         }
 
         public void Dispose()

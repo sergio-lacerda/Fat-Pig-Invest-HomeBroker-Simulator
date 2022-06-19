@@ -77,36 +77,25 @@ function validaDados(pTipo) {
         return false;
     }
 
-    var inputOrder = {
-        inputOrder:
-            [
-                IdCorretora = 47,
-                Conta = 51001,
-                Tipo = pTipo,
-                Ticker = pTicker.toUpperCase(),
-                Quantidade = pQtd,
-                PrecoUnitario = parseFloat(pPreco)
-            ]
+    var inputOrder = {        
+        IdCorretora: 47,
+        Conta: 51001,
+        Tipo: pTipo,
+        Ticker: pTicker.toUpperCase(),
+        Quantidade: pQtd,
+        PrecoUnitario: parseFloat(pPreco)           
     };
 
-    console.log(inputOrder);
-
-
-    /*
-    var actionUrl = window.location.origin + '/' + pController + '/' + pAction;
-
-    // Only for pvOfertas action method
-    if (pAction == "pvOfertas" && ticker != '' && ticker != null && ticker != undefined)
-        actionUrl = actionUrl + '/' + ticker;
+    var actionUrl = window.location.origin + '/Home/enviarOrdens';
 
     $.ajax({
         url: actionUrl,
         type: 'POST',
-        dataType: 'html',
-        cache: false,
-        success: function (html) {
-            $(pDiv).html(html);
-        }
-    });*/
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify(inputOrder),        
+        success: function (data) { console.log(data); },
+        error: function (data) { console.log(data); }
+    });
     
 }

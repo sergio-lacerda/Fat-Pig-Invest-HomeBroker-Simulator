@@ -1,4 +1,5 @@
 ﻿using HomeBrokerClient.Models;
+using HomeBrokerClient.Models.InputModels;
 using HomeBrokerClient.Models.ViewModels;
 using HomeBrokerClient.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -31,7 +32,7 @@ namespace HomeBrokerClient.Controllers
             var ordens = await _ordemService.listar();
             return ordens;
         }
-
+        
         private async Task<IEnumerable<OfertaTabelaViewModel>> listarOfertas(string ticker)
         {
             var ofertas = await _ofertaService.listar(ticker);
@@ -133,6 +134,16 @@ namespace HomeBrokerClient.Controllers
             var ordens = await listarOrdens();
             ViewData["Ordens"] = ordens;
             return PartialView("_OrdensPartialView");
+        }
+                
+        public async Task<string> enviarOrdens([FromBody] OrdemInputModel ordem)
+        {
+            var insOrdem = await _ordemService.adicionarOrdem(ordem);
+
+            if (insOrdem == null)
+                return "Não foi possível inserir a ordem!";
+            
+            return "Ordem inserida com sucesso!";
         }
     }
 }
