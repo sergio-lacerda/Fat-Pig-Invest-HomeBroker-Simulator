@@ -1,6 +1,8 @@
 ﻿using HomeBrokerClient.Models.Entities;
 using HomeBrokerClient.Models.InputModels;
 using System.Net.Http.Headers;
+using System.Text;
+using System.Text.Json;
 
 namespace HomeBrokerClient.Models.Repositories
 {
@@ -22,8 +24,7 @@ namespace HomeBrokerClient.Models.Repositories
             _uriOrdemList = configuration.GetValue<string>("ApiUris:OrdemList") +
                             "/" + _corretora + "-"+ _conta;
 
-            _uriOrdemPost = configuration.GetValue<string>("ApiUris:OrdemPost") +
-                            "/" + _corretora + "-" + _conta;            
+            _uriOrdemPost = configuration.GetValue<string>("ApiUris:OrdemPost");            
         }
 
         public async Task<List<Ordem>> listar()
@@ -65,11 +66,14 @@ namespace HomeBrokerClient.Models.Repositories
 
             try
             {
-                HttpResponseMessage response = await _httpClient.GetAsync(_uriOrdemPost);
+                string jsonOrdem = JsonSerializer.Serialize(ordem);
+                var auxOrdem = new StringContent(jsonOrdem, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = await _httpClient.PostAsync(_uriOrdemPost, auxOrdem);
+
                 if (response.IsSuccessStatusCode)
                 {
-                    //ordens = await response.Content.ReadFromJsonAsync<List<Ordem>>();
-                    return null;
+                    insOrdem = await response.Content.ReadFromJsonAsync<Ordem>();
+                    return insOrdem;
                 }
             }
             catch (Exception e)
