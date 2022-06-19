@@ -97,5 +97,7 @@ function validaDados(pTipo) {
         success: function (data) { console.log(data); },
         error: function (data) { console.log(data); }
     });
-    
+        
+    $('#frm-ordemCV').trigger("reset");
+
 }
