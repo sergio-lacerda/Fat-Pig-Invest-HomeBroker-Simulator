@@ -45,7 +45,18 @@ namespace HomeBrokerClient.Services
             var insOrdem = await _ordemRepository.adicionarOrdem(ordem);
 
             if (insOrdem != null)
-                return null;
+                return new OrdemViewModel
+                    {
+                        Id = insOrdem.Id,
+                        Tipo = insOrdem.Tipo,
+                        Ticker = insOrdem.Ticker,
+                        Quantidade = insOrdem.Quantidade,
+                        PrecoUnitario = insOrdem.PrecoUnitario,
+                        Total = (double)insOrdem.Quantidade * insOrdem.PrecoUnitario,
+                        PrecoMedio = insOrdem.PrecoUnitario,
+                        DataHora = insOrdem.DataHora,
+                        Status = insOrdem.Status
+                    };
 
             return null;
         }

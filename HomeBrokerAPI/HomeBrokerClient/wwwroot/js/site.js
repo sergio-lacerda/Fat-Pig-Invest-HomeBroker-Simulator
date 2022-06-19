@@ -78,8 +78,8 @@ function validaDados(pTipo) {
     }
 
     var inputOrder = {        
-        IdCorretora: 47,
-        Conta: 51001,
+        IdCorretora: -1,
+        Conta: -1,
         Tipo: pTipo,
         Ticker: pTicker.toUpperCase(),
         Quantidade: pQtd,

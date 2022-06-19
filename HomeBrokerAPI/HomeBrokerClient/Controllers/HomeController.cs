@@ -13,18 +13,21 @@ namespace HomeBrokerClient.Controllers
         private readonly IOrdemService _ordemService;
         private readonly IOfertaService _ofertaService;
         private readonly ICarteiraService _carteiraService;
+        private readonly IConfiguration _configuration;
 
         public HomeController(
                     ILogger<HomeController> logger,
                     IOrdemService ordemService,
                     IOfertaService ofertaService,
-                    ICarteiraService carteiraService
+                    ICarteiraService carteiraService,
+                    IConfiguration configuration
                )
         {
             _logger = logger;
             _ordemService = ordemService;
             _ofertaService = ofertaService;
             _carteiraService = carteiraService;
+            _configuration = configuration;
         }
 
         private async Task<IEnumerable<OrdemViewModel>> listarOrdens()
@@ -137,7 +140,10 @@ namespace HomeBrokerClient.Controllers
         }
                 
         public async Task<string> enviarOrdens([FromBody] OrdemInputModel ordem)
-        {
+        {            
+            ordem.IdCorretora = _configuration.GetValue<int>("UsuarioLogado:IdCorretora");
+            ordem.Conta = _configuration.GetValue<int>("UsuarioLogado:NumeroConta");
+
             var insOrdem = await _ordemService.adicionarOrdem(ordem);
 
             if (insOrdem == null)

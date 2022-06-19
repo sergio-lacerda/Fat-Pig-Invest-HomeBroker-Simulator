@@ -56,8 +56,6 @@ namespace HomeBrokerClient.Models.Repositories
 
         public async Task<Ordem> adicionarOrdem(OrdemInputModel ordem)
         {
-            Ordem insOrdem = new Ordem();
-
             _httpClient.BaseAddress = new Uri(_uriBase);
             _httpClient.DefaultRequestHeaders.Accept.Clear();
             _httpClient.DefaultRequestHeaders.Accept.Add(
@@ -72,6 +70,7 @@ namespace HomeBrokerClient.Models.Repositories
 
                 if (response.IsSuccessStatusCode)
                 {
+                    Ordem insOrdem = new Ordem();                    
                     insOrdem = await response.Content.ReadFromJsonAsync<Ordem>();
                     return insOrdem;
                 }
