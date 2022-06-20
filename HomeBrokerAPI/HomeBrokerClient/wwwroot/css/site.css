@@ -121,7 +121,8 @@ body {
     width: 50%;    
     text-align: center;
     border: 1px solid black;
-    margin-right: 10px;
+    margin-right: 10px;   
+    padding: 10px 10px;
 }
 
 #resumo-financeiro {
@@ -129,8 +130,32 @@ body {
     text-align: center;
     border: 1px solid black;
     margin-left: 10px;
+    padding: 10px 10px;
 }
 
 .resumo-titulo {
+    font-weight: bold;
+    padding: 0px 10px;
+}
+
+.info {
+    display: flex;    
+    justify-content: space-between;
+}
+
+.esquerda {
+    text-align: left;
+    width: 50%;     
+}
+
+.direita {
+    text-align: right;
+    width: 50%;    
+    font-weight: bold;
+}
+
+.total {
+    border-top: 1px dotted darkslategray;
+    border-bottom: 1px dotted darkslategray;
     font-weight: bold;
 }
