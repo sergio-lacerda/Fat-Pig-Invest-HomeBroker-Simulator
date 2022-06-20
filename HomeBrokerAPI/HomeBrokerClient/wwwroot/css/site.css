@@ -159,3 +159,32 @@ body {
     border-bottom: 1px dotted darkslategray;
     font-weight: bold;
 }
+
+#observacoes {
+    text-align: center;
+    padding: 10px 10px;
+    margin: 20px 20px;
+    border: 1px solid black;
+}
+
+.obs-titulo {
+    font-weight: bold;
+    padding: 0px 10px 10px 10px;
+    border-bottom: 1px dotted darkslategray;
+}
+
+#obs-col {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 10px 0px 10px;
+}
+
+.obs-coluna {
+    text-align: left;
+    max-width: 33%;
+}
+
+.obs-coluna-meio {
+    padding-left: 30px;
+    padding-right: 30px;
+}
