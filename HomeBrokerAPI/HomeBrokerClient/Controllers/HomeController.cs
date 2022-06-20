@@ -96,7 +96,12 @@ namespace HomeBrokerClient.Controllers
 
             return View();
         }
-                
+
+        public IActionResult Nota()
+        {
+            return View();
+        }
+
         public IActionResult Sobre()
         {
             return View();

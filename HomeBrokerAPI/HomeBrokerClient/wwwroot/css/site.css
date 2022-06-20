@@ -61,3 +61,76 @@ body {
 #about-social img {
     padding-right: 20px;
 }
+
+/* View Nota de Negociação */
+
+#nota-container {
+    display: flex;
+    flex-direction: column;
+}
+
+#nota-header {
+    display: flex;
+    justify-content: space-between;
+    margin: 25px 0px;
+    padding: 15px 35px;
+    background-color: #223f7f;
+    color: white;
+    border-radius: 10px;
+}
+
+#nota-header img {
+    height: 95px;
+}
+
+#nota-header span {
+    color: #FFFACD;
+    text-transform: uppercase;
+}
+
+#nota-header-info {
+    text-align: center;
+}
+
+#nota-header-pregao {
+    width: 150px;
+    text-align: right;
+}
+
+#cliente {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 20px;
+}
+
+#cliente-cpf {
+    text-align: right;
+}
+
+#operacoes {
+    padding: 20px 20px;
+}
+
+#resumos {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 20px;    
+}
+
+#resumo-negocio {
+    width: 50%;    
+    text-align: center;
+    border: 1px solid black;
+    margin-right: 10px;
+}
+
+#resumo-financeiro {
+    width: 50%;
+    text-align: center;
+    border: 1px solid black;
+    margin-left: 10px;
+}
+
+.resumo-titulo {
+    font-weight: bold;
+}
