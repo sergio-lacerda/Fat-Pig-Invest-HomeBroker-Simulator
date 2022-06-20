@@ -97,8 +97,30 @@ namespace HomeBrokerClient.Controllers
             return View();
         }
 
-        public IActionResult Nota()
+        public async Task<IActionResult> Nota()
         {
+            //Getting my orders
+            var ordens = await listarOrdens();
+            ViewData["Ordens"] = ordens;
+
+            //Preparing datamodel
+            NotaViewModel nota = new NotaViewModel
+                {
+                    NumeroNota = new Random().Next(0, 100000),
+                    Pregao = DateTime.Now,
+                    CodigoCliente = 00000,
+                    NomeCliente = "",
+                    CpfCliente = "",
+                    Endereco = "",
+                    Bairro = "",
+                    Cep = "",
+                    Municipio = "",
+                    UF = "",
+                    Ordens = ordens as OrdemViewModel,
+                    VendasAVista = 0.00
+                };                
+                
+
             return View();
         }
 

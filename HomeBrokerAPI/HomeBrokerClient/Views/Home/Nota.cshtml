@@ -1,4 +1,9 @@
 ﻿@{
+    var hoje = DateTime.Now.ToString("d");
+    var vencto = DateTime.Now.AddDays(2).ToString("d");
+    var nroNota = new Random().Next(0, 100000);
+    var compras = 0.00;
+    var vendas = 0.00;
 }
 
 <div id="nota-container">
@@ -14,9 +19,9 @@
 
         <div id="nota-header-pregao">
             Número da Nota<br />
-            <span>000000</span><br />
+            <span>@nroNota</span><br />
             Data do pregão<br />
-            <span>dd/mm/yyyy</span>
+            <span>@hoje</span>
         </div>
     </div>
 
@@ -48,28 +53,21 @@
                 </tr>
             </thead>
             <tbody>
-                <tr style="text-align: center;">
-                    <td>BOVESPA</td>
-                    <td>C</td>
-                    <td>VISTA</td>
-                    <td>ITSA4 - ITAU SA</td>
-                    <td></td>
-                    <td style="text-align: right;">100</td>
-                    <td style="text-align: right;">9,36</td>
-                    <td style="text-align: right;">936,00</td>
-                    <td>D</td>
-                </tr>
-                <tr style="text-align: center;">
-                    <td>BOVESPA</td>
-                    <td>C</td>
-                    <td>VISTA</td>
-                    <td>VIVT4 - VIVO TELEF</td>
-                    <td></td>
-                    <td style="text-align: right;">100</td>
-                    <td style="text-align: right;">35,42</td>
-                    <td style="text-align: right;">3542,00</td>
-                    <td>D</td>
-                </tr>
+                @foreach (var ordem in ViewBag.Ordens)
+                {
+                    <tr style="text-align: center;">
+                        <td>BOVESPA</td>
+                        <td>@ordem.Tipo</td>
+                        <td>VISTA</td>
+                        <td>@ordem.Ticker</td>
+                        <td></td>
+                        <td style="text-align: right;">@ordem.Quantidade</td>
+                        <td style="text-align: right;">@String.Format("{0:C2}", @ordem.PrecoMedio)</td>
+                        <td style="text-align: right;">@String.Format("{0:C2}", @ordem.Total)</td>
+                        <td>@(ordem.Tipo == 'C' ? 'D' : 'C')</td>
+                    </tr>    
+                    @(ordem.Tipo == 'C' ? compras+=@ordem.Total : vendas+=@ordem.Total)
+                }
             </tbody>
         </table>
     </div>
@@ -87,11 +85,11 @@
             </div>
             <div class="info">
                 <div class="esquerda">Vendas à vista</div>
-                <div class="direita">0,00</div>
+                <div class="direita">@String.Format("{0:C2}", @vendas)</div>
             </div>
             <div class="info">
                 <div class="esquerda">Compras à vista</div>
-                <div class="direita">0,00</div>
+                <div class="direita">@String.Format("{0:C2}", @compras)</div>
             </div>
             <div class="info">
                 <div class="esquerda">Opções - Compras</div>
@@ -111,7 +109,7 @@
             </div>
             <div class="info">
                 <div class="esquerda">Valor das Operações</div>
-                <div class="direita">0,00</div>
+                <div class="direita">@String.Format("{0:C2}", @compras + @vendas)</div>
             </div>
             
         </div>
@@ -186,7 +184,7 @@
                 <div class="direita total">0,00 D</div>
             </div>
             <div class="info">
-                <div class="esquerda total">Líquido para dd/mm/yyyy</div>
+                <div class="esquerda total">Líquido para @vencto</div>
                 <div class="direita total">0,00 D</div>
             </div>
         </div>
