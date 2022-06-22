@@ -20,13 +20,21 @@ Create Table Tarifas (
 );
 
 Insert Into Tarifas (Id, InicioVigencia, FinalVigencia, Corretagem, TaxaLiquidacao, Emolumentos, Iss)
-Values (1, '2020-01-01', '2030-01-01', 0.5, 0.0275, 0.003020, 5.0);
+Values (1, '2020-01-01', '2030-01-01', 0.5, 0.0275, 0.005, 5.0);
 
 Create table Investidores (
 	Id Int Unsigned Not Null Primary Key,
 	Cpf Varchar(15) Not Null Unique,
-    Nome Varchar(50) Not Null
+    Nome Varchar(50) Not Null,
+    Endereco Varchar(70),
+    Bairro Varchar(30),
+    Cep Varchar(10),
+    Municipio Varchar(50),
+    Uf Varchar(2)
 );
+
+Insert Into Investidores (Id, Cpf, Nome, Endereco, Bairro, Cep, Municipio, Uf)
+Values (1, '111.222.333-44', 'Investivaldo da Silva Rocha', 'Rua dos Investidores, 885', 'Jardim Fortuna', '11.222-333', 'Fortunolândia', 'SP');
 
 Create table Contas (	
 	Id Int Unsigned Not Null Primary Key,

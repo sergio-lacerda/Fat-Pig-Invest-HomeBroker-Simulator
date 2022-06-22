@@ -107,11 +107,11 @@ namespace HomeBrokerClient.Controllers
             var totalCompras = ordens.Where(o => o.Tipo == 'C').Sum(o => o.Total);
             var totalOper = totalCompras + totalVendas;
             var liqOperacoes = totalVendas - totalCompras;
-            var taxaLiq = totalOper * 0.0275 / 100;  //0.0275%;
-            var totCBLC = liqOperacoes < 0 ? liqOperacoes + taxaLiq : liqOperacoes - taxaLiq;
-            var emol = totalOper * 0.005 / 100;  //0.005%
+            var taxaLiq = (-1) * totalOper * 0.0275 / 100;  //0.0275%;
+            var totCBLC = liqOperacoes + taxaLiq;
+            var emol = (-1) * totalOper * 0.005 / 100;  //0.005%
             var totBolsa = emol;
-            var corret = 0.00;
+            var corret = (-1) * 0.00;
             var iss = corret * 5 / 100;  //5%
             var totDespCorr = corret + iss;
             var liqNota = totCBLC + totBolsa + totDespCorr;
