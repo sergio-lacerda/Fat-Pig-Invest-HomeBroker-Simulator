@@ -1,9 +1,7 @@
-﻿@{
-    var hoje = DateTime.Now.ToString("d");
-    var vencto = DateTime.Now.AddDays(2).ToString("d");
-    var nroNota = new Random().Next(0, 100000);
-    var compras = 0.00;
-    var vendas = 0.00;
+﻿@model HomeBrokerClient.Models.ViewModels.NotaViewModel
+
+@{
+    
 }
 
 <div id="nota-container">
@@ -19,21 +17,21 @@
 
         <div id="nota-header-pregao">
             Número da Nota<br />
-            <span>@nroNota</span><br />
+            <span>@Model.NumeroNota</span><br />
             Data do pregão<br />
-            <span>@hoje</span>
+            <span>@String.Format("{0:dd/MM/yyyy}", @Model.Pregao)</span>
         </div>
     </div>
 
     <div id="cliente">
         <div id="cliente-endereco">
-            Investidor da Silva Junior <br />            
-            Avenida das Flores, 214 - Residencial Primavera <br />
-            00.000-000 | Chiqueirópolis | SP
+            @Model.NomeCliente <br />            
+            @Model.Endereco - @Model.Bairro <br />
+            @Model.Cep | @Model.Municipio | @Model.UF
         </div>
         <div id="cliente-cpf">
-            CPF: 000.000.000-00 <br />
-            Código do cliente: 000000
+            CPF: @Model.CpfCliente <br />
+            Código do cliente: @Model.CodigoCliente
         </div>
     </div>
 
@@ -53,7 +51,8 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var ordem in ViewBag.Ordens)
+                
+                @foreach (var ordem in Model.Ordens)
                 {
                     <tr style="text-align: center;">
                         <td>BOVESPA</td>
@@ -65,8 +64,7 @@
                         <td style="text-align: right;">@String.Format("{0:C2}", @ordem.PrecoMedio)</td>
                         <td style="text-align: right;">@String.Format("{0:C2}", @ordem.Total)</td>
                         <td>@(ordem.Tipo == 'C' ? 'D' : 'C')</td>
-                    </tr>    
-                    @(ordem.Tipo == 'C' ? compras+=@ordem.Total : vendas+=@ordem.Total)
+                    </tr>                        
                 }
             </tbody>
         </table>
@@ -81,35 +79,35 @@
             
             <div class="info">
                 <div class="esquerda">Debêntures</div>
-                <div class="direita">0,00</div>
+                <div class="direita">@String.Format("{0:C2}", 0.00)</div>
             </div>
             <div class="info">
                 <div class="esquerda">Vendas à vista</div>
-                <div class="direita">@String.Format("{0:C2}", @vendas)</div>
+                <div class="direita">@String.Format("{0:C2}", @Model.VendasAVista)</div>
             </div>
             <div class="info">
                 <div class="esquerda">Compras à vista</div>
-                <div class="direita">@String.Format("{0:C2}", @compras)</div>
+                <div class="direita">@String.Format("{0:C2}", @Model.ComprasAVista)</div>
             </div>
             <div class="info">
                 <div class="esquerda">Opções - Compras</div>
-                <div class="direita">0,00</div>
+                <div class="direita">@String.Format("{0:C2}", 0.00)</div>
             </div>
             <div class="info">
                 <div class="esquerda">Opções - Vendas</div>
-                <div class="direita">0,00</div>
+                <div class="direita">@String.Format("{0:C2}", 0.00)</div>
             </div>
             <div class="info">
                 <div class="esquerda">Operações a Termo</div>
-                <div class="direita">0,00</div>
+                <div class="direita">@String.Format("{0:C2}", 0.00)</div>
             </div>
             <div class="info">
                 <div class="esquerda">Valor das Oper. c/ Títulos Públ. (v.nom.)</div>
-                <div class="direita">0,00</div>
+                <div class="direita">@String.Format("{0:C2}", 0.00)</div>
             </div>
             <div class="info">
                 <div class="esquerda">Valor das Operações</div>
-                <div class="direita">@String.Format("{0:C2}", @compras + @vendas)</div>
+                <div class="direita">@String.Format("{0:C2}", @Model.TotalOperacoes)</div>
             </div>
             
         </div>
@@ -125,19 +123,25 @@
             </div>
             <div class="info">
                 <div class="esquerda">Valor Líquido das Operações</div>
-                <div class="direita">0,00 D</div>
+                <div class="direita">
+                    @String.Format("{0:C2}", Math.Abs(@Model.LiquidoOperacoes)) 
+                    @(@Model.LiquidoOperacoes < 0 ? 'D' : 'C') 
+                </div>
             </div>
             <div class="info">
                 <div class="esquerda">Taxa de Liquidação</div>
-                <div class="direita">0,00 D</div>
+                <div class="direita">@String.Format("{0:C2}", Math.Abs(@Model.TaxaLiquidacao)) D</div>
             </div>
             <div class="info">
                 <div class="esquerda">Taxa de Registro</div>
-                <div class="direita">0,00 D</div>
+                <div class="direita">@String.Format("{0:C2}", Math.Abs(0.00)) D</div>
             </div>
             <div class="info">
                 <div class="esquerda total">Total Clearing (CBLC)</div>
-                <div class="direita total">0,00 D</div>
+                <div class="direita total">
+                    @String.Format("{0:C2}", Math.Abs(@Model.TotalCBLC)) 
+                    @(@Model.TotalCBLC < 0 ? 'D' : 'C') 
+                </div>
             </div>
             <div class="info">
                 <div class="esquerda">BOVESPA</div>
@@ -145,19 +149,22 @@
             </div>
             <div class="info">
                 <div class="esquerda">Taxa de Termo / Opções</div>
-                <div class="direita">0,00 D</div>
+                <div class="direita">@String.Format("{0:C2}", Math.Abs(0.00)) D</div>
             </div>
             <div class="info">
                 <div class="esquerda">Taxa A.N.A.</div>
-                <div class="direita">0,00 D</div>
+                <div class="direita">@String.Format("{0:C2}", Math.Abs(0.00)) D</div>
             </div>
             <div class="info">
                 <div class="esquerda">Emolumentos</div>
-                <div class="direita">0,00 D</div>
+                <div class="direita">@String.Format("{0:C2}", Math.Abs(@Model.Emolumentos)) D</div>
             </div>
             <div class="info">
                 <div class="esquerda total">BOVESPA</div>
-                <div class="direita total">0,00 D</div>
+                <div class="direita total">
+                    @String.Format("{0:C2}", Math.Abs(@Model.TotalBolsa)) 
+                    @(@Model.TotalBolsa < 0 ? 'D' : 'C') 
+                </div>
             </div>
             <div class="info">
                 <div class="esquerda">Corretagem/Despesas</div>
@@ -165,27 +172,30 @@
             </div>
             <div class="info">
                 <div class="esquerda">Corretagem</div>
-                <div class="direita">0,00 D</div>
+                <div class="direita">@String.Format("{0:C2}", Math.Abs(@Model.Corretagem)) D</div>
             </div>
             <div class="info">
                 <div class="esquerda">ISS (SÃO PAULO)</div>
-                <div class="direita">0,00 D</div>
+                <div class="direita">@String.Format("{0:C2}", Math.Abs(@Model.ISS)) D</div>
             </div>
             <div class="info">
                 <div class="esquerda">I.R.R.F. s/ operações. Base 0,00</div>
-                <div class="direita">0,00 D</div>
+                <div class="direita">@String.Format("{0:C2}", Math.Abs(0.00)) D</div>
             </div>
             <div class="info">
                 <div class="esquerda">Outras</div>
-                <div class="direita">0,00 D</div>
+                <div class="direita">@String.Format("{0:C2}", Math.Abs(0.00)) D</div>
             </div>
             <div class="info">
                 <div class="esquerda total">Total Corretagem/Despesas</div>
-                <div class="direita total">0,00 D</div>
+                <div class="direita total">@String.Format("{0:C2}", Math.Abs(@Model.TotalCorretagemDespesas)) D</div>
             </div>
             <div class="info">
-                <div class="esquerda total">Líquido para @vencto</div>
-                <div class="direita total">0,00 D</div>
+                <div class="esquerda total">Líquido para @String.Format("{0:dd/MM/yyyy}", @Model.VenctoNota)</div>
+                <div class="direita total">
+                    @String.Format("{0:C2}", Math.Abs(@Model.LiquidoNota)) 
+                    @(@Model.LiquidoNota < 0 ? 'D' : 'C') 
+                </div>
             </div>
         </div>
     </div>

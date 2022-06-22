@@ -101,27 +101,52 @@ namespace HomeBrokerClient.Controllers
         {
             //Getting my orders
             var ordens = await listarOrdens();
-            ViewData["Ordens"] = ordens;
 
             //Preparing datamodel
+            var totalVendas = ordens.Where(o => o.Tipo == 'V').Sum(o => o.Total);
+            var totalCompras = ordens.Where(o => o.Tipo == 'C').Sum(o => o.Total);
+            var totalOper = totalCompras + totalVendas;
+            var liqOperacoes = totalVendas - totalCompras;
+            var taxaLiq = totalOper * 0.0275 / 100;  //0.0275%;
+            var totCBLC = liqOperacoes < 0 ? liqOperacoes + taxaLiq : liqOperacoes - taxaLiq;
+            var emol = totalOper * 0.005 / 100;  //0.005%
+            var totBolsa = emol;
+            var corret = 0.00;
+            var iss = corret * 5 / 100;  //5%
+            var totDespCorr = corret + iss;
+            var liqNota = totCBLC + totBolsa + totDespCorr;
+
             NotaViewModel nota = new NotaViewModel
                 {
                     NumeroNota = new Random().Next(0, 100000),
                     Pregao = DateTime.Now,
-                    CodigoCliente = 00000,
-                    NomeCliente = "",
-                    CpfCliente = "",
-                    Endereco = "",
-                    Bairro = "",
-                    Cep = "",
-                    Municipio = "",
-                    UF = "",
-                    Ordens = ordens as OrdemViewModel,
-                    VendasAVista = 0.00
-                };                
-                
+                    CodigoCliente = 696969,
+                    NomeCliente = "Zuleika da Silva",
+                    CpfCliente = "069.069.069-69",
+                    Endereco = "Rua Suspeita, 69",
+                    Bairro = "Terreno Baldio",
+                    Cep = "69.069-69",
+                    Municipio = "Só Deus Sabe",
+                    UF = "AC",
+                    Ordens = ordens,
+                    VendasAVista = totalVendas,
+                    ComprasAVista = totalCompras,
+                    TotalOperacoes = totalOper,
+                    LiquidoOperacoes = liqOperacoes,
+                    TaxaLiquidacao = taxaLiq,
+                    TotalCBLC = totCBLC,
+                    Emolumentos = emol,
+                    TotalBolsa = totBolsa,
+                    Corretagem = corret,
+                    ISS = iss,
+                    TotalCorretagemDespesas = totDespCorr,
+                    LiquidoNota = liqNota,
+                    VenctoNota = DateTime.Now.AddDays(2)
+            };
 
-            return View();
+            //ViewData["Nota"] = nota;
+
+            return View(nota);
         }
 
         public IActionResult Sobre()
