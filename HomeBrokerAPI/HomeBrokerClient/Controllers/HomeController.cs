@@ -15,6 +15,8 @@ namespace HomeBrokerClient.Controllers
         private readonly IOrdemService _ordemService;
         private readonly IOfertaService _ofertaService;
         private readonly ICarteiraService _carteiraService;
+        private readonly IInvestidorService _investidorService;
+        private readonly ITarifaService _tarifaService;
         private readonly IConfiguration _configuration;
 
         public HomeController(
@@ -22,6 +24,8 @@ namespace HomeBrokerClient.Controllers
                     IOrdemService ordemService,
                     IOfertaService ofertaService,
                     ICarteiraService carteiraService,
+                    IInvestidorService investidorService,
+                    ITarifaService tarifaService,
                     IConfiguration configuration
                )
         {
@@ -29,6 +33,8 @@ namespace HomeBrokerClient.Controllers
             _ordemService = ordemService;
             _ofertaService = ofertaService;
             _carteiraService = carteiraService;
+            _investidorService = investidorService;
+            _tarifaService = tarifaService;
             _configuration = configuration;
         }
 
@@ -99,6 +105,37 @@ namespace HomeBrokerClient.Controllers
 
         public async Task<IActionResult> Nota()
         {
+            //Getting taxes parameters
+            TarifaViewModel tarifas;
+            try
+            {
+                tarifas = await _tarifaService.obter();
+            }
+            catch (Exception e)
+            {
+                tarifas = new TarifaViewModel
+                {
+                    Corretagem = 0.00,
+                    Emolumentos = 0.00,
+                    Iss = 0.00,
+                    TaxaLiquidacao = 0.00
+                };
+            }
+
+            //Getting investor data
+            InvestidorViewModel investidor;
+            try
+            {
+                investidor = await _investidorService.obter();
+            }
+            catch (Exception e)
+            {
+                investidor = new InvestidorViewModel
+                {
+                    Nome = "[INVESTIDOR NÃO IDENTIFICADO]"
+                };
+            }
+
             //Getting my orders
             var ordens = await listarOrdens();
 
@@ -107,12 +144,12 @@ namespace HomeBrokerClient.Controllers
             var totalCompras = ordens.Where(o => o.Tipo == 'C').Sum(o => o.Total);
             var totalOper = totalCompras + totalVendas;
             var liqOperacoes = totalVendas - totalCompras;
-            var taxaLiq = (-1) * totalOper * 0.0275 / 100;  //0.0275%;
+            var taxaLiq = (-1) * totalOper * tarifas.TaxaLiquidacao / 100; 
             var totCBLC = liqOperacoes + taxaLiq;
-            var emol = (-1) * totalOper * 0.005 / 100;  //0.005%
+            var emol = (-1) * totalOper * tarifas.Emolumentos / 100;  
             var totBolsa = emol;
-            var corret = (-1) * 0.00;
-            var iss = corret * 5 / 100;  //5%
+            var corret = (-1) * tarifas.Corretagem;
+            var iss = corret * tarifas.Iss / 100;
             var totDespCorr = corret + iss;
             var liqNota = totCBLC + totBolsa + totDespCorr;
 
@@ -120,14 +157,14 @@ namespace HomeBrokerClient.Controllers
                 {
                     NumeroNota = new Random().Next(0, 100000),
                     Pregao = DateTime.Now,
-                    CodigoCliente = 696969,
-                    NomeCliente = "Zuleika da Silva",
-                    CpfCliente = "069.069.069-69",
-                    Endereco = "Rua Suspeita, 69",
-                    Bairro = "Terreno Baldio",
-                    Cep = "69.069-69",
-                    Municipio = "Só Deus Sabe",
-                    UF = "AC",
+                    CodigoCliente = investidor.Id,
+                    NomeCliente = investidor.Nome,
+                    CpfCliente = investidor.Cpf,
+                    Endereco = investidor.Endereco,
+                    Bairro = investidor.Bairro,
+                    Cep = investidor.Cep,
+                    Municipio = investidor.Municipio,
+                    UF = investidor.Uf,
                     Ordens = ordens,
                     VendasAVista = totalVendas,
                     ComprasAVista = totalCompras,
