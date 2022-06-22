@@ -1,6 +1,9 @@
-﻿namespace HomeBrokerClient.Services
+﻿using HomeBrokerClient.Models.ViewModels;
+
+namespace HomeBrokerClient.Services
 {
-    public class ITarifaService
+    public interface ITarifaService : IDisposable
     {
+        public Task<TarifaViewModel> obter();
     }
 }

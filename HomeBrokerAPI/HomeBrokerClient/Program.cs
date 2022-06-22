@@ -8,10 +8,18 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<IOrdemService, OrdemService>();
 builder.Services.AddScoped<IOrdemRepository, OrdemRepository>();
+
 builder.Services.AddScoped<IOfertaService, OfertaService>();
 builder.Services.AddScoped<IOfertaRepository, OfertaRepository>();
+
 builder.Services.AddScoped<ICarteiraService, CarteiraService>();
 builder.Services.AddScoped<ICarteiraRepository, CarteiraRepository>();
+
+builder.Services.AddScoped<IInvestidorService, InvestidorService>();
+builder.Services.AddScoped<IInvestidorRepository, InvestidorRepository>();
+
+builder.Services.AddScoped<ITarifaService, TarifaService>();
+builder.Services.AddScoped<ITarifaRepository, TarifaRepository>();
 
 var app = builder.Build();
 

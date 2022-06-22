@@ -14,7 +14,7 @@ namespace HomeBrokerClient.Models.Repositories
             _idInvestidor = configuration.GetValue<int>("UsuarioLogado:IdInvestidor");
         }
 
-        public async Task<Investidor> listar()
+        public async Task<Investidor> obter()
         {
             Investidor investidor = null;
                          

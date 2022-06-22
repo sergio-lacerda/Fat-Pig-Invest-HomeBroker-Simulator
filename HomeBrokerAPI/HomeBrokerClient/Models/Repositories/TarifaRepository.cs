@@ -12,7 +12,7 @@ namespace HomeBrokerClient.Models.Repositories
             _connection = new MySqlConnection(configuration.GetConnectionString("DatabaseConnStr"));
         }
 
-        public async Task<Tarifa> listar()
+        public async Task<Tarifa> obter()
         {
             Tarifa tarifa = null;
             var comando = $"Select * From Tarifas Where Now() Between InicioVigencia And FinalVigencia;";

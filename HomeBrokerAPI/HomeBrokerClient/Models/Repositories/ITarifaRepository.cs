@@ -4,6 +4,6 @@ namespace HomeBrokerClient.Models.Repositories
 {
     public interface ITarifaRepository : IDisposable
     {
-        public Task<Tarifa> listar();
+        public Task<Tarifa> obter();
     }
 }

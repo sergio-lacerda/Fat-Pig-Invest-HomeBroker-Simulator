@@ -1,6 +1,9 @@
-﻿namespace HomeBrokerClient.Services
+﻿using HomeBrokerClient.Models.ViewModels;
+
+namespace HomeBrokerClient.Services
 {
-    public class IInvestidorService
+    public interface IInvestidorService : IDisposable
     {
+        public Task<InvestidorViewModel> obter();
     }
 }
