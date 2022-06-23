@@ -17,8 +17,13 @@ body {
   margin-bottom: 60px;
 }
 
-/* View Créditos */
+#curve_chart {    
+    height: 400px;
+    width: contain;
+}
 
+
+/* View Créditos */
 #about-image {
     background-color: #223f7f;
     border-radius: 10px;

@@ -18,6 +18,7 @@ namespace HomeBrokerClient.Controllers
         private readonly IInvestidorService _investidorService;
         private readonly ITarifaService _tarifaService;
         private readonly IConfiguration _configuration;
+        private List<GraficoViewModel> _grafico;
 
         public HomeController(
                     ILogger<HomeController> logger,
@@ -58,24 +59,38 @@ namespace HomeBrokerClient.Controllers
                     oferta => oferta.Tipo == 'V'
                 ).Take(5).ToList();
 
+            if (_grafico == null)
+                _grafico = new List<GraficoViewModel>();
+
             if (ofertasCompra.Count >= 5 && ofertasVenda.Count >= 5)
                 for (int i = 0; i < 5; i++)
+                {
                     tabela.Add(new OfertaTabelaViewModel
-                        {
-                            Corretora_Compra =
+                    {
+                        Corretora_Compra =
                                 ofertasCompra[i].Corretora.Length > 15 ?
-                                ofertasCompra[i].Corretora.Substring(0,14) :
-                                ofertasCompra[i].Corretora,                            
-                            Quantidade_Compra = ofertasCompra[i].Quantidade,
-                            Valor_Compra = ofertasCompra[i].Valor,
-                            Corretora_Venda =
+                                ofertasCompra[i].Corretora.Substring(0, 14) :
+                                ofertasCompra[i].Corretora,
+                        Quantidade_Compra = ofertasCompra[i].Quantidade,
+                        Valor_Compra = ofertasCompra[i].Valor,
+                        Corretora_Venda =
                                 ofertasVenda[i].Corretora.Length > 15 ?
                                 ofertasVenda[i].Corretora.Substring(0, 14) :
                                 ofertasVenda[i].Corretora,
                         Quantidade_Venda = ofertasVenda[i].Quantidade,
-                            Valor_Venda = ofertasVenda[i].Valor
-                        }
+                        Valor_Venda = ofertasVenda[i].Valor
+                    }
                     );
+
+                    _grafico.Add(
+                        new GraficoViewModel
+                        {
+                            Tempo = DateTime.Now,
+                            Compra = ofertasCompra[i].Valor,
+                            Venda = ofertasVenda[i].Valor
+                        }
+                     );
+                }
 
             return tabela;
         }
@@ -181,8 +196,6 @@ namespace HomeBrokerClient.Controllers
                     VenctoNota = DateTime.Now.AddDays(2)
             };
 
-            //ViewData["Nota"] = nota;
-
             return View(nota);
         }
 
@@ -243,6 +256,25 @@ namespace HomeBrokerClient.Controllers
                 status = (int)HttpStatusCode.NoContent;
 
             return JsonSerializer.Serialize(status);
+        }
+
+        public async Task<JsonResult> pvGrafico()
+        {
+            //Checking for ticker parameter at Route 
+            var valoresRota = HttpContext.Request.RouteValues.Values;
+            string ticker = "";
+
+            if (valoresRota.Count >= 3 && valoresRota.ElementAt(1).ToString() == "pvGrafico")
+                ticker = valoresRota.ElementAt(2).ToString();
+
+            //Getting general offers
+            var ofertas = await listarOfertas(ticker);
+
+            //Keeping only 20 values for chart
+            if (_grafico.Count > 20)
+                _grafico.RemoveAt(0);
+
+            return Json(_grafico);
         }
     }
 }
