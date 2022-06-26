@@ -270,10 +270,6 @@ namespace HomeBrokerClient.Controllers
             //Getting general offers
             var ofertas = await listarOfertas(ticker);
 
-            //Keeping only 20 values for chart
-            if (_grafico.Count > 20)
-                _grafico.RemoveAt(0);
-
             return Json(_grafico);
         }
     }

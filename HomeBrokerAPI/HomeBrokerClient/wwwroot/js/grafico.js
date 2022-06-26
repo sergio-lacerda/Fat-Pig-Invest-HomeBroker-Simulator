@@ -2,29 +2,54 @@
 google.charts.setOnLoadCallback(drawChart);
 
 var chartData;
+var auxData;
 
 function drawChart() {
-    var auxData2 = Object.values(chartData);
-    console.log(JSON.parse(auxData2));
-        //JSON.parse(chartData);
+    if (chartData == '[]')
+        auxData = [];
 
+    if ((auxData == null) || (auxData == undefined) || (auxData.length==0)) {
+        auxData = [['Tempo', 'Compra', 'Venda']];
+        //auxData.push(['0', 0.00, 0.00]);
+    }        
     
-    console.log(chartData);
+    if ((chartData != null) && (chartData != undefined) && (chartData!='[]')) {
+        var ofertas = JSON.parse(chartData);
 
-    var auxData = [
-            ['Year', 'Sales', 'Expenses'],
-            ['2004', 1000, 400],
-            ['2005', 1170, 460],
-            ['2006', 660, 1120],
-            ['2007', 1030, 540]
-        ];
+        if (auxData.length < 5) {
+            for (var reg in ofertas) {
+                var temp = [
+                    ofertas[reg].tempo,
+                    ofertas[reg].compra,
+                    ofertas[reg].venda
+                ];
+                auxData.push(temp);
+            }
+        }
+        else {
+            var temp = [
+                ofertas[ofertas.length - 1].tempo,
+                ofertas[ofertas.length - 1].compra,
+                ofertas[ofertas.length - 1].venda
+            ];
+            auxData.push(temp);
+
+            if (auxData.length >= 15)
+                auxData.splice(1,1);
+        }                
+    }
 
     var data = google.visualization.arrayToDataTable(auxData);
+
+    var formatter = new google.visualization.NumberFormat({ decimalSymbol: ',', groupingSymbol: '.', prefix: 'R$ ' });
+    formatter.format(data, 1);
+    formatter.format(data, 2);
 
     var options = {
         //title: 'Company Performance',
         curveType: 'function',
-        legend: { position: 'bottom' }
+        legend: { position: 'bottom' },
+        vAxis: { format: 'currency' }
     };
 
     var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
@@ -40,14 +65,14 @@ function updateChart() {
     // Only for pvOfertas action method
     if (ticker != '' && ticker != null && ticker != undefined)
         actionUrl = actionUrl + '/' + ticker;
-
+    
     $.ajax({
         url: actionUrl,
         type: 'POST',
-        dataType: 'json',        
-        success: function (data) {
-            //console.table(data);
-            chartData = data;
+        dataType: 'json',
+        contentType: "application/json; charset=utf-8",
+        success: function (data) {            
+            chartData = JSON.stringify(data);
             drawChart();
             return false;
         }

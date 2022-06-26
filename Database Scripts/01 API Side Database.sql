@@ -954,13 +954,13 @@ Begin
     If (@Aleatorio > 0.5) Then		/* if > 0.5, change price, else keep the same */
 		Set @Aleatorio = Rand();	
         If (@Aleatorio > 0.5) Then	/* if >0.5 increase price else decrease price */
-			Set @UltimoPrecoCompra = @UltimoPrecoCompra + Rand()/100;
+			Set @UltimoPrecoCompra = @UltimoPrecoCompra + Round(Rand()/100, 2);
 		Else 
-			Set @UltimoPrecoCompra = @UltimoPrecoCompra - Rand()/100;
+			Set @UltimoPrecoCompra = @UltimoPrecoCompra - Round(Rand()/100, 2);
 		End If;
 	End If;
     
-	Set @UltimoPrecoVenda = @UltimoPrecoCompra + 0.01;
+	Set @UltimoPrecoVenda = @UltimoPrecoCompra + Round(Rand()/100, 2);
     
     If (pTipo = 'C') Then
        Return @UltimoPrecoCompra;
