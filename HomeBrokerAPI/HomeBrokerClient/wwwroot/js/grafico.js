@@ -10,13 +10,15 @@ function drawChart() {
 
     if ((auxData == null) || (auxData == undefined) || (auxData.length==0)) {
         auxData = [['Tempo', 'Compra', 'Venda']];
-        //auxData.push(['0', 0.00, 0.00]);
-    }        
-    
+        auxData.push(['Sem dados', 0.00, 0.00]);
+    }
+        
     if ((chartData != null) && (chartData != undefined) && (chartData!='[]')) {
         var ofertas = JSON.parse(chartData);
 
         if (auxData.length < 5) {
+            auxData = [['Tempo', 'Compra', 'Venda']];
+
             for (var reg in ofertas) {
                 var temp = [
                     ofertas[reg].tempo,
@@ -41,15 +43,18 @@ function drawChart() {
 
     var data = google.visualization.arrayToDataTable(auxData);
 
-    var formatter = new google.visualization.NumberFormat({ decimalSymbol: ',', groupingSymbol: '.', prefix: 'R$ ' });
-    formatter.format(data, 1);
-    formatter.format(data, 2);
-
     var options = {
         //title: 'Company Performance',
         curveType: 'function',
         legend: { position: 'bottom' },
-        vAxis: { format: 'currency' }
+        vAxis: {
+            format: 'R$ #.00',
+            viewWindow: {
+                min: 12.45,
+                max: 12.55
+            }
+            //ticks: [12.00, 12.25, 12.50, 12.75, 13.00]
+        }
     };
 
     var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
@@ -58,8 +63,7 @@ function drawChart() {
 }
 
 
-function updateChart() {
-    var ticker = $("#inTicker").val();
+function updateChart() {    
     var actionUrl = window.location.origin + '/Home/pvGrafico';
 
     // Only for pvOfertas action method

@@ -10,7 +10,7 @@ var ticker = '';
 // at the global var 'parametro', so the function 'atualiza_Partial_View'
 // can use it to create the MVC URI.
 function atualiza_param() {
-    ticker = $("#inTicker").val();
+    ticker = $("#inTicker").val().trim();
 }
 
 // This function gets values from an action and updates a specific DIV:
