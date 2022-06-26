@@ -85,7 +85,7 @@ namespace HomeBrokerClient.Controllers
                     _grafico.Add(
                         new GraficoViewModel
                         {
-                            Tempo = DateTime.Now,
+                            Tempo = DateTime.Now.ToString("HH:mm:ss"),
                             Compra = ofertasCompra[i].Valor,
                             Venda = ofertasVenda[i].Valor
                         }
