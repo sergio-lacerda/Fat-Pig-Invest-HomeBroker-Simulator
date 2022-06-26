@@ -52,7 +52,7 @@ function drawChart() {
     var data = google.visualization.arrayToDataTable(auxData);
 
     var options = {
-        //title: 'Company Performance',
+        //title: 'Preços de compra e venda '+ ticker,
         curveType: 'function',
         legend: { position: 'bottom' },
         vAxis: {
