@@ -6,10 +6,26 @@ _**[Português]**_ Este é um aplicativo de autoestudo simulando um home broker 
 
 ## Technologies 
 
+- .Net Core 5
 - C#
 - API REST
+- Swagger
 - MVC
 - Linq
 - Lambda Expressions
 - HTML 5
-- CSS 3
+- CSS 3 (not fully responsive client interface sample)
+- Javascript / JQuery
+- MySQL Database
+- MySQL Connector
+- Google Charts
+
+## Installation
+
+Please, follow the instructions bellow in order to install and run this project:
+
+#### 1. Clone the repository
+
+```console
+git clone https://github.com/sergio-lacerda/2022-01-HomeBroker-Simulator.git
+```
