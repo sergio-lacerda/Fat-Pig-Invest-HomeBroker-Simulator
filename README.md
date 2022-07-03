@@ -15,6 +15,7 @@ _**[Português]**_ Este é um aplicativo de autoestudo simulando um home broker 
 - Lambda Expressions
 - HTML 5
 - CSS 3 (not fully responsive client interface sample)
+- Bootstrap
 - Javascript / JQuery
 - MySQL Database
 - MySQL Connector
@@ -33,4 +34,5 @@ git clone https://github.com/sergio-lacerda/2022-01-HomeBroker-Simulator.git
 #### 2. Create API and Client Databases
 
 For this project, a MySQL Database Server is required. If you don't have it, you can use a XAMPP distribution containing MariaDB.
-The scripts for both, API and Client databases are available at the folder "Database Scripts".
+
+The scripts for both, API and Client databases are available at the folder "Database Scripts". Just execute these scripts in order to create the databases.
