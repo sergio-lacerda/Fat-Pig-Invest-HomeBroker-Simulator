@@ -4,6 +4,7 @@ _**[English]**_ This is a self-study application simulating a home broker to ope
 
 _**[Português]**_ Este é um aplicativo de autoestudo simulando um home broker para operar no mercado de ações brasileiro. Ele contém dois projetos: uma API REST para simular o serviço de bolsa de valores e uma aplicação web para permitir que o usuário interaja com a API, comprando e vendendo ações. 
 
+
 ## Technologies 
 
 - .Net Core 5
@@ -21,9 +22,11 @@ _**[Português]**_ Este é um aplicativo de autoestudo simulando um home broker 
 - MySQL Connector
 - Google Charts
 
+
 ## Installation
 
 Please, follow the instructions below in order to install and run this project:
+
 
 #### 1. Clone the repository
 
@@ -31,11 +34,13 @@ Please, follow the instructions below in order to install and run this project:
 git clone https://github.com/sergio-lacerda/2022-01-HomeBroker-Simulator.git
 ```
 
+
 #### 2. Create API and Client Databases
 
 For this project, a MySQL Database Server is required. If you don't have it, you can use a XAMPP distribution containing MariaDB.
 
 The scripts for both, API and Client databases are available at the folder "Database Scripts". Just execute these scripts in order to create the databases.
+
 
 #### 3. Settings for HomeBrokerAPI project
 
@@ -47,5 +52,6 @@ The scripts for both, API and Client databases are available at the folder "Data
         "DatabaseConnStr": "Server=localhost;Port=3306;Database=dbhomebrokerapi;Uid=root;Pwd=;"
     }
 ```
+
 
 #### 4. Settings for HomeBrokerClient project
