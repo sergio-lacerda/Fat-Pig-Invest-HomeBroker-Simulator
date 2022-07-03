@@ -199,6 +199,12 @@ namespace HomeBrokerClient.Controllers
             return View(nota);
         }
 
+        public async Task<IActionResult> imprimirNota()
+        {
+
+            return View();
+        }
+
         public IActionResult Sobre()
         {
             return View();
