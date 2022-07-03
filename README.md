@@ -28,21 +28,21 @@ _**[Português]**_ Este é um aplicativo de autoestudo simulando um home broker 
 Please, follow the instructions below in order to install and run this project:
 
 
-#### 1. Clone the repository
+### 1. Clone the repository
 
 ```console
 git clone https://github.com/sergio-lacerda/2022-01-HomeBroker-Simulator.git
 ```
 
 
-#### 2. Create API and Client Databases
+### 2. Create API and Client Databases
 
 For this project, a MySQL Database Server is required. If you don't have it, you can use a XAMPP distribution containing MariaDB.
 
 The scripts for both, API and Client databases are available at the folder "Database Scripts". Just execute these scripts in order to create the databases.
 
 
-#### 3. Settings for HomeBrokerAPI project
+### 3. Settings for HomeBrokerAPI project
 
 - **Project properties -> Outup -> XML documentation file path:** Set the path to the folder you'd like to have the API documentation file.
 - **appsettings.json:** Finde the key "DatabaseConnStr" and configure your connection string to the API database (dbhomebrokerapi).
@@ -54,4 +54,4 @@ The scripts for both, API and Client databases are available at the folder "Data
 ```
 
 
-#### 4. Settings for HomeBrokerClient project
+### 4. Settings for HomeBrokerClient project
