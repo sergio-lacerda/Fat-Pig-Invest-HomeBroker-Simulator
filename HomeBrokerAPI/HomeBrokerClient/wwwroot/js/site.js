@@ -117,3 +117,4 @@ function validaDados(pTipo) {
     $('#frm-ordemCV').trigger("reset");
 
 }
+

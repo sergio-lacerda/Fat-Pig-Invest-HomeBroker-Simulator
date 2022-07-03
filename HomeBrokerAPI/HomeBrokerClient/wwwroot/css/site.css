@@ -69,6 +69,16 @@ body {
 
 /* View Nota de Negociação */
 
+#salvar-pdf {
+    justify-content: center;
+    margin-top: 25px;
+}
+
+#btn-gerar-pdf {
+    width: 200px;
+    padding: 5px 5px;     
+}
+
 #nota-container {
     display: flex;
     flex-direction: column;

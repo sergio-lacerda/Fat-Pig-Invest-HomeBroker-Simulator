@@ -163,7 +163,7 @@ namespace HomeBrokerClient.Controllers
             var totCBLC = liqOperacoes + taxaLiq;
             var emol = (-1) * totalOper * tarifas.Emolumentos / 100;  
             var totBolsa = emol;
-            var corret = (-1) * tarifas.Corretagem;
+            var corret = (-1) * tarifas.Corretagem * ordens.Count();
             var iss = corret * tarifas.Iss / 100;
             var totDespCorr = corret + iss;
             var liqNota = totCBLC + totBolsa + totDespCorr;
@@ -269,7 +269,7 @@ namespace HomeBrokerClient.Controllers
 
             //Getting general offers
             var ofertas = await listarOfertas(ticker);
-
+            
             return Json(_grafico);
         }
     }
