@@ -27,7 +27,8 @@ _**[Español]**_ Esta es una aplicación de autoaprendizaje que simula un sistem
 - MySQL Connector
 - Google Charts
 
-   
+<br />
+
 ## Installation
 
 Please, follow the instructions below in order to install and run this project:
@@ -80,6 +81,8 @@ The scripts for both, API and Client databases are available at the folder "Data
     "OrdemPost": "https://localhost:5001/api/v1/Ordem"
   }
 ```
+
+<br />
 
 ## Usage instructions
 
