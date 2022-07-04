@@ -2,6 +2,7 @@
 
 # Home Broker Simulator
 
+<img src="https://github.com/sergio-lacerda/2022-01-HomeBroker-Simulator/blob/master/HomeBrokerAPI/HomeBrokerClient/wwwroot/img/United-States-Flag-icon.png" alt="USA flag" style="height: 50px;"/>
 _**[English]**_ This is a self-study application simulating an e-trading platform to operate on Brazilian stock market. It contains two projects: a REST API to simulate the stock exchange service and a web application to allow the user to interact with the API, buying and selling stocks. 
 
 _**[Português]**_ Este é um aplicativo de autoestudo simulando um home broker para operar no mercado de ações brasileiro. Ele contém dois projetos: uma API REST para simular o serviço de bolsa de valores e uma aplicação web para permitir que o usuário interaja com a API, comprando e vendendo ações. 
