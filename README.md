@@ -65,3 +65,5 @@ The scripts for both, API and Client databases are available at the folder "Data
     "DatabaseConnStr": "Server=localhost;Port=3306;Database=dbhomebrokerclient;Uid=root;Pwd=;"
   }
 ```
+
+- **API URIs:** The default URIs are also configured at "appsettings.json". If you start the API with a diferent URI or port number, you must set these information by editing the key "ApiUris".
