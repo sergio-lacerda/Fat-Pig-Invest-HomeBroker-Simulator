@@ -6,7 +6,7 @@ _**[Português]**_ Este é um aplicativo de autoestudo simulando um home broker 
 
 _**[Español]**_ Esta es una aplicación de autoaprendizaje que simula un sistema de e-trading para la bolsa de valores brasileña. El software contiene dos proyectos: una API REST para simular el servicio de la bolsa y una aplicación web para el usuario interactuar con la API, comprando y vendiendo acciones.
 
-
+   
 ## Technologies 
 
 - .Net Core 5
@@ -24,26 +24,26 @@ _**[Español]**_ Esta es una aplicación de autoaprendizaje que simula un sistem
 - MySQL Connector
 - Google Charts
 
-
+   
 ## Installation
 
 Please, follow the instructions below in order to install and run this project:
 
-
+    
 ### 1. Clone the repository
 
 ```console
 git clone https://github.com/sergio-lacerda/2022-01-HomeBroker-Simulator.git
 ```
 
-
+   
 ### 2. Create API and Client Databases
 
 For this project, a MySQL Database Server is required. If you don't have it, you can use a XAMPP distribution containing MariaDB.
 
 The scripts for both, API and Client databases are available at the folder "Database Scripts". Just execute these scripts in order to create the databases.
 
-
+   
 ### 3. Settings for HomeBrokerAPI project
 
 - **Project properties -> Outup -> XML documentation file path:** Set the path to the folder you'd like to have the API documentation file.
@@ -55,7 +55,7 @@ The scripts for both, API and Client databases are available at the folder "Data
     }
 ```
 
-
+   
 ### 4. Settings for HomeBrokerClient project
 
 - **appsettings.json:** Edit the key "DatabaseConnStr" and configure your connection string to the Client database (dbhomebrokerclient).
@@ -67,3 +67,13 @@ The scripts for both, API and Client databases are available at the folder "Data
 ```
 
 - **API URIs:** The default URIs are also configured at "appsettings.json". If you start the API with a diferent URI or port number, you must set these information by editing the key "ApiUris".
+
+```json
+"ApiUris": {
+    "Base": "https://localhost:5001",
+    "OrdemList": "https://localhost:5001/api/v1/Ordem",
+    "OfertaList": "https://localhost:5001/api/v1/Oferta",
+    "CarteiraList": "https://localhost:5001/api/v1/Carteira",
+    "OrdemPost": "https://localhost:5001/api/v1/Ordem"
+  }
+```
