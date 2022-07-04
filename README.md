@@ -61,7 +61,7 @@ The scripts for both, API and Client databases are available at the folder "Data
    
 ### 3. Settings for HomeBrokerAPI project
 
-- **Project properties -> Outup -> XML documentation file path:** Set the path to the folder you'd like to have the API documentation file.
+- **Project properties -> Output -> XML documentation file path:** Set the path to the folder where you'd like to have the API documentation file.
 - **appsettings.json:** Edit the key "DatabaseConnStr" and configure your connection string to the API database (dbhomebrokerapi).
 
 ```json
@@ -82,6 +82,11 @@ The scripts for both, API and Client databases are available at the folder "Data
 ```
 
 - **API URIs:** The default URIs are also configured at "appsettings.json". If you start the API with a diferent URI or port number, you must set these information by editing the key "ApiUris".
+    - "Base": API's base URI
+    - "OrdemList": API's URI for order list - GET
+    - "OfertaList": API's URI for offers list - GET
+    - "CarteiraList": API's URI "my stocks" list - GET
+    - "OrdemPost": API's URI for order post - POST
 
 ```json
 "ApiUris": {
@@ -99,7 +104,7 @@ The scripts for both, API and Client databases are available at the folder "Data
 
 - This API is just a SIMULATOR, so all values shown here are FICTITIOUS. The solution DOES NOT HAVE any kind of integration with the real stock market.
 - The Tickers and Companies information are based in internet sources and may be out of date.
-- No login system has been implemented in this project, so user information are fixed at HomeBrokerClient project's appsettings.json file:
+- No login system has been implemented in this sample project, so user information are fixed at HomeBrokerClient project's appsettings.json file:
     - "IdInvestidor": Investor Id
     - "IdCorretora": Broker Id
     - "NumeroConta": Investor account number
