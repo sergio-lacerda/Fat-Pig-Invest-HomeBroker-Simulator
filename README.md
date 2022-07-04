@@ -77,3 +77,20 @@ The scripts for both, API and Client databases are available at the folder "Data
     "OrdemPost": "https://localhost:5001/api/v1/Ordem"
   }
 ```
+
+## Usage instructions
+
+- This API is just a SIMULATOR, so all values shown here are FICTITIOUS. The solution DOES NOT HAVE any kind of integration with the real stock market.
+- The Tickers and Companies information are based in internet sources and may be out of date.
+- No login system has been implemented in this project, so user information are fixed at HomeBrokerClient project's appsettings.json file:
+    - "IdInvestidor": Investor Id
+    - "IdCorretora": Broker Id
+    - "NumeroConta": Investor account number
+
+```json
+"UsuarioLogado": {
+    "IdInvestidor": 1,
+    "IdCorretora": 47,
+    "NumeroConta": 51001
+  }
+```
