@@ -9,6 +9,7 @@ _**[Português]**_ Este é um aplicativo de autoestudo simulando um home broker 
 _**[Español]**_ Esta es una aplicación de autoaprendizaje que simula un sistema de e-trading para la bolsa de valores brasileña. El software contiene dos proyectos: una API REST para simular el servicio de la bolsa y una aplicación web para el usuario interactuar con la API, comprando y vendiendo acciones.
 
 <br />
+
 ## Technologies 
 
 - .Net Core 5
