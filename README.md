@@ -10,6 +10,12 @@ _**[Español]**_ Esta es una aplicación de autoaprendizaje que simula un sistem
 
 <br />
 
+## Screenshots 
+
+![Home Broker Simulator Main Page](https://github.com/sergio-lacerda/2022-01-HomeBroker-Simulator/blob/master/Preview/index.png "Home Broker Simulator Main Page")
+
+<br />
+
 ## Technologies 
 
 - .Net Core 5
