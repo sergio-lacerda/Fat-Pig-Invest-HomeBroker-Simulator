@@ -45,7 +45,7 @@ The scripts for both, API and Client databases are available at the folder "Data
 ### 3. Settings for HomeBrokerAPI project
 
 - **Project properties -> Outup -> XML documentation file path:** Set the path to the folder you'd like to have the API documentation file.
-- **appsettings.json:** Finde the key "DatabaseConnStr" and configure your connection string to the API database (dbhomebrokerapi).
+- **appsettings.json:** Edit the key "DatabaseConnStr" and configure your connection string to the API database (dbhomebrokerapi).
 
 ```json
 "ConnectionStrings": {
@@ -55,3 +55,11 @@ The scripts for both, API and Client databases are available at the folder "Data
 
 
 ### 4. Settings for HomeBrokerClient project
+
+- **appsettings.json:** Edit the key "DatabaseConnStr" and configure your connection string to the Client database (dbhomebrokerclient).
+
+```json
+"ConnectionStrings": {
+    "DatabaseConnStr": "Server=localhost;Port=3306;Database=dbhomebrokerclient;Uid=root;Pwd=;"
+  }
+```
