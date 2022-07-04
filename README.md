@@ -48,7 +48,7 @@ Please, follow the instructions below in order to install and run this project:
 ### 1. Clone the repository
 
 ```console
-git clone https://github.com/sergio-lacerda/2022-01-HomeBroker-Simulator.git
+git clone https://github.com/sergio-lacerda/Fat-Pig-Invest-HomeBroker-Simulator.git
 ```
 
    

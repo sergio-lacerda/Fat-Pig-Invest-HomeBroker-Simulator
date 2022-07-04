@@ -14,4 +14,6 @@
     <PackageReference Include="MySqlConnector" Version="2.1.10" />
   </ItemGroup>
 
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
+
 </Project>
