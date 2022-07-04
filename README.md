@@ -1,6 +1,6 @@
-![Home Broker Simulator Project Logo](https://github.com/sergio-lacerda/2022-01-HomeBroker-Simulator/blob/master/Preview/logo.png "Home Broker Simulator Project Logo")
+![Fat Pig Invest - Home Broker Simulator Project Logo](https://github.com/sergio-lacerda/2022-01-HomeBroker-Simulator/blob/master/Preview/logo.png "Fat Pig Invest - Home Broker Simulator Project Logo")
 
-# Home Broker Simulator
+# Fat Pig Invest - Home Broker Simulator
 
 _**[English]**_ This is a self-study application simulating an e-trading platform to operate on Brazilian stock market. It contains two projects: a REST API to simulate the stock exchange service and a web application to allow the user to interact with the API, buying and selling stocks. 
 
