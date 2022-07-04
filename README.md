@@ -1,4 +1,4 @@
-<div style="width:100%; height:200px; background-color:#223f7f;">
+<div style="width:100%; height:200px; background-color:#223f7f; border-radius:10px;">
     <img src="https://github.com/sergio-lacerda/2022-01-HomeBroker-Simulator/blob/master/HomeBrokerAPI/HomeBrokerClient/wwwroot/img/logo-fat.png" 
          alt="Home Broker Simulator Logo"
          style="height:200px;"
