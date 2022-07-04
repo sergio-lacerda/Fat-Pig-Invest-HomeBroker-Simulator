@@ -1,3 +1,10 @@
+<div style="width:100%; height:200px; background-color:#223f7f;">
+    <img src="https://github.com/sergio-lacerda/2022-01-HomeBroker-Simulator/blob/master/HomeBrokerAPI/HomeBrokerClient/wwwroot/img/logo-fat.png" 
+         alt="Home Broker Simulator Logo"
+         style="height:200px;"
+    />
+</div>
+
 # Home Broker Simulator
 
 _**[English]**_ This is a self-study application simulating an e-trading platform to operate on Brazilian stock market. It contains two projects: a REST API to simulate the stock exchange service and a web application to allow the user to interact with the API, buying and selling stocks. 
@@ -7,7 +14,7 @@ _**[Português]**_ Este é um aplicativo de autoestudo simulando um home broker 
 _**[Español]**_ Esta es una aplicación de autoaprendizaje que simula un sistema de e-trading para la bolsa de valores brasileña. El software contiene dos proyectos: una API REST para simular el servicio de la bolsa y una aplicación web para el usuario interactuar con la API, comprando y vendiendo acciones.
 
    
-   
+
 ## Technologies 
 
 - .Net Core 5
