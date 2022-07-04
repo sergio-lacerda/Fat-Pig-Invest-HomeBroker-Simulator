@@ -17,7 +17,7 @@ _**[Español]**_ Esta es una aplicación de autoaprendizaje que simula un sistem
 
 ![Home Broker Simulator Chart](https://github.com/sergio-lacerda/2022-01-HomeBroker-Simulator/blob/master/Preview/grafico.png "Home Broker Simulator Chart")
 
-![Home Broker Simulator API](https://github.com/sergio-lacerda/2022-01-HomeBroker-Simulator/blob/master/Preview/swagger.png "Home Broker Simulator API")
+![Home Broker Simulator API](https://github.com/sergio-lacerda/2022-01-HomeBroker-Simulator/blob/master/Preview/Swagger.png "Home Broker Simulator API")
 
 <br />
 
