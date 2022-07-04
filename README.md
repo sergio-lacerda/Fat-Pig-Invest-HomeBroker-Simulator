@@ -1,8 +1,10 @@
 # Home Broker Simulator
 
-_**[English]**_ This is a self-study application simulating a home broker to operate on Brazilian stock market. It contains two projects: a REST API to simulate the stock exchange service and a web application to allow the user to interact with the API, buying and selling stocks. 
+_**[English]**_ This is a self-study application simulating an e-trading platform to operate on Brazilian stock market. It contains two projects: a REST API to simulate the stock exchange service and a web application to allow the user to interact with the API, buying and selling stocks. 
 
 _**[Português]**_ Este é um aplicativo de autoestudo simulando um home broker para operar no mercado de ações brasileiro. Ele contém dois projetos: uma API REST para simular o serviço de bolsa de valores e uma aplicação web para permitir que o usuário interaja com a API, comprando e vendendo ações. 
+
+_**[Español]**_ Esta es una aplicación de autoaprendizaje que simula un sistema de e-trading para la bolsa de valores brasileña. El software contiene dos proyectos: una API REST para simular el servicio de la bolsa y una aplicación web para el usuario interactuar con la API, comprando y vendiendo acciones.
 
 
 ## Technologies 
