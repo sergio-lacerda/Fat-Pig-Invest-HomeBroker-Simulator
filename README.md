@@ -105,7 +105,11 @@ The scripts for both, API and Client databases are available at the folder "Data
 ## Usage instructions
 
 - This API is just a SIMULATOR, so all values shown here are FICTITIOUS. The solution DOES NOT HAVE any kind of integration with the real stock market.
-- The Tickers and Companies information are based in internet sources and may be out of date.
+- The Tickers and Companies information are based in internet sources in a specific date and have no updates (they are out of date).
+- Some of the taxes rules have been simplified, so there may be small differences when compared to a real scenario.
+- This simulator doesn´t support day trade operations.
+- This simulator doesn´t support fractional share operations.
+- This simulator doesn´t control your stock wallet or your account credit. No verification is made about if you have enough money to buy or if you have the stocks you are selling.
 - No login system has been implemented in this sample project, so user information are fixed at HomeBrokerClient project's appsettings.json file:
     - "IdInvestidor": Investor Id
     - "IdCorretora": Broker Id
