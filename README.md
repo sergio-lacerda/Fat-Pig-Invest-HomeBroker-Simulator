@@ -37,6 +37,7 @@ _**[Español]**_ Esta es una aplicación de autoaprendizaje que simula un sistem
 - Bootstrap
 - Javascript / JQuery
 - MySQL Database
+- Database procedures & functions
 - MySQL Connector
 - Google Charts
 
