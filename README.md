@@ -1,51 +1,74 @@
 ![Fat Pig Invest - Home Broker Simulator Project Logo](https://github.com/sergio-lacerda/2022-01-HomeBroker-Simulator/blob/master/Preview/logo.png "Fat Pig Invest - Home Broker Simulator Project Logo")
 
-# Fat Pig Invest - Home Broker Simulator
+# 🐷 Fat Pig Invest — Home Broker Simulator
 
-<img height="12px" src="https://github.com/hampusborgos/country-flags/blob/main/png250px/us.png"/> This is a self-study application simulating an e-trading platform to operate on Brazilian stock market. It contains two projects: a REST API to simulate the stock exchange service and a web application to allow the user to interact with the API, buying and selling stocks. 
+## 📌 Overview
 
-<img height="12px" src="https://github.com/hampusborgos/country-flags/blob/main/png250px/br.png"/> Este é um aplicativo de autoestudo simulando um home broker para operar no mercado de ações brasileiro. Ele contém dois projetos: uma API REST para simular o serviço de bolsa de valores e uma aplicação web para permitir que o usuário interaja com a API, comprando e vendendo ações. 
+**Fat Pig Invest** is a self-driven project that simulates an electronic trading platform (home broker) for the Brazilian stock market.
 
-<img height="12px" src="https://github.com/hampusborgos/country-flags/blob/main/png250px/es.png"/> Esta es una aplicación de autoaprendizaje que simula un sistema de e-trading para la bolsa de valores brasileña. El software contiene dos proyectos: una API REST para simular el servicio de la bolsa y una aplicación web para el usuario interactuar con la API, comprando y vendiendo acciones.
+The solution is composed of two main applications:
 
-<br />
+- **REST API** — simulates core stock exchange operations such as order processing and market data handling  
+- **Web Client** — provides a user interface for placing buy/sell orders and interacting with the API  
 
-## Screenshots 
-<br />
+This project was designed as a practical study of backend/frontend integration, financial system concepts, and API design.
 
-![Home Broker Simulator Main Page](https://github.com/sergio-lacerda/2022-01-HomeBroker-Simulator/blob/master/Preview/index.png "Home Broker Simulator Main Page")
+---
 
-![Home Broker Simulator Chart](https://github.com/sergio-lacerda/2022-01-HomeBroker-Simulator/blob/master/Preview/grafico.png "Home Broker Simulator Chart")
+## 🌎 Multilingual Description
 
-![Home Broker Simulator Chart](https://github.com/sergio-lacerda/2022-01-HomeBroker-Simulator/blob/master/Preview/NotaDeNegociacao.png "Home Broker Orders Receipt")
+**🇺🇸 English**  
+A self-study application that simulates a stock trading platform for the Brazilian market, including a REST API and a web client for trading interactions.
 
-![Home Broker Simulator API](https://github.com/sergio-lacerda/2022-01-HomeBroker-Simulator/blob/master/Preview/Swagger.png "Home Broker Simulator API")
+**🇧🇷 Português**  
+Aplicação de estudo que simula um home broker para o mercado de ações brasileiro, composta por uma API REST e uma aplicação web para interação do usuário.
 
-<br />
+**🇪🇸 Español**  
+Aplicación de autoaprendizaje que simula un sistema de trading para la bolsa brasileña, con una API REST y una interfaz web para el usuario.
 
-## Technologies 
+---
 
-- .Net Core 5
+## 🖼️ Screenshots
+
+### Main Page
+![Home Broker Simulator Main Page](https://github.com/sergio-lacerda/2022-01-HomeBroker-Simulator/blob/master/Preview/index.png)
+
+### Chart
+![Home Broker Simulator Chart](https://github.com/sergio-lacerda/2022-01-HomeBroker-Simulator/blob/master/Preview/grafico.png)
+
+### Trade Receipt
+![Home Broker Orders Receipt](https://github.com/sergio-lacerda/2022-01-HomeBroker-Simulator/blob/master/Preview/NotaDeNegociacao.png)
+
+### API Documentation
+![Home Broker Simulator API](https://github.com/sergio-lacerda/2022-01-HomeBroker-Simulator/blob/master/Preview/Swagger.png)
+
+---
+
+## 🛠️ Tech Stack
+
+### Backend
+- .NET Core 5
 - C#
-- API REST
-- Swagger
-- MVC
-- Linq
-- Lambda Expressions
-- HTML 5
-- CSS 3 (not fully responsive client interface sample)
+- REST API
+- LINQ & Lambda Expressions
+- Swagger (API documentation)
+
+### Frontend
+- ASP.NET MVC
+- HTML5
+- CSS3
 - Bootstrap
-- Javascript / JQuery
-- MySQL Database
-- Database procedures & functions
-- MySQL Connector
+- JavaScript / jQuery
 - Google Charts
 
-<br />
+### Database
+- MySQL
+- Stored Procedures & Functions
+- MySQL Connector
 
-## Installation
+---
 
-Please, follow the instructions below in order to install and run this project:
+## ⚙️ Installation & Setup
 
     
 ### 1. Clone the repository
