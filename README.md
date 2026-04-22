@@ -76,43 +76,44 @@ Aplicación de autoaprendizaje que simula un sistema de trading para la bolsa br
 ```console
 git clone https://github.com/sergio-lacerda/Fat-Pig-Invest-HomeBroker-Simulator.git
 ```
-
    
-### 2. Create API and Client Databases
+### 2. Configure the Database
 
-For this project, a MySQL Database Server is required. If you don't have it, you can use a XAMPP distribution containing MariaDB.
+This project requires a MySQL server (or MariaDB via XAMPP).
+Navigate to the Database Scripts folder and execute the scripts to create:
+- dbhomebrokerapi
+- dbhomebrokerclient
 
-The scripts for both, API and Client databases are available at the folder "Database Scripts". Just execute these scripts in order to create the databases.
-
-   
-### 3. Settings for HomeBrokerAPI project
-
-- **Project properties -> Output -> XML documentation file path:** Set the path to the folder where you'd like to have the API documentation file.
-- **appsettings.json:** Edit the key "DatabaseConnStr" and configure your connection string to the API database (dbhomebrokerapi).
+### 3. Configure the API Project
+Update appsettings.json:
 
 ```json
 "ConnectionStrings": {
         "DatabaseConnStr": "Server=localhost;Port=3306;Database=dbhomebrokerapi;Uid=root;Pwd=;"
     }
 ```
+Also configure:
+```console
+Project properties -> Output -> XML documentation file path
+```
+
+### 3. Settings for HomeBrokerAPI project
+
+- **Project properties -> Output -> XML documentation file path:** Set the path to the folder where you'd like to have the API documentation file.
+- **appsettings.json:** Edit the key "DatabaseConnStr" and configure your connection string to the API database (dbhomebrokerapi).
 
    
-### 4. Settings for HomeBrokerClient project
-
-- **appsettings.json:** Edit the key "DatabaseConnStr" and configure your connection string to the Client database (dbhomebrokerclient).
+### 4. Configure the Client Project
+Update appsettings.json:
 
 ```json
 "ConnectionStrings": {
-    "DatabaseConnStr": "Server=localhost;Port=3306;Database=dbhomebrokerclient;Uid=root;Pwd=;"
-  }
+  "DatabaseConnStr": "Server=localhost;Port=3306;Database=dbhomebrokerclient;Uid=root;Pwd=;"
+}
 ```
 
-- **API URIs:** The default URIs are also configured at "appsettings.json". If you start the API with a diferent URI or port number, you must set these information by editing the key "ApiUris".
-    - "Base": API's base URI
-    - "OrdemList": API's URI for order list - GET
-    - "OfertaList": API's URI for offers list - GET
-    - "CarteiraList": API's URI "my stocks" list - GET
-    - "OrdemPost": API's URI for order post - POST
+### 5. API Endpoints Configuration
+If needed, adjust API URLs:
 
 ```json
 "ApiUris": {
@@ -123,21 +124,28 @@ The scripts for both, API and Client databases are available at the folder "Data
     "OrdemPost": "https://localhost:5001/api/v1/Ordem"
   }
 ```
+---
 
-<br />
+## 🚀 Usage Notes
 
-## Usage instructions
+⚠️ This project is a simulation only and has no connection to real financial markets.
 
-- This API is just a SIMULATOR, so all values shown here are FICTITIOUS. The solution DOES NOT HAVE any kind of integration with the real stock market.
-- The Tickers and Companies information are based in internet sources in a specific date and have no updates (they are out of date).
-- Some of the taxes rules have been simplified, so there may be small differences when compared to a real scenario.
-- This simulator doesn´t support day trade operations.
-- This simulator doesn´t support fractional share operations.
-- This simulator doesn´t control your stock wallet or your account credit. No verification is made about if you have enough money to buy or if you have the stocks you are selling.
-- No login system has been implemented in this sample project, so user information are fixed at HomeBrokerClient project's appsettings.json file:
-    - "IdInvestidor": Investor Id
-    - "IdCorretora": Broker Id
-    - "NumeroConta": Investor account number
+### Limitations
+- All market data is static and outdated
+- No real-time updates
+- Simplified tax rules
+- No authentication system
+- No balance validation (buy/sell without restrictions)
+- Not Supported
+-- Day trading
+-- Fractional shares
+-- Portfolio validation
+-- Account balance control
+
+---
+
+## 👤 Default User Configuration
+User data is hardcoded in:
 
 ```json
 "UsuarioLogado": {
@@ -146,3 +154,19 @@ The scripts for both, API and Client databases are available at the folder "Data
     "NumeroConta": 51001
   }
 ```
+---
+
+## 🎯 Learning Goals
+
+This project demonstrates:
+
+- API design and architecture
+- Integration between frontend and backend
+- Financial system modeling (simplified)
+- Database design with stored procedures
+- Data visualization
+---
+
+## 📄 License
+
+This project is intended for educational purposes only.
