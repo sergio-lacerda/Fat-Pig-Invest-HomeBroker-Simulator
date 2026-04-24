@@ -20,10 +20,10 @@ This project was designed as a practical study of backend/frontend integration, 
 **<img src="https://cdn.jsdelivr.net/gh/hjnilsson/country-flags@master/svg/us.svg" width="20" style="display: inline; vertical-align: middle;" /> English**  
 A self-study application that simulates a stock trading platform for the Brazilian market, including a REST API and a web client for trading interactions.
 
-**:brazil: Português**  
+**<img src="https://cdn.jsdelivr.net/gh/hjnilsson/country-flags@master/svg/br.svg" width="20" style="display: inline; vertical-align: middle;" /> Português**  
 Aplicação de estudo que simula um home broker para o mercado de ações brasileiro, composta por uma API REST e uma aplicação web para interação do usuário.
 
-**:es: Español**  
+**<img src="https://cdn.jsdelivr.net/gh/hjnilsson/country-flags@master/svg/es.svg" width="20" style="display: inline; vertical-align: middle;" /> Español**  
 Aplicación de autoaprendizaje que simula un sistema de trading para la bolsa brasileña, con una API REST y una interfaz web para el usuario.
 
 ---
