@@ -96,12 +96,6 @@ Also configure:
 ```console
 Project properties -> Output -> XML documentation file path
 ```
-
-### 3. Settings for HomeBrokerAPI project
-
-- **Project properties -> Output -> XML documentation file path:** Set the path to the folder where you'd like to have the API documentation file.
-- **appsettings.json:** Edit the key "DatabaseConnStr" and configure your connection string to the API database (dbhomebrokerapi).
-
    
 ### 4. Configure the Client Project
 Update appsettings.json:
@@ -137,10 +131,10 @@ If needed, adjust API URLs:
 - No authentication system
 - No balance validation (buy/sell without restrictions)
 - Not Supported
--- Day trading
--- Fractional shares
--- Portfolio validation
--- Account balance control
+  - Day trading
+  - Fractional shares
+  - Portfolio validation
+  - Account balance control
 
 ---
 
