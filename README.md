@@ -118,6 +118,20 @@ If needed, adjust API URLs:
     "OrdemPost": "https://localhost:5001/api/v1/Ordem"
   }
 ```
+
+---
+
+## 👤 Default User Configuration
+User data is hardcoded in:
+
+```json
+"UsuarioLogado": {
+    "IdInvestidor": 1,
+    "IdCorretora": 47,
+    "NumeroConta": 51001
+  }
+```
+
 ---
 
 ## 🚀 Usage Notes
@@ -136,18 +150,6 @@ If needed, adjust API URLs:
   - Portfolio validation
   - Account balance control
 
----
-
-## 👤 Default User Configuration
-User data is hardcoded in:
-
-```json
-"UsuarioLogado": {
-    "IdInvestidor": 1,
-    "IdCorretora": 47,
-    "NumeroConta": 51001
-  }
-```
 ---
 
 ## 🎯 Learning Goals
