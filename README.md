@@ -17,13 +17,13 @@ This project was designed as a practical study of backend/frontend integration, 
 
 ## 🌎 Multilingual Description
 
-**🇺🇸 English**  
+**:us: English**  
 A self-study application that simulates a stock trading platform for the Brazilian market, including a REST API and a web client for trading interactions.
 
-**🇧🇷 Português**  
+**:brazil: Português**  
 Aplicação de estudo que simula um home broker para o mercado de ações brasileiro, composta por uma API REST e uma aplicação web para interação do usuário.
 
-**🇪🇸 Español**  
+**:es: Español**  
 Aplicación de autoaprendizaje que simula un sistema de trading para la bolsa brasileña, con una API REST y una interfaz web para el usuario.
 
 ---
@@ -77,10 +77,10 @@ Aplicación de autoaprendizaje que simula un sistema de trading para la bolsa br
 git clone https://github.com/sergio-lacerda/Fat-Pig-Invest-HomeBroker-Simulator.git
 ```
    
-### 2. Configure the Database
+### 2. Configure the Databases
 
 This project requires a MySQL server (or MariaDB via XAMPP).
-Navigate to the Database Scripts folder and execute the scripts to create:
+Navigate to the Database Scripts folder and execute the scripts bellow:
 - dbhomebrokerapi
 - dbhomebrokerclient
 
